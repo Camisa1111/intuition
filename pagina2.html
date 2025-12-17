@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotionale Blindage - Programm für psychologischen Schutz</title>
+
+    <!-- Performance optimizations -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#fdfcfa;color:#2c2c2c;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}.top-banner{background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);color:#2e7d32;text-align:center;padding:.9rem 1rem;font-size:.9rem;font-weight:600;letter-spacing:.5px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08);will-change:transform}.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}.hero{padding:4rem 1.5rem 6rem;text-align:center;background:linear-gradient(180deg,#fdfcfa 0%,#f5f3f0 100%)}.hero-badge{display:inline-block;background:rgba(129,199,132,.15);border:2px solid #81c784;color:#2e7d32;padding:.6rem 1.8rem;border-radius:50px;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:2rem}h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-1px;margin-bottom:1.5rem;color:#1a1a1a;line-height:1.1}.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);color:#5a5a5a;margin-bottom:2rem;font-style:italic;max-width:700px;margin-left:auto;margin-right:auto;font-weight:500}.hero-description{font-size:clamp(1rem,2vw,1.2rem);color:#4a4a4a;max-width:800px;margin:0 auto 3rem;line-height:1.9}.cta-button{background:linear-gradient(135deg,#66bb6a 0%,#43a047 100%);color:#fff;padding:1.3rem 3rem;font-size:1.1rem;border:none;border-radius:50px;cursor:pointer;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:all .3s ease;box-shadow:0 8px 25px rgba(67,160,71,.3);display:inline-block;text-decoration:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.cta-button:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(67,160,71,.4);background:linear-gradient(135deg,#4caf50 0%,#388e3c 100%)}.section{padding:5rem 1.5rem}.section-dark{background:#f5f3f0}.section-light{background:#fdfcfa}h2{font-size:clamp(2rem,4vw,3rem);text-align:center;margin-bottom:1rem;color:#1a1a1a;font-weight:800;letter-spacing:-.5px}.section-intro{text-align:center;max-width:800px;margin:0 auto 4rem;font-size:1.15rem;color:#5a5a5a;line-height:1.8}.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1200px;margin:0 auto}.benefit-card{background:#fff;padding:2.5rem;border-radius:20px;border:2px solid #e8f5e9;transition:all .3s ease;box-shadow:0 4px 15px rgba(0,0,0,.05);will-change:transform}.benefit-card:hover{transform:translateY(-5px);border-color:#81c784;box-shadow:0 12px 30px rgba(0,0,0,.1)}.benefit-icon{font-size:3rem;display:block;margin-bottom:1.5rem}.benefit-card h3{font-size:1.5rem;margin-bottom:1rem;color:#2e7d32;font-weight:700}.benefit-card p{color:#5a5a5a;line-height:1.7;font-size:1rem}.modules-list{max-width:900px;margin:0 auto;display:grid;gap:1.5rem}.module-item{background:#fff;padding:2rem;border-radius:16px;border-left:5px solid #66bb6a;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start;transition:all .3s ease;box-shadow:0 4px 15px rgba(0,0,0,.05)}.module-item:hover{background:#f1f8e9;border-left-width:7px;box-shadow:0 8px 25px rgba(0,0,0,.08)}.module-number{color:#66bb6a;font-size:2rem;font-weight:900;line-height:1}.module-content h3{font-size:1.4rem;margin-bottom:.7rem;color:#2e7d32;font-weight:700}.module-content p{color:#5a5a5a;line-height:1.7;font-size:1rem}.app-features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1100px;margin:0 auto}.feature-card{display:flex;gap:1.2rem;align-items:flex-start;padding:1.8rem;background:#fff;border-radius:16px;border:2px solid #e8f5e9;transition:all .3s ease;box-shadow:0 4px 15px rgba(0,0,0,.05)}.feature-card:hover{background:#f1f8e9;border-color:#81c784;box-shadow:0 8px 20px rgba(0,0,0,.08)}.feature-icon{font-size:2.5rem;flex-shrink:0}.feature-card h4{font-size:1.15rem;margin-bottom:.5rem;color:#2e7d32;font-weight:700}.feature-card p{color:#5a5a5a;font-size:.95rem;line-height:1.6}.testimonials{max-width:900px;margin:0 auto;display:grid;gap:2.5rem}.testimonial{background:#fff;padding:2.5rem;border-radius:20px;border:2px solid #e8f5e9;position:relative;box-shadow:0 4px 20px rgba(0,0,0,.06)}.testimonial::before{content:'"';font-size:5rem;position:absolute;top:15px;left:25px;color:#81c784;opacity:.3;font-family:Georgia,serif;line-height:1}.testimonial-text{font-size:1.15rem;font-style:italic;margin-bottom:1.5rem;color:#3a3a3a;position:relative;z-index:1;line-height:1.8}.testimonial-author{color:#43a047;font-weight:700;font-size:.95rem}.offer-section{padding:6rem 1.5rem;text-align:center;background:linear-gradient(180deg,#e8f5e9 0%,#f1f8e9 100%)}.pricing-container{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}.offer-box{background:#fff;padding:3rem;border-radius:25px;border:3px solid #66bb6a;box-shadow:0 15px 50px rgba(67,160,71,.2);transition:all .3s ease;will-change:transform}.offer-box:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(67,160,71,.3)}.offer-title{font-size:2rem;margin-bottom:1.5rem;color:#1a1a1a;font-weight:800}.offer-description{font-size:1.1rem;color:#5a5a5a;margin-bottom:2rem;line-height:1.7}.price{font-size:4rem;color:#43a047;font-weight:900;margin:1.5rem 0;line-height:1}.price-label{font-size:.9rem;color:#7a7a7a;text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}.guarantee{margin-top:3rem;padding:2rem;background:#f1f8e9;border-radius:16px;border:2px solid #c8e6c9}.guarantee h3{color:#2e7d32;margin-bottom:1rem;font-size:1.3rem;font-weight:700}.guarantee p{color:#5a5a5a;line-height:1.7}footer{background:#f5f3f0;padding:2.5rem 1.5rem;text-align:center;color:#7a7a7a;border-top:2px solid #e8e8e8}footer p{margin:.5rem 0;font-size:.9rem;line-height:1.6}@media(max-width:768px){.benefits-grid{grid-template-columns:1fr}.app-features-grid{grid-template-columns:1fr}.module-item{grid-template-columns:1fr}.cta-button{width:100%}.pricing-container{grid-template-columns:1fr}}</style>
+</head>
+<body>
+    <div class="top-banner">
+        ✨ Begrenztes Angebot — Sofortiger Zugang + 15 Tage Garantie
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">ABSOLUTE NEUHEIT</div>
+            <h1>EMOTIONALE BLINDAGE</h1>
+            <p class="hero-subtitle">Als das eigene Land zum feindlichen Territorium wurde</p>
+            <p class="hero-description">
+                Sie schauen sich um und erkennen die Straßen Ihrer Kindheit nicht mehr.
+                Sie hören Sprachen im Supermarkt, die Sie nicht verstehen.
+                Sie spüren, dass Sie Meinungen verschweigen müssen, die früher normal waren.
+                Das Gefühl, ein Fremder im eigenen Land zu sein, zersetzt von innen,
+                und niemand scheint diesen spezifischen Schmerz zu verstehen.
+            </p>
+            <button class="cta-button" onclick="document.querySelector('.offer-section').scrollIntoView({behavior: 'smooth'})">
+                Retten Sie Ihr inneres Territorium
+            </button>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <h2>Der kulturelle Schock, den niemand zugibt</h2>
+            <p class="section-intro">
+                Beschleunigte demografische Veränderungen, Identitätspolitik,
+                Narrative die Ihre Erfahrung entkräften. Sie sind nicht verrückt.
+                Sie sind nicht intolerant. Sie erleben eine reale und dokumentierte
+                psychologische Verschiebung. Und Sie verdienen Werkzeuge, um dies zu bewältigen,
+                ohne Ihren Verstand oder Ihre Integrität zu verlieren.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container">
+            <h2>6 Hauptvorteile</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🛡️</span>
+                    <h3>Psychologischer Schutz</h3>
+                    <p>Bewährte Techniken zum Aufbau einer emotionalen Barriere gegen toxische Narrative und sozialen Druck, die Ihre Identität und Werte zersetzen.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">🧠</span>
+                    <h3>Mentale Klarheit</h3>
+                    <p>Methoden zur Trennung von Manipulation und Realität, Propaganda und Fakten, induzierter Schuld und echter Verantwortung.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚡</span>
+                    <h3>Aktive Resilienz</h3>
+                    <p>Nicht nur überleben, sondern unzerbrechliche innere Stärke durch tägliche Verankerungs- und Sinnpraktiken aufbauen.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎯</span>
+                    <h3>Gestärkte Identität</h3>
+                    <p>Verbinden Sie sich wieder mit dem, wer Sie wirklich sind, ohne Entschuldigungen, ohne lähmende Selbstzensur.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">🔥</span>
+                    <h3>Narrative Kontrolle</h3>
+                    <p>Beherrschen Sie Ihre eigene innere Geschichte gegen die ständige Bombardierung kultureller und historischer Umschreibung.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">🌑</span>
+                    <h3>Akzeptanz des Realen</h3>
+                    <p>Verarbeiten Sie die Trauer über das Verlorene, ohne in unproduktive Bitterkeit oder wahnhafte Verleugnung zu versinken.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <h2>8 Module psychologischen Überlebens</h2>
+            <p class="section-intro">
+                Lernen Sie von Grund auf, folgen Sie den getesteten Praktiken und gewinnen Sie Ihr Gleichgewicht
+                mit dem vollständigen Programm zurück: strukturierte Module, praktische Techniken und sofort einsatzbereite Ressourcen.
+            </p>
+
+            <div class="modules-list">
+                <div class="module-item">
+                    <div class="module-number">01</div>
+                    <div class="module-content">
+                        <h3>Die stille Verschiebung</h3>
+                        <p>Verstehen Sie die Psychologie des internen kulturellen Schocks, warum Sie fühlen was Sie fühlen, und warum dies eine gesunde Reaktion auf aufgezwungene Veränderungen ist.</p>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-number">02</div>
+                    <div class="module-content">
+                        <h3>Architektur der Blindage</h3>
+                        <p>Bauen Sie Ihre psychologische Festung: emotionale Verankerungstechniken, mentale Schutzrituale, Praktiken der Identitätsaffirmation.</p>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-number">03</div>
+                    <div class="module-content">
+                        <h3>Manipulation erkennen</h3>
+                        <p>Identifizieren Sie Muster kulturellen Gaslightings, Realitätsumkehrung und Taktiken kollektiver Schuldzuweisung.</p>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-number">04</div>
+                    <div class="module-content">
+                        <h3>Die Einsamkeit des Bewussten</h3>
+                        <p>Verarbeiten Sie die Isolation, das zu sehen was andere leugnen, bauen Sie Gemeinschaft auf ohne in destruktiven Tribalismus zu fallen.</p>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-number">05</div>
+                    <div class="module-content">
+                        <h3>Trauer ohne Bitterkeit</h3>
+                        <p>Erlauben Sie sich, den Verlust des Landes zu fühlen, das Sie kannten, ohne dies in Hass zu verwandeln, der Ihren Frieden konsumiert.</p>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-number">06</div>
+                    <div class="module-content">
+                        <h3>Wurzeln in bewegtem Boden</h3>
+                        <p>Finden Sie innere Stabilität, wenn alles um Sie herum in konstantem und verstörendem Fluss ist.</p>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-number">07</div>
+                    <div class="module-content">
+                        <h3>Gesunde Grenzen</h3>
+                        <p>Lernen Sie wann zu sprechen, wann zu schweigen, wann sich zurückzuziehen - ohne sich feige oder mitschuldig zu fühlen.</p>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-number">08</div>
+                    <div class="module-content">
+                        <h3>Zweck jenseits des Chaos</h3>
+                        <p>Bauen Sie persönliche Bedeutung auf, die soziale und politische Turbulenzen transzendiert, verankert in unerschütterlichen Werten.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container">
+            <h2>Tägliche Werkzeuge in der Anwendung</h2>
+            <p class="section-intro">
+                Perfekt zum Beginnen: lernen Sie heute, praktizieren Sie sofort,
+                bewahren Sie Ihr Gleichgewicht das ganze Jahr über.
+            </p>
+
+            <div class="app-features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎧</span>
+                    <div>
+                        <h4>Verankerungs-Audios</h4>
+                        <p>Speziell entwickelte geführte Meditationen zur Stärkung der Identität und Auflösung kultureller Angst (5-20 Min)</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📝</span>
+                    <div>
+                        <h4>Blindiertes Tagebuch</h4>
+                        <p>Privater Raum zur zensurfreien Verarbeitung von Gedanken, mit gezielten Prompts für jeden spezifischen Schmerz</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">⏰</span>
+                    <div>
+                        <h4>Morgenrituale</h4>
+                        <p>10-Minuten-Praktiken um den Tag mit mentaler Klarheit und aktiviertem emotionalen Schutz zu beginnen</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <div>
+                        <h4>Kraftsätze</h4>
+                        <p>Anti-Gaslighting-Affirmationen, auf die Sie sofort zugreifen können, wenn Sie spüren, dass Ihre Realität in Frage gestellt wird</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <div>
+                        <h4>Resilienz-Tracker</h4>
+                        <p>Überwachen Sie Ihre emotionale Evolution, identifizieren Sie Trigger und sehen Sie Ihren greifbaren Fortschritt</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🔔</span>
+                    <div>
+                        <h4>Intelligente Erinnerungen</h4>
+                        <p>Personalisierte Benachrichtigungen mit emotionalen Regulierungstechniken in den kritischen Momenten des Tages</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📚</span>
+                    <div>
+                        <h4>Notfall-Bibliothek</h4>
+                        <p>Artikel, Videos und Ressourcen für Krisenmomente, organisiert nach Art des emotionalen Schmerzes</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <div>
+                        <h4>Wöchentliche Herausforderungen</h4>
+                        <p>Progressive praktische Übungen zum Aufbau spezifischer emotionaler Muskeln</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <h2>Wer sein Territorium bereits zurückgewonnen hat</h2>
+            <p class="section-intro">
+                Die Nr.1 Ausbildung in über 4 Ländern! Echte Menschen, echte Ergebnisse.
+            </p>
+
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        Jahrelang fühlte ich mich schuldig, Sehnsucht nach dem Land zu empfinden, das ich kannte.
+                        Dieses Programm gab mir die Erlaubnis, meine Erfahrung zu ehren, ohne eine verbitterte
+                        Person zu werden. Endlich habe ich wieder inneren Frieden.
+                    </p>
+                    <p class="testimonial-author">— M.K., München</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        Ich war ständig wütend oder depressiv. Die täglichen Audios lehrten mich, meine Energie
+                        zu schützen, ohne mich von der Realität abzukoppeln. Ich kann endlich ohne ständiges
+                        Grübeln schlafen.
+                    </p>
+                    <p class="testimonial-author">— T.S., Berlin</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        Ich dachte, ich würde verrückt. Alle um mich herum leugneten das Offensichtliche.
+                        Dieser Kurs validierte meinen Verstand und gab mir Struktur, um Veränderungen zu
+                        verarbeiten, die niemand ehrlich diskutieren will.
+                    </p>
+                    <p class="testimonial-author">— A.W., Hamburg</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer-section">
+        <div class="container">
+            <h2 style="margin-bottom: 3rem;">Retten Sie Ihr inneres Territorium</h2>
+
+            <div class="pricing-container">
+                <div class="offer-box">
+                    <div class="price-label">ESSENTIELLER ZUGANG</div>
+                    <h3 class="offer-title">Teil des Programms</h3>
+                    <p class="offer-description">
+                        Zugang zu den ersten 4 Modulen + Verankerungs-Audios + blindiertes Tagebuch
+                    </p>
+
+                    <div class="price">€17</div>
+
+                    <a href="https://pay.hotmart.com/O103396570T?off=qwjfgy2d&checkoutMode=10" class="cta-button">Jetzt Beginnen</a>
+                </div>
+
+                <div class="offer-box">
+                    <div class="price-label">VOLLZUGANG + BONUS</div>
+                    <h3 class="offer-title">Vollständiges Programm</h3>
+                    <p class="offer-description">
+                        Sofortiger Zugang zu allen 8 Modulen + Anwendung + alle Audios + monatliche Updates + private Community
+                    </p>
+
+                    <div class="price">€35</div>
+
+                    <a href="https://pay.hotmart.com/O103396570T?off=y77dscb1&checkoutMode=10" class="cta-button">Vollen Zugang Sichern</a>
+                </div>
+            </div>
+
+            <div class="guarantee" style="max-width: 700px; margin: 4rem auto 0;">
+                <h3>🔒 15 Tage testen – ohne Risiko 🧠</h3>
+                <p>
+                    Wenn Sie nach Implementierung der Techniken keine signifikante Veränderung
+                    in Ihrer emotionalen Stabilität und mentalen Klarheit spüren, erstatten wir
+                    100% der Investition. Keine Fragen, keine Komplikationen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Emotionale Blindage | Alle Rechte vorbehalten</p>
+        <p>In Zeiten, in denen die psychische Gesundheit unter beispiellosem Druck steht, bieten wir wissenschaftliche Werkzeuge emotionaler Resilienz. Geschützt durch die deutsche Meinungsfreiheit (Art. 5 GG), fokussiert auf individuelles Wohlbefinden, nicht auf Politik.</p>
+    </footer>
+</body>
+</html>
