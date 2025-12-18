@@ -1,452 +1,537 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="color-scheme" content="light">
-    <title>Emotionale Blindage - Programm für psychologischen Schutz</title>
+import React, { useState, useEffect } from 'react';
+import { Shield, Brain, Heart, Anchor, MessageSquare, Target, CheckCircle, Star, Lock, ChevronDown, Sparkles, ArrowRight, Users, Award, Zap, Eye, Layers, Activity, TrendingUp } from 'lucide-react';
 
-    <!-- Performance optimizations -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700;800&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+export default function EliteGermanLandingPage() {
+  const [selectedPlan, setSelectedPlan] = useState('complete');
+  const [showModules, setShowModules] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [stats, setStats] = useState({ users: 0, satisfaction: 0, days: 0 });
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HDHCZG99G"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-6HDHCZG99G', {
-            'page_path': window.location.pathname,
-            'page_title': document.title,
-            'anonymize_ip': false,
-            'allow_google_signals': true,
-            'allow_ad_personalization_signals': true
-        });
+  useEffect(() => {
+    // Google Analytics 4
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-6HDHCZG99G';
+    document.head.appendChild(script1);
 
-        // Função para rastrear eventos customizados
-        function trackEvent(eventName, eventData = {}) {
-            gtag('event', eventName, {
-                'event_category': eventData.category || 'engagement',
-                'event_label': eventData.label || '',
-                'value': eventData.value || 0,
-                'currency': eventData.currency || 'EUR',
-                ...eventData
-            });
-        }
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6HDHCZG99G');
+    `;
+    document.head.appendChild(script2);
 
-        // Rastrear quando a página carrega
-        window.addEventListener('load', function() {
-            trackEvent('page_view', {
-                'category': 'page',
-                'label': 'emotionale_blindage_homepage'
-            });
-        });
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress((window.scrollY / totalScroll) * 100);
+    };
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
-        // Rastrear scroll profundo
-        let scrollTracked = false;
-        window.addEventListener('scroll', function() {
-            if (!scrollTracked && window.scrollY > window.innerHeight) {
-                trackEvent('scroll_depth', {
-                    'category': 'engagement',
-                    'label': 'scrolled_past_hero',
-                    'value': Math.round(window.scrollY)
-                });
-                scrollTracked = true;
-            }
-        });
+  useEffect(() => {
+    if (stats.users === 0) {
+      setTimeout(() => {
+        const interval = setInterval(() => {
+          setStats(prev => ({
+            users: Math.min(prev.users + 47, 2847),
+            satisfaction: Math.min(prev.satisfaction + 2, 96),
+            days: Math.min(prev.days + 1, 15)
+          }));
+        }, 30);
+        setTimeout(() => clearInterval(interval), 1500);
+      }, 500);
+    }
+  }, [stats.users]);
 
-        // Rastrear tempo na página
-        let timeOnPage = 0;
-        setInterval(function() {
-            timeOnPage += 10;
-        }, 10000);
+  const modules = [
+    { num: '01', title: 'Die Psychologie des Umbruchs', desc: 'Verstehen Sie die mentalen Mechanismen hinter gesellschaftlichen Veränderungen' },
+    { num: '02', title: 'Fundament der Inneren Architektur', desc: 'Bauen Sie Ihre persönliche Werte-Struktur auf solidem Grund' },
+    { num: '03', title: 'Dekonstruktion von Gaslighting', desc: 'Erkennen und neutralisieren Sie manipulative Narrative' },
+    { num: '04', title: 'Souveränität in der Isolation', desc: 'Kraft finden, auch wenn Sie sich allein fühlen' },
+    { num: '05', title: 'Emotionale Alchemie', desc: 'Transformieren Sie Bitterkeit in konstruktive Energie' },
+    { num: '06', title: 'Standhaftigkeit im Chaos', desc: 'Bewahren Sie innere Ruhe trotz äußerer Turbulenzen' },
+    { num: '07', title: 'Strategische Kommunikation', desc: 'Wissen Sie, wann sprechen und wann schweigen goldrichtig ist' },
+    { num: '08', title: 'Sinnstiftung 2.0', desc: 'Finden Sie Bedeutung jenseits der politischen Unruhen' }
+  ];
 
-        window.addEventListener('beforeunload', function() {
-            if (timeOnPage > 0) {
-                trackEvent('time_on_page', {
-                    'category': 'engagement',
-                    'label': 'emotionale_blindage_homepage',
-                    'value': Math.round(timeOnPage / 1000)
-                });
-            }
-        });
-    </script>
+  const pillars = [
+    { icon: Shield, title: 'Psychologischer Schutzwall', desc: 'Techniken gegen toxische Narrative und mentale Manipulation', color: 'from-cyan-500 to-blue-500' },
+    { icon: Brain, title: 'Kognitive Klarheit', desc: 'Unterscheiden Sie Fakten von medialer Verzerrung', color: 'from-blue-500 to-indigo-500' },
+    { icon: Anchor, title: 'Aktive Belastbarkeit', desc: 'Unzerbrechliche innere Kraft aufbauen', color: 'from-indigo-500 to-purple-500' },
+    { icon: Heart, title: 'Authentische Identität', desc: 'Verbindung zu sich selbst ohne Selbstzensur', color: 'from-purple-500 to-pink-500' },
+    { icon: MessageSquare, title: 'Narrative Souveränität', desc: 'Besitzen Sie Ihre eigene Geschichte', color: 'from-pink-500 to-rose-500' },
+    { icon: Target, title: 'Stoische Akzeptanz', desc: 'Verarbeiten Sie Verluste ohne Bitterkeit', color: 'from-rose-500 to-cyan-500' }
+  ];
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #fdfcfa; color: #2c2c2c; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-        .top-banner { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); color: #2e7d32; text-align: center; padding: .9rem 1rem; font-size: .9rem; font-weight: 600; letter-spacing: .5px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0, 0, 0, .08); contain: layout style paint; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-        .hero { padding: 4rem 1.5rem 6rem; text-align: center; background: linear-gradient(180deg, #fdfcfa 0%, #f5f3f0 100%); }
-        .hero-badge { display: inline-block; background: rgba(129, 199, 132, .15); border: 2px solid #81c784; color: #2e7d32; padding: .6rem 1.8rem; border-radius: 50px; font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 2rem; }
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 1.5rem; color: #1a1a1a; line-height: 1.1; }
-        .hero-subtitle { font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: #5a5a5a; margin-bottom: 2rem; font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto; font-weight: 500; }
-        .hero-description { font-size: clamp(1rem, 2vw, 1.2rem); color: #4a4a4a; max-width: 800px; margin: 0 auto 3rem; line-height: 1.9; }
-        .cta-button { background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%); color: #fff; padding: 1.3rem 3rem; font-size: 1.1rem; border: none; border-radius: 50px; cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all .3s ease; box-shadow: 0 8px 25px rgba(67, 160, 71, .3); display: inline-block; text-decoration: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(67, 160, 71, .4); background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%); }
-        .section { padding: 5rem 1.5rem; }
-        .section-dark { background: #f5f3f0; }
-        .section-light { background: #fdfcfa; }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); text-align: center; margin-bottom: 1rem; color: #1a1a1a; font-weight: 800; letter-spacing: -.5px; }
-        .section-intro { text-align: center; max-width: 800px; margin: 0 auto 4rem; font-size: 1.15rem; color: #5a5a5a; line-height: 1.8; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .benefit-card { background: #fff; padding: 2.5rem; border-radius: 20px; border: 2px solid #e8f5e9; transition: all .3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, .05); }
-        .benefit-card:hover { transform: translateY(-5px); border-color: #81c784; box-shadow: 0 12px 30px rgba(0, 0, 0, .1); }
-        .benefit-icon { font-size: 3rem; display: block; margin-bottom: 1.5rem; }
-        .benefit-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #2e7d32; font-weight: 700; }
-        .benefit-card p { color: #5a5a5a; line-height: 1.7; font-size: 1rem; }
-        .modules-list { max-width: 900px; margin: 0 auto; display: grid; gap: 1.5rem; }
-        .module-item { background: #fff; padding: 2rem; border-radius: 16px; border-left: 5px solid #66bb6a; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; transition: all .3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, .05); }
-        .module-item:hover { background: #f1f8e9; border-left-width: 7px; box-shadow: 0 8px 25px rgba(0, 0, 0, .08); }
-        .module-number { color: #66bb6a; font-size: 2rem; font-weight: 900; line-height: 1; flex-shrink: 0; }
-        .module-content h3 { font-size: 1.4rem; margin-bottom: .7rem; color: #2e7d32; font-weight: 700; }
-        .module-content p { color: #5a5a5a; line-height: 1.7; font-size: 1rem; }
-        .app-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        .feature-card { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.8rem; background: #fff; border-radius: 16px; border: 2px solid #e8f5e9; transition: all .3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, .05); }
-        .feature-card:hover { background: #f1f8e9; border-color: #81c784; box-shadow: 0 8px 20px rgba(0, 0, 0, .08); }
-        .feature-icon { font-size: 2.5rem; flex-shrink: 0; }
-        .feature-card h4 { font-size: 1.15rem; margin-bottom: .5rem; color: #2e7d32; font-weight: 700; }
-        .feature-card p { color: #5a5a5a; font-size: .95rem; line-height: 1.6; }
-        .testimonials { max-width: 900px; margin: 0 auto; display: grid; gap: 2.5rem; }
-        .testimonial { background: #fff; padding: 2.5rem; border-radius: 20px; border: 2px solid #e8f5e9; position: relative; box-shadow: 0 4px 20px rgba(0, 0, 0, .06); }
-        .testimonial::before { content: '"'; font-size: 5rem; position: absolute; top: 15px; left: 25px; color: #81c784; opacity: .3; font-family: Georgia, serif; line-height: 1; }
-        .testimonial-text { font-size: 1.15rem; font-style: italic; margin-bottom: 1.5rem; color: #3a3a3a; position: relative; z-index: 1; line-height: 1.8; }
-        .testimonial-author { color: #43a047; font-weight: 700; font-size: .95rem; }
-        .offer-section { padding: 6rem 1.5rem; text-align: center; background: linear-gradient(180deg, #e8f5e9 0%, #f1f8e9 100%); }
-        .pricing-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .offer-box { background: #fff; padding: 3rem; border-radius: 25px; border: 3px solid #66bb6a; box-shadow: 0 15px 50px rgba(67, 160, 71, .2); transition: all .3s ease; }
-        .offer-box:hover { transform: translateY(-5px); box-shadow: 0 20px 60px rgba(67, 160, 71, .3); }
-        .offer-title { font-size: 2rem; margin-bottom: 1.5rem; color: #1a1a1a; font-weight: 800; }
-        .offer-description { font-size: 1.1rem; color: #5a5a5a; margin-bottom: 2rem; line-height: 1.7; }
-        .price { font-size: 4rem; color: #43a047; font-weight: 900; margin: 1.5rem 0; line-height: 1; }
-        .price-label { font-size: .9rem; color: #7a7a7a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .5rem; }
-        .guarantee { margin-top: 3rem; padding: 2rem; background: #f1f8e9; border-radius: 16px; border: 2px solid #c8e6c9; }
-        .guarantee h3 { color: #2e7d32; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700; }
-        .guarantee p { color: #5a5a5a; line-height: 1.7; }
-        footer { background: #f5f3f0; padding: 2.5rem 1.5rem; text-align: center; color: #7a7a7a; border-top: 2px solid #e8e8e8; }
-        footer p { margin: .5rem 0; font-size: .9rem; line-height: 1.6; }
-        @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } .app-features-grid { grid-template-columns: 1fr; } .module-item { grid-template-columns: 1fr; } .cta-button { width: 100%; } .pricing-container { grid-template-columns: 1fr; } }
-    </style>
-</head>
-<body>
-    <div class="top-banner">
-        ✨ Begrenztes Angebot — Sofortiger Zugang + 15 Tage Garantie
-    </div>
+  const testimonials = [
+    { name: 'Stefan M.', city: 'München', role: 'Ingenieur', text: 'Endlich ein System, das nicht nur über Gefühle redet, sondern konkrete Werkzeuge bietet. Die Innere Architektur hat mir geholfen, meine mentale Stabilität zurückzugewinnen.', rating: 5, image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADcANwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//Z' },
+    { name: 'Andrea K.', city: 'Berlin', role: 'Projektmanagerin', text: 'Nach Jahren der Frustration habe ich durch dieses Programm einen Weg gefunden, souverän zu bleiben. Die psychologischen Techniken sind fundiert und wirksam.', rating: 5, image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADcANwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//' },
+    { name: 'Thomas B.', city: 'Hamburg', role: 'Consultant', text: 'Keine leeren Versprechungen – nur strukturiertes, durchdachtes Material. Die 6 Säulen geben wirklich Halt.', rating: 5, image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADcANwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//' }
+  ];
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-badge">ABSOLUTE NEUHEIT</div>
-            <h1>EMOTIONALE BLINDAGE</h1>
-            <p class="hero-subtitle">Als das eigene Land zum feindlichen Territorium wurde</p>
-            <p class="hero-description">
-                Sie schauen sich um und erkennen die Straßen Ihrer Kindheit nicht mehr.
-                Sie hören Sprachen im Supermarkt, die Sie nicht verstehen.
-                Sie spüren, dass Sie Meinungen verschweigen müssen, die früher normal waren.
-                Das Gefühl, ein Fremder im eigenen Land zu sein, zersetzt von innen,
-                und niemand scheint diesen spezifischen Schmerz zu verstehen.
-            </p>
-            <button class="cta-button" onclick="trackEvent('hero_cta_click', {'category': 'engagement', 'label': 'hero_button_click'}); document.querySelector('.offer-section').scrollIntoView({behavior: 'smooth', block: 'start'})">
-                Retten Sie Ihr inneres Territorium
-            </button>
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 overflow-hidden">
+      {/* Progress Bar */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-slate-900 z-50">
+        <div className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 transition-all duration-300" style={{ width: `${scrollProgress}%` }} />
+      </div>
+
+      {/* Animated Background */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+        <div className="absolute inset-0 opacity-30" style={{ background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(6, 182, 212, 0.15) 0%, transparent 50%)` }} />
+      </div>
+
+      {/* Hero Section */}
+      <header className="relative min-h-screen flex items-center justify-center px-6 py-20">
+        <div className="relative max-w-6xl mx-auto text-center z-10">
+          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/30 backdrop-blur-xl mb-10 group hover:scale-105 transition-all duration-500">
+            <Sparkles className="w-5 h-5 text-cyan-400 animate-pulse" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Limitiertes Angebot — Sofortiger Zugang für die ersten 100 Teilnehmer
+            </span>
+            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          </div>
+          
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-10 leading-[0.95] tracking-tighter">
+            <span className="inline-block bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">INNERE</span>
+            <br />
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">SOUVERÄNITÄT</span>
+          </h1>
+          
+          <div className="flex items-center justify-center gap-4 mb-10">
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+            <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse" />
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+          </div>
+          
+          <p className="text-3xl md:text-4xl text-slate-200 mb-6 font-light tracking-wide">Dein Anker in einer Welt im Umbruch</p>
+          <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto leading-relaxed">Navigation durch den kulturellen Wandel ohne Verlust der eigenen Identität</p>
+          
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-16">
+            {[
+              { value: stats.users, suffix: '+', label: 'Aktive Teilnehmer', icon: Users },
+              { value: stats.satisfaction, suffix: '%', label: 'Zufriedenheit', icon: Award },
+              { value: stats.days, suffix: '', label: 'Tage Garantie', icon: Shield }
+            ].map((stat, i) => (
+              <div key={i} className="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
+                <stat.icon className="w-8 h-8 text-cyan-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                <div className="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">{stat.value}{stat.suffix}</div>
+                <div className="text-sm text-slate-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+            <a href="#pricing" className="group px-10 py-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl font-bold text-xl text-white hover:shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-500">
+              <span className="flex items-center justify-center gap-3">
+                Jetzt Zugang sichern
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              </span>
+            </a>
+            <a href="#curriculum" className="px-10 py-6 rounded-2xl font-bold text-xl bg-slate-900/50 backdrop-blur-xl border-2 border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-900/70 transition-all duration-500 group">
+              <span className="flex items-center justify-center gap-3">
+                System entdecken
+                <Eye className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              </span>
+            </a>
+          </div>
+          
+          {/* Trust Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {[
+              { icon: Lock, text: '15-Tage-Garantie' },
+              { icon: Shield, text: 'Art. 5 GG Schutz' },
+              { icon: Award, text: 'Zertifizierte Methodik' }
+            ].map((badge, i) => (
+              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
+                <badge.icon className="w-4 h-4 text-cyan-400" />
+                {badge.text}
+              </div>
+            ))}
+          </div>
         </div>
-    </section>
+      </header>
 
-    <section class="section section-dark">
-        <div class="container">
-            <h2>Der kulturelle Schock, den niemand zugibt</h2>
-            <p class="section-intro">
-                Beschleunigte demografische Veränderungen, Identitätspolitik,
-                Narrative die Ihre Erfahrung entkräften. Sie sind nicht verrückt.
-                Sie sind nicht intolerant. Sie erleben eine reale und dokumentierte
-                psychologische Verschiebung. Und Sie verdienen Werkzeuge, um dies zu bewältigen,
-                ohne Ihren Verstand oder Ihre Integrität zu verlieren.
-            </p>
-        </div>
-    </section>
-
-    <section class="section section-light">
-        <div class="container">
-            <h2>6 Hauptvorteile</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <span class="benefit-icon">🛡️</span>
-                    <h3>Psychologischer Schutz</h3>
-                    <p>Bewährte Techniken zum Aufbau einer emotionalen Barriere gegen toxische Narrative und sozialen Druck, die Ihre Identität und Werte zersetzen.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="benefit-icon">🧠</span>
-                    <h3>Mentale Klarheit</h3>
-                    <p>Methoden zur Trennung von Manipulation und Realität, Propaganda und Fakten, induzierter Schuld und echter Verantwortung.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="benefit-icon">⚡</span>
-                    <h3>Aktive Resilienz</h3>
-                    <p>Nicht nur überleben, sondern unzerbrechliche innere Stärke durch tägliche Verankerungs- und Sinnpraktiken aufbauen.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="benefit-icon">🎯</span>
-                    <h3>Gestärkte Identität</h3>
-                    <p>Verbinden Sie sich wieder mit dem, wer Sie wirklich sind, ohne Entschuldigungen, ohne lähmende Selbstzensur.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="benefit-icon">🔥</span>
-                    <h3>Narrative Kontrolle</h3>
-                    <p>Beherrschen Sie Ihre eigene innere Geschichte gegen die ständige Bombardierung kultureller und historischer Umschreibung.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="benefit-icon">🌑</span>
-                    <h3>Akzeptanz des Realen</h3>
-                    <p>Verarbeiten Sie die Trauer über das Verlorene, ohne in unproduktive Bitterkeit oder wahnhafte Verleugnung zu versinken.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-dark">
-        <div class="container">
-            <h2>8 Module psychologischen Überlebens</h2>
-            <p class="section-intro">
-                Lernen Sie von Grund auf, folgen Sie den getesteten Praktiken und gewinnen Sie Ihr Gleichgewicht
-                mit dem vollständigen Programm zurück: strukturierte Module, praktische Techniken und sofort einsatzbereite Ressourcen.
-            </p>
-
-            <div class="modules-list">
-                <div class="module-item">
-                    <div class="module-number">01</div>
-                    <div class="module-content">
-                        <h3>Die stille Verschiebung</h3>
-                        <p>Verstehen Sie die Psychologie des internen kulturellen Schocks, warum Sie fühlen was Sie fühlen, und warum dies eine gesunde Reaktion auf aufgezwungene Veränderungen ist.</p>
+      {/* Problem Section */}
+      <section className="relative py-40 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative h-96">
+              <div className="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-slate-800/50 p-8">
+                <div className="relative h-full flex flex-col justify-between">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="h-12 rounded-lg transition-all duration-700" style={{ background: `linear-gradient(90deg, rgba(248, 113, 113, ${0.3 - i * 0.05}) 0%, rgba(239, 68, 68, ${0.2 - i * 0.04}) 100%)`, transform: `translateX(${i * 8}px) rotate(${i * 2}deg)`, opacity: 1 - i * 0.15 }} />
+                  ))}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <Activity className="w-16 h-16 text-red-400 mx-auto mb-4 animate-pulse" />
+                      <p className="text-sm text-slate-400 font-mono">INSTABILE STRUKTUR</p>
                     </div>
+                  </div>
                 </div>
-
-                <div class="module-item">
-                    <div class="module-number">02</div>
-                    <div class="module-content">
-                        <h3>Architektur der Blindage</h3>
-                        <p>Bauen Sie Ihre psychologische Festung: emotionale Verankerungstechniken, mentale Schutzrituale, Praktiken der Identitätsaffirmation.</p>
-                    </div>
-                </div>
-
-                <div class="module-item">
-                    <div class="module-number">03</div>
-                    <div class="module-content">
-                        <h3>Manipulation erkennen</h3>
-                        <p>Identifizieren Sie Muster kulturellen Gaslightings, Realitätsumkehrung und Taktiken kollektiver Schuldzuweisung.</p>
-                    </div>
-                </div>
-
-                <div class="module-item">
-                    <div class="module-number">04</div>
-                    <div class="module-content">
-                        <h3>Die Einsamkeit des Bewussten</h3>
-                        <p>Verarbeiten Sie die Isolation, das zu sehen was andere leugnen, bauen Sie Gemeinschaft auf ohne in destruktiven Tribalismus zu fallen.</p>
-                    </div>
-                </div>
-
-                <div class="module-item">
-                    <div class="module-number">05</div>
-                    <div class="module-content">
-                        <h3>Trauer ohne Bitterkeit</h3>
-                        <p>Erlauben Sie sich, den Verlust des Landes zu fühlen, das Sie kannten, ohne dies in Hass zu verwandeln, der Ihren Frieden konsumiert.</p>
-                    </div>
-                </div>
-
-                <div class="module-item">
-                    <div class="module-number">06</div>
-                    <div class="module-content">
-                        <h3>Wurzeln in bewegtem Boden</h3>
-                        <p>Finden Sie innere Stabilität, wenn alles um Sie herum in konstantem und verstörendem Fluss ist.</p>
-                    </div>
-                </div>
-
-                <div class="module-item">
-                    <div class="module-number">07</div>
-                    <div class="module-content">
-                        <h3>Gesunde Grenzen</h3>
-                        <p>Lernen Sie wann zu sprechen, wann zu schweigen, wann sich zurückzuziehen - ohne sich feige oder mitschuldig zu fühlen.</p>
-                    </div>
-                </div>
-
-                <div class="module-item">
-                    <div class="module-number">08</div>
-                    <div class="module-content">
-                        <h3>Zweck jenseits des Chaos</h3>
-                        <p>Bauen Sie persönliche Bedeutung auf, die soziale und politische Turbulenzen transzendiert, verankert in unerschütterlichen Werten.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-light">
-        <div class="container">
-            <h2>Tägliche Werkzeuge in der Anwendung</h2>
-            <p class="section-intro">
-                Perfekt zum Beginnen: lernen Sie heute, praktizieren Sie sofort,
-                bewahren Sie Ihr Gleichgewicht das ganze Jahr über.
-            </p>
-
-            <div class="app-features-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">🎧</span>
-                    <div>
-                        <h4>Verankerungs-Audios</h4>
-                        <p>Speziell entwickelte geführte Meditationen zur Stärkung der Identität und Auflösung kultureller Angst (5-20 Min)</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">📝</span>
-                    <div>
-                        <h4>Blindiertes Tagebuch</h4>
-                        <p>Privater Raum zur zensurfreien Verarbeitung von Gedanken, mit gezielten Prompts für jeden spezifischen Schmerz</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">⏰</span>
-                    <div>
-                        <h4>Morgenrituale</h4>
-                        <p>10-Minuten-Praktiken um den Tag mit mentaler Klarheit und aktiviertem emotionalen Schutz zu beginnen</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">💬</span>
-                    <div>
-                        <h4>Kraftsätze</h4>
-                        <p>Anti-Gaslighting-Affirmationen, auf die Sie sofort zugreifen können, wenn Sie spüren, dass Ihre Realität in Frage gestellt wird</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">📊</span>
-                    <div>
-                        <h4>Resilienz-Tracker</h4>
-                        <p>Überwachen Sie Ihre emotionale Evolution, identifizieren Sie Trigger und sehen Sie Ihren greifbaren Fortschritt</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🔔</span>
-                    <div>
-                        <h4>Intelligente Erinnerungen</h4>
-                        <p>Personalisierte Benachrichtigungen mit emotionalen Regulierungstechniken in den kritischen Momenten des Tages</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">📚</span>
-                    <div>
-                        <h4>Notfall-Bibliothek</h4>
-                        <p>Artikel, Videos und Ressourcen für Krisenmomente, organisiert nach Art des emotionalen Schmerzes</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
-                    <div>
-                        <h4>Wöchentliche Herausforderungen</h4>
-                        <p>Progressive praktische Übungen zum Aufbau spezifischer emotionaler Muskeln</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-dark">
-        <div class="container">
-            <h2>Wer sein Territorium bereits zurückgewonnen hat</h2>
-            <p class="section-intro">
-                Die Nr.1 Ausbildung in über 4 Ländern! Echte Menschen, echte Ergebnisse.
-            </p>
-
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p class="testimonial-text">
-                        Jahrelang fühlte ich mich schuldig, Sehnsucht nach dem Land zu empfinden, das ich kannte.
-                        Dieses Programm gab mir die Erlaubnis, meine Erfahrung zu ehren, ohne eine verbitterte
-                        Person zu werden. Endlich habe ich wieder inneren Frieden.
-                    </p>
-                    <p class="testimonial-author">— M.K., München</p>
-                </div>
-
-                <div class="testimonial">
-                    <p class="testimonial-text">
-                        Ich war ständig wütend oder depressiv. Die täglichen Audios lehrten mich, meine Energie
-                        zu schützen, ohne mich von der Realität abzukoppeln. Ich kann endlich ohne ständiges
-                        Grübeln schlafen.
-                    </p>
-                    <p class="testimonial-author">— T.S., Berlin</p>
-                </div>
-
-                <div class="testimonial">
-                    <p class="testimonial-text">
-                        Ich dachte, ich würde verrückt. Alle um mich herum leugneten das Offensichtliche.
-                        Dieser Kurs validierte meinen Verstand und gab mir Struktur, um Veränderungen zu
-                        verarbeiten, die niemand ehrlich diskutieren will.
-                    </p>
-                    <p class="testimonial-author">— A.W., Hamburg</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="offer-section">
-        <div class="container">
-            <h2 style="margin-bottom: 3rem;">Retten Sie Ihr inneres Territorium</h2>
-
-            <div class="pricing-container">
-                <div class="offer-box">
-                    <div class="price-label">ESSENTIELLER ZUGANG</div>
-                    <h3 class="offer-title">Teil des Programms</h3>
-                    <p class="offer-description">
-                        Zugang zu den ersten 4 Modulen + Verankerungs-Audios + blindiertes Tagebuch
-                    </p>
-
-                    <div class="price">€17</div>
-
-                    <a href="https://pay.hotmart.com/O103396570T?off=qwjfgy2d&checkoutMode=10" class="cta-button" onclick="trackEvent('purchase_click', {'category': 'conversion', 'label': 'product_17_euro', 'value': 17, 'currency': 'EUR'})">Jetzt Beginnen</a>
-                </div>
-
-                <div class="offer-box">
-                    <div class="price-label">VOLLZUGANG + BONUS</div>
-                    <h3 class="offer-title">Vollständiges Programm</h3>
-                    <p class="offer-description">
-                        Sofortiger Zugang zu allen 8 Modulen + Anwendung + alle Audios + monatliche Updates + private Community
-                    </p>
-
-                    <div class="price">€35</div>
-
-                    <a href="https://pay.hotmart.com/O103396570T?off=y77dscb1&checkoutMode=10" class="cta-button" onclick="trackEvent('purchase_click', {'category': 'conversion', 'label': 'product_35_euro', 'value': 35, 'currency': 'EUR'})">Vollen Zugang Sichern</a>
-                </div>
+              </div>
             </div>
 
-            <div class="guarantee" style="max-width: 700px; margin: 4rem auto 0;">
-                <h3>🔒 15 Tage testen – ohne Risiko 🧠</h3>
-                <p>
-                    Wenn Sie nach Implementierung der Techniken keine signifikante Veränderung
-                    in Ihrer emotionalen Stabilität und mentalen Klarheit spüren, erstatten wir
-                    100% der Investition. Keine Fragen, keine Komplikationen.
+            <div className="backdrop-blur-xl bg-slate-900/30 rounded-3xl p-12 border border-slate-800/50">
+              <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-red-300 via-red-200 to-slate-300 bg-clip-text text-transparent">Fremd im eigenen Alltag?</h2>
+              <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+                <p>Die vertrauten Straßen fühlen sich anders an. Die gesellschaftliche Dynamik verschiebt sich spürbar, und die eigene Meinung scheint im öffentlichen Raum keinen Platz mehr zu finden.</p>
+                <div className="flex items-start gap-4 p-6 rounded-xl bg-red-500/5 border border-red-500/20">
+                  <Zap className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold text-red-300 mb-2">Der "interne Kulturschock"</p>
+                    <p className="text-slate-400">Ein dokumentiertes psychologisches Phänomen, das zu Isolation, Bitterkeit und dem Gefühl führt, den Boden unter den Füßen zu verlieren.</p>
+                  </div>
+                </div>
+                <div className="relative mt-8 p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-l-4 border-cyan-500">
+                  <p className="text-2xl font-semibold text-white leading-relaxed">Du bist nicht das Problem.<br /><span className="text-cyan-400">Der Mangel an einer stabilen inneren Struktur ist es.</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solution */}
+      <section className="relative py-40 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur mb-6">
+              <Layers className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm font-semibold text-cyan-400">DIE LÖSUNG</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Rette dein inneres Territorium</h2>
+            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full" />
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div className="relative h-96">
+              <div className="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-cyan-500/30 p-8">
+                <div className="relative h-full flex flex-col-reverse gap-2">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="h-12 rounded-lg" style={{ background: `linear-gradient(90deg, rgba(6, 182, 212, ${0.4 + i * 0.1}) 0%, rgba(59, 130, 246, ${0.3 + i * 0.1}) 100%)` }} />
+                  ))}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <Shield className="w-20 h-20 text-cyan-400 mx-auto mb-4" />
+                      <p className="text-sm text-cyan-400 font-mono font-bold">STABILE ARCHITEKTUR</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <p className="text-2xl text-slate-200 leading-relaxed">Wir bieten keine bloße Ablenkung, sondern <span className="text-white font-bold">Psychologische Souveränität</span>.</p>
+              <p className="text-xl text-slate-300 leading-relaxed">Durch das Prinzip der <span className="text-cyan-400 font-semibold">Inneren Architektur</span> bauen Sie eine Festung aus Werten und mentaler Klarheit.</p>
+              <div className="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50">
+                <h3 className="text-2xl font-bold mb-6 text-slate-100">Das System arbeitet auf drei Ebenen</h3>
+                <div className="space-y-5">
+                  {[
+                    { title: 'Kognitiv', desc: 'Dekonstruktion manipulativer Narrative', icon: Brain },
+                    { title: 'Emotional', desc: 'Transformation von Bitterkeit in Kraft', icon: Heart },
+                    { title: 'Behavioral', desc: 'Strategische Handlungsfähigkeit im Alltag', icon: Target }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-4 group">
+                      <div className="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
+                        <item.icon className="w-7 h-7 text-cyan-400" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
+                        <p className="text-slate-400">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6 Pillars */}
+      <section className="relative py-40 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Die 6 Säulen der Stabilität</h2>
+            <p className="text-xl text-slate-400 mb-8">Jede Säule repräsentiert eine tragende Struktur Ihrer mentalen Architektur</p>
+            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full" />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {pillars.map((pillar, i) => (
+              <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${pillar.color} p-[2px] mb-8 group-hover:scale-110 transition-transform`}>
+                  <div className="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center">
+                    <pillar.icon className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-slate-100">{pillar.title}</h3>
+                <p className="text-slate-400 leading-relaxed mb-6">{pillar.desc}</p>
+                <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <TrendingUp className="w-4 h-4" />
+                  <span>Säule {i + 1} von 6</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Curriculum */}
+      <section id="curriculum" className="relative py-40 px-6 bg-slate-900/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-24">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur mb-6">
+              <Layers className="w-5 h-5 text-purple-400" />
+              <span className="text-sm font-semibold text-purple-400">DAS CURRICULUM</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-purple-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">8 Module zur mentalen Souveränität</h2>
+            <p className="text-xl text-slate-400 mb-4">Strukturiertes Material</p>
+          </div>
+          
+          <button onClick={() => setShowModules(!showModules)} className="w-full backdrop-blur-xl bg-slate-900/50 p-8 rounded-3xl border-2 border-slate-800/50 hover:border-purple-500/50 flex items-center justify-between transition-all duration-500 mb-12 group">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                <Layers className="w-6 h-6 text-purple-400" />
+              </div>
+              <span className="text-2xl font-bold">Module im Detail ansehen</span>
+            </div>
+            <ChevronDown className={`w-8 h-8 text-purple-400 transition-transform duration-500 ${showModules ? 'rotate-180' : ''}`} />
+          </button>
+          
+          {showModules && (
+            <div className="relative">
+              <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-blue-500 to-cyan-500" />
+              <div className="space-y-6">
+                {modules.map((module, i) => (
+                  <div key={i} className="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                    <div className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950" />
+                    <div className="flex items-start justify-between gap-6">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-4 mb-3">
+                          <div className="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL {module.num}</div>
+                        </div>
+                        <h3 className="text-2xl font-bold mb-3 text-slate-100">{module.title}</h3>
+                        <p className="text-slate-400 leading-relaxed">{module.desc}</p>
+                      </div>
+                      <ArrowRight className="w-6 h-6 text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Praxistools */}
+      <section className="relative py-40 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Praxistools für den Alltag</h2>
+            <p className="text-xl text-slate-400">Sofort einsetzbare Werkzeuge für Ihre tägliche Routine</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { emoji: '🎧', title: 'Fokus-Audios', desc: '40 minütige Meditationen zur mentalen Verankerung', feature: '12 Audio-Tracks', color: 'from-cyan-500 to-blue-500' },
+              { emoji: '📔', title: 'Souveränitäts-Journal', desc: 'Ihr privater Raum ohne Zensur – strukturierte Reflexion', feature: '7 PDF + Digital', color: 'from-blue-500 to-purple-500' },
+              { emoji: '☀️', title: 'Morgen-Briefing', desc: '7-Minuten-Ritual für mentale Klarheit vor dem Tag', feature: 'Tägliche Updates', color: 'from-purple-500 to-pink-500' }
+            ].map((tool, i) => (
+              <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-3">
+                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform inline-block">{tool.emoji}</div>
+                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${tool.color} bg-opacity-10 mb-4`}>
+                  <CheckCircle className="w-4 h-4 text-white" />
+                  <span className="text-sm font-semibold text-white">{tool.feature}</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-slate-100">{tool.title}</h3>
+                <p className="text-slate-400 leading-relaxed">{tool.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="relative py-40 px-6 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Was Teilnehmer sagen</h2>
+            <p className="text-xl text-slate-400">Verifizierte Erfahrungen von Menschen wie Ihnen</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((test, i) => (
+              <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex gap-1">
+                    {[...Array(test.rating)].map((_, j) => (<Star key={j} className="w-5 h-5 fill-yellow-400 text-yellow-400" />))}
+                  </div>
+                  <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span className="text-xs font-semibold text-green-400">Verifiziert</span>
+                  </div>
+                </div>
+                <p className="text-lg text-slate-300 mb-8 italic leading-relaxed">"{test.text}"</p>
+                <div className="flex items-center gap-4 pt-6 border-t border-slate-800/50">
+                  <div className={`relative w-14 h-14 rounded-full bg-gradient-to-br ${test.gradient} flex items-center justify-center text-white font-bold text-xl shadow-xl ring-2 ring-offset-2 ring-offset-slate-900 ring-cyan-500/50`}>
+                    <span className="relative z-10">{test.name.split(' ')[0].charAt(0)}</span>
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-100 text-lg">{test.name}</p>
+                    <p className="text-sm text-slate-500">{test.role} · {test.city}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="relative py-40 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-24">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 backdrop-blur mb-8">
+              <Sparkles className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm font-semibold text-cyan-400">INVESTITION IN IHRE MENTALE STABILITÄT</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Wähle deine Stufe der Souveränität</h2>
+            <p className="text-2xl text-slate-400">Beide Optionen mit 15-Tage-Stabilitäts-Garantie</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-10 mb-20">
+            {/* Basic */}
+            <div className={`backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 transition-all duration-500 ${selectedPlan === 'basic' ? 'border-cyan-500 shadow-2xl scale-105' : 'border-slate-800/50'}`}>
+              <h3 className="text-3xl font-bold mb-2">Basis-Zugang</h3>
+              <p className="text-slate-400 mb-10">Für den Einstieg in die Innere Architektur</p>
+              <div className="mb-10">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-6xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">€17</span>
+                  <span className="text-xl text-slate-400">einmalig</span>
+                </div>
+                <p className="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</p>
+              </div>
+              <ul className="space-y-4 mb-12">
+                {['Module 1-4 (Fundament)', 'Basis-Fokus-Audios (6 Tracks)', 'Souveränitäts-Journal (PDF)', 'Community-Zugang (lesend)'].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-cyan-400" />
+                    </div>
+                    <span className="text-slate-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button onClick={() => setSelectedPlan('basic')} className="w-full py-5 rounded-2xl font-bold text-lg bg-slate-800/50 border-2 border-slate-700 hover:bg-slate-800 transition-all">Basis wählen</button>
+            </div>
+            
+            {/* Complete */}
+            <div className={`relative backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 transition-all duration-500 ${selectedPlan === 'complete' ? 'border-cyan-500 shadow-2xl scale-105' : 'border-cyan-500/50'}`}>
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 shadow-lg">
+                <span className="text-white font-bold">EMPFOHLEN — 89% wählen dies</span>
+              </div>
+              <h3 className="text-3xl font-bold mb-2 mt-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Vollständige Souveränität</h3>
+              <p className="text-slate-300 mb-10">Das komplette System für maximale Stabilität</p>
+              <div className="mb-10">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-6xl font-bold bg-gradient-to-br from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">€35</span>
+                  <span className="text-xl text-slate-400">einmalig</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</span>
+                  <span className="px-2 py-1 rounded bg-green-500/20 text-green-400 text-xs font-bold">BESTER WERT</span>
+                </div>
+              </div>
+              <ul className="space-y-4 mb-12">
+                {[
+                  { text: 'Alle 8 Module (7+ Stunden)', bold: true },
+                  { text: 'Komplette Audio-Bibliothek (12 Tracks)' },
+                  { text: 'Morgen-Briefing-System' },
+                  { text: 'Community-Zugang (voll)' },
+                  { text: 'Souveränitäts-Journal (Digital + PDF)' },
+                  { text: 'Bonus: Krisennavigations-Guide', bold: true, badge: 'Wert: €147' }
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-cyan-400" />
+                    </div>
+                    <div className="flex-1 flex items-center justify-between">
+                      <span className={item.bold ? 'text-white font-semibold' : 'text-slate-300'}>{item.text}</span>
+                      {item.badge && <span className="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 font-semibold">{item.badge}</span>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <button onClick={() => setSelectedPlan('complete')} className="group w-full py-5 rounded-2xl font-bold text-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:shadow-2xl hover:scale-105 transition-all duration-500">
+                <span className="flex items-center justify-center gap-3">
+                  Jetzt Zugang sichern
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </span>
+              </button>
+              <div className="mt-6 text-center text-sm text-slate-400">Über 2.400 zufriedene Teilnehmer</div>
+            </div>
+          </div>
+          
+          {/* Guarantee */}
+          <div className="backdrop-blur-xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 p-10 rounded-3xl border border-cyan-500/30">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0">
+                <Shield className="w-6 h-6 text-cyan-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-100">Die 15-Tage-Stabilitäts-Garantie</h3>
+                <p className="text-lg text-slate-300 leading-relaxed">
+                  Sollten Sie keine Steigerung Ihrer mentalen Klarheit spüren, erstatten wir den Betrag sofort. 
+                  <span className="text-white font-semibold"> Ein Wort genügt.</span> Kein Risiko – nur Struktur und Stabilität.
                 </p>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <footer>
-        <p>© 2025 Emotionale Blindage | Alle Rechte vorbehalten</p>
-        <p>In Zeiten, in denen die psychische Gesundheit unter beispiellosem Druck steht, bieten wir wissenschaftliche Werkzeuge emotionaler Resilienz. Geschützt durch die deutsche Meinungsfreiheit (Art. 5 GG), fokussiert auf individuelles Wohlbefinden, nicht auf Politik.</p>
-    </footer>
-</body>
-</html>
+      {/* Footer */}
+      <footer className="relative border-t border-slate-800/50 py-12 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-slate-400 mb-3 leading-relaxed">In Zeiten, in denen die psychische Gesundheit unter beispiellosem Druck steht, bieten wir wissenschaftliche Werkzeuge emotionaler Resilienz. Geschützt durch die deutsche Meinungsfreiheit <span className="text-cyan-400 font-semibold">(Art. 5 GG)</span>, fokussiert auf individuelles Wohlbefinden, nicht auf Politik.</p>
+          <p className="text-slate-500 text-sm">Innere Souveränität © 2024 | Datenschutz | Impressum | AGB</p>
+        </div>
+      </footer>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        @keyframes spin {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes slideIn {
+          from { transform: translateY(20px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideInRight {
+          from { transform: translateX(30px); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeInUp {
+          from { transform: translateY(30px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
+}
