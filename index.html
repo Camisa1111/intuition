@@ -14,6 +14,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
 
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HDHCZG99G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6HDHCZG99G', {
+            'page_path': window.location.pathname,
+            'page_title': document.title,
+            'anonymize_ip': false,
+            'allow_google_signals': true,
+            'allow_ad_personalization_signals': true
+        });
+
+        // Função para rastrear eventos customizados
+        function trackEvent(eventName, eventData = {}) {
+            gtag('event', eventName, {
+                'event_category': eventData.category || 'engagement',
+                'event_label': eventData.label || '',
+                'value': eventData.value || 0,
+                'currency': eventData.currency || 'EUR',
+                ...eventData
+            });
+        }
+
+        // Rastrear quando a página carrega
+        window.addEventListener('load', function() {
+            trackEvent('page_view', {
+                'category': 'page',
+                'label': 'emotionale_blindage_homepage'
+            });
+        });
+
+        // Rastrear scroll profundo
+        let scrollTracked = false;
+        window.addEventListener('scroll', function() {
+            if (!scrollTracked && window.scrollY > window.innerHeight) {
+                trackEvent('scroll_depth', {
+                    'category': 'engagement',
+                    'label': 'scrolled_past_hero',
+                    'value': Math.round(window.scrollY)
+                });
+                scrollTracked = true;
+            }
+        });
+
+        // Rastrear tempo na página
+        let timeOnPage = 0;
+        setInterval(function() {
+            timeOnPage += 10;
+        }, 10000);
+
+        window.addEventListener('beforeunload', function() {
+            if (timeOnPage > 0) {
+                trackEvent('time_on_page', {
+                    'category': 'engagement',
+                    'label': 'emotionale_blindage_homepage',
+                    'value': Math.round(timeOnPage / 1000)
+                });
+            }
+        });
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -88,7 +151,7 @@
                 Das Gefühl, ein Fremder im eigenen Land zu sein, zersetzt von innen,
                 und niemand scheint diesen spezifischen Schmerz zu verstehen.
             </p>
-            <button class="cta-button" onclick="document.querySelector('.offer-section').scrollIntoView({behavior: 'smooth', block: 'start'})">
+            <button class="cta-button" onclick="trackEvent('hero_cta_click', {'category': 'engagement', 'label': 'hero_button_click'}); document.querySelector('.offer-section').scrollIntoView({behavior: 'smooth', block: 'start'})">
                 Retten Sie Ihr inneres Territorium
             </button>
         </div>
@@ -354,7 +417,7 @@
 
                     <div class="price">€17</div>
 
-                    <a href="https://pay.hotmart.com/O103396570T?off=qwjfgy2d&checkoutMode=10" class="cta-button">Jetzt Beginnen</a>
+                    <a href="https://pay.hotmart.com/O103396570T?off=qwjfgy2d&checkoutMode=10" class="cta-button" onclick="trackEvent('purchase_click', {'category': 'conversion', 'label': 'product_17_euro', 'value': 17, 'currency': 'EUR'})">Jetzt Beginnen</a>
                 </div>
 
                 <div class="offer-box">
@@ -366,7 +429,7 @@
 
                     <div class="price">€35</div>
 
-                    <a href="https://pay.hotmart.com/O103396570T?off=y77dscb1&checkoutMode=10" class="cta-button">Vollen Zugang Sichern</a>
+                    <a href="https://pay.hotmart.com/O103396570T?off=y77dscb1&checkoutMode=10" class="cta-button" onclick="trackEvent('purchase_click', {'category': 'conversion', 'label': 'product_35_euro', 'value': 35, 'currency': 'EUR'})">Vollen Zugang Sichern</a>
                 </div>
             </div>
 
