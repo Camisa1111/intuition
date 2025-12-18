@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Innere Souveränität - Dein Anker in einer Welt im Umbruch. Navigation durch den kulturellen Wandel ohne Verlust der eigenen Identität.">
     <title>Innere Souveränität - Dein Anker in einer Welt im Umbruch</title>
-    
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HDHCZG99G"></script>
     <script>
@@ -13,439 +17,909 @@
         gtag('js', new Date());
         gtag('config', 'G-6HDHCZG99G');
     </script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #06b6d4, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #06b6d4, #3b82f6);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #3b82f6, #a855f7);
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100">
-    <div class="min-h-screen overflow-hidden">
-        <!-- Progress Bar -->
-        <div class="fixed top-0 left-0 right-0 h-1 bg-slate-900 z-50">
-            <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 transition-all duration-300" style="width: 0%"></div>
-        </div>
+<body class="min-h-screen bg-slate-950 text-slate-100 overflow-x-hidden">
 
-        <!-- Animated Background -->
-        <div class="fixed inset-0 pointer-events-none">
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"></div>
-            <div id="mouseGlow" class="absolute inset-0 opacity-30"></div>
-        </div>
-
-        <!-- Hero Section -->
-        <header class="relative min-h-screen flex items-center justify-center px-6 py-20">
-            <div class="relative max-w-6xl mx-auto text-center z-10">
-                <div class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/30 backdrop-blur-xl mb-10 group hover:scale-105 transition-all duration-500">
-                    <svg class="w-5 h-5 text-cyan-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                    </svg>
-                    <span class="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                        Limitiertes Angebot — Sofortiger Zugang für die ersten 100 Teilnehmer
-                    </span>
-                    <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                </div>
-                
-                <h1 class="text-7xl md:text-8xl lg:text-9xl font-bold mb-10 leading-[0.95] tracking-tighter">
-                    <span class="inline-block bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">INNERE</span>
-                    <br>
-                    <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">SOUVERÄNITÄT</span>
-                </h1>
-                
-                <div class="flex items-center justify-center gap-4 mb-10">
-                    <div class="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
-                    <div class="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse"></div>
-                    <div class="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
-                </div>
-                
-                <p class="text-3xl md:text-4xl text-slate-200 mb-6 font-light tracking-wide">Dein Anker in einer Welt im Umbruch</p>
-                <p class="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto leading-relaxed">Navigation durch den kulturellen Wandel ohne Verlust der eigenen Identität</p>
-                
-                <!-- Stats -->
-                <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-16">
-                    <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
-                        <svg class="w-8 h-8 text-cyan-400 mx-auto mb-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                        <div id="statUsers" class="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">2847+</div>
-                        <div class="text-sm text-slate-400">Aktive Teilnehmer</div>
-                    </div>
-                    
-                    <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
-                        <svg class="w-8 h-8 text-cyan-400 mx-auto mb-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                        </svg>
-                        <div id="statSatisfaction" class="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">96%</div>
-                        <div class="text-sm text-slate-400">Zufriedenheit</div>
-                    </div>
-                    
-                    <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
-                        <svg class="w-8 h-8 text-cyan-400 mx-auto mb-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                        <div id="statDays" class="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">15</div>
-                        <div class="text-sm text-slate-400">Tage Garantie</div>
-                    </div>
-                </div>
-                
-                <!-- CTAs -->
-                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-                    <a href="#pricing" class="group px-10 py-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl font-bold text-xl text-white hover:shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-500">
-                        <span class="flex items-center justify-center gap-3">
-                            Jetzt Zugang sichern
-                            <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </span>
-                    </a>
-                    <a href="#curriculum" class="px-10 py-6 rounded-2xl font-bold text-xl bg-slate-900/50 backdrop-blur-xl border-2 border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-900/70 transition-all duration-500 group">
-                        <span class="flex items-center justify-center gap-3">
-                            System entdecken
-                            <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-                
-                <!-- Trust Badges -->
-                <div class="flex flex-wrap items-center justify-center gap-6">
-                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
-                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                        15-Tage-Garantie
-                    </div>
-                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
-                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                        Art. 5 GG Schutz
-                    </div>
-                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
-                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                        </svg>
-                        Zertifizierte Methodik
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Problem Section -->
-        <section class="relative py-40 px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="relative h-96">
-                        <div class="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-slate-800/50 p-8">
-                            <div class="relative h-full flex flex-col justify-between">
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.3) 0%, rgba(239, 68, 68, 0.2) 100%);"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.25) 0%, rgba(239, 68, 68, 0.16) 100%); transform: translateX(8px) rotate(2deg); opacity: 0.85;"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.2) 0%, rgba(239, 68, 68, 0.12) 100%); transform: translateX(16px) rotate(4deg); opacity: 0.7;"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.15) 0%, rgba(239, 68, 68, 0.08) 100%); transform: translateX(24px) rotate(6deg); opacity: 0.55;"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.1) 0%, rgba(239, 68, 68, 0.04) 100%); transform: translateX(32px) rotate(8deg); opacity: 0.4;"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="text-center">
-                                        <svg class="w-16 h-16 text-red-400 mx-auto mb-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                        </svg>
-                                        <p class="text-sm text-slate-400 font-mono">INSTABILE STRUKTUR</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="backdrop-blur-xl bg-slate-900/30 rounded-3xl p-12 border border-slate-800/50">
-                        <h2 class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-red-300 via-red-200 to-slate-300 bg-clip-text text-transparent">Fremd im eigenen Alltag?</h2>
-                        <div class="space-y-6 text-lg text-slate-300 leading-relaxed">
-                            <p>Die vertrauten Straßen fühlen sich anders an. Die gesellschaftliche Dynamik verschiebt sich spürbar, und die eigene Meinung scheint im öffentlichen Raum keinen Platz mehr zu finden.</p>
-                            <div class="flex items-start gap-4 p-6 rounded-xl bg-red-500/5 border border-red-500/20">
-                                <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                                <div>
-                                    <p class="font-semibold text-red-300 mb-2">Der "interne Kulturschock"</p>
-                                    <p class="text-slate-400">Ein dokumentiertes psychologisches Phänomen, das zu Isolation, Bitterkeit und dem Gefühl führt, den Boden unter den Füßen zu verlieren.</p>
-                                </div>
-                            </div>
-                            <div class="relative mt-8 p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-l-4 border-cyan-500">
-                                <p class="text-2xl font-semibold text-white leading-relaxed">Du bist nicht das Problem.<br><span class="text-cyan-400">Der Mangel an einer stabilen inneren Struktur ist es.</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Solution -->
-        <section class="relative py-40 px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-20">
-                    <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur mb-6">
-                        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
-                        </svg>
-                        <span class="text-sm font-semibold text-cyan-400">DIE LÖSUNG</span>
-                    </div>
-                    <h2 class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Rette dein inneres Territorium</h2>
-                    <div class="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full"></div>
-                </div>
-
-                <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
-                    <div class="relative h-96">
-                        <div class="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-cyan-500/30 p-8">
-                            <div class="relative h-full flex flex-col-reverse gap-2">
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.4) 0%, rgba(59, 130, 246, 0.3) 100%);"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.5) 0%, rgba(59, 130, 246, 0.4) 100%);"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.6) 0%, rgba(59, 130, 246, 0.5) 100%);"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.7) 0%, rgba(59, 130, 246, 0.6) 100%);"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.8) 0%, rgba(59, 130, 246, 0.7) 100%);"></div>
-                                <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%);"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="text-center">
-                                        <svg class="w-20 h-20 text-cyan-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                        </svg>
-                                        <p class="text-sm text-cyan-400 font-mono font-bold">STABILE ARCHITEKTUR</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-8">
-                        <p class="text-2xl text-slate-200 leading-relaxed">Wir bieten keine bloße Ablenkung, sondern <span class="text-white font-bold">Psychologische Souveränität</span>.</p>
-                        <p class="text-xl text-slate-300 leading-relaxed">Durch das Prinzip der <span class="text-cyan-400 font-semibold">Inneren Architektur</span> bauen Sie eine Festung aus Werten und mentaler Klarheit.</p>
-                        <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50">
-                            <h3 class="text-2xl font-bold mb-6 text-slate-100">Das System arbeitet auf drei Ebenen</h3>
-                            <div class="space-y-5">
-                                <div class="flex items-start gap-4 group">
-                                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
-                                        <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-bold text-white mb-1">Kognitiv</h4>
-                                        <p class="text-slate-400">Dekonstruktion manipulativer Narrative</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4 group">
-                                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
-                                        <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-bold text-white mb-1">Emotional</h4>
-                                        <p class="text-slate-400">Transformation von Bitterkeit in Kraft</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4 group">
-                                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
-                                        <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-bold text-white mb-1">Behavioral</h4>
-                                        <p class="text-slate-400">Strategische Handlungsfähigkeit im Alltag</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing -->
-        <section id="pricing" class="relative py-40 px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-24">
-                    <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 backdrop-blur mb-8">
-                        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                        </svg>
-                        <span class="text-sm font-semibold text-cyan-400">INVESTITION IN IHRE MENTALE STABILITÄT</span>
-                    </div>
-                    <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Wähle deine Stufe der Souveränität</h2>
-                    <p class="text-2xl text-slate-400">Beide Optionen mit 15-Tage-Stabilitäts-Garantie</p>
-                </div>
-                
-                <div class="grid lg:grid-cols-2 gap-10 mb-20">
-                    <!-- Basic -->
-                    <div class="backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 border-slate-800/50">
-                        <h3 class="text-3xl font-bold mb-2">Basis-Zugang</h3>
-                        <p class="text-slate-400 mb-10">Für den Einstieg in die Innere Architektur</p>
-                        <div class="mb-10">
-                            <div class="flex items-baseline gap-2 mb-2">
-                                <span class="text-6xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">€17</span>
-                                <span class="text-xl text-slate-400">einmalig</span>
-                            </div>
-                            <p class="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</p>
-                        </div>
-                        <ul class="space-y-4 mb-12">
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Module 1-4 (Fundament)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Basis-Fokus-Audios (6 Tracks)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Souveränitäts-Journal (PDF)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Community-Zugang (lesend)</span>
-                            </li>
-                        </ul>
-                        <button class="w-full py-5 rounded-2xl font-bold text-lg bg-slate-800/50 border-2 border-slate-700 hover:bg-slate-800 transition-all">Basis wählen</button>
-                    </div>
-                    
-                    <!-- Complete -->
-                    <div class="relative backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 border-cyan-500/50">
-                        <div class="absolute -top-5 left-1/2 -translate-x-1/2 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 shadow-lg">
-                            <span class="text-white font-bold">EMPFOHLEN — 89% wählen dies</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-2 mt-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Vollständige Souveränität</h3>
-                        <p class="text-slate-300 mb-10">Das komplette System für maximale Stabilität</p>
-                        <div class="mb-10">
-                            <div class="flex items-baseline gap-2 mb-2">
-                                <span class="text-6xl font-bold bg-gradient-to-br from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">€35</span>
-                                <span class="text-xl text-slate-400">einmalig</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</span>
-                                <span class="px-2 py-1 rounded bg-green-500/20 text-green-400 text-xs font-bold">BESTER WERT</span>
-                            </div>
-                        </div>
-                        <ul class="space-y-4 mb-12">
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-white font-semibold">Alle 8 Module (7+ Stunden)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Komplette Audio-Bibliothek (12 Tracks)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Morgen-Briefing-System</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Community-Zugang (voll)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-slate-300">Souveränitäts-Journal (Digital + PDF)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <div class="flex-1 flex items-center justify-between">
-                                    <span class="text-white font-semibold">Bonus: Krisennavigations-Guide</span>
-                                    <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 font-semibold">Wert: €147</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <button class="group w-full py-5 rounded-2xl font-bold text-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:shadow-2xl hover:scale-105 transition-all duration-500">
-                            <span class="flex items-center justify-center gap-3">
-                                Jetzt Zugang sichern
-                                <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </span>
-                        </button>
-                        <div class="mt-6 text-center text-sm text-slate-400">Über 2.400 zufriedene Teilnehmer</div>
-                    </div>
-                </div>
-                
-                <!-- Guarantee -->
-                <div class="backdrop-blur-xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 p-10 rounded-3xl border border-cyan-500/30">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3 text-slate-100">Die 15-Tage-Stabilitäts-Garantie</h3>
-                            <p class="text-lg text-slate-300 leading-relaxed">
-                                Sollten Sie keine Steigerung Ihrer mentalen Klarheit spüren, erstatten wir den Betrag sofort. 
-                                <span class="text-white font-semibold"> Ein Wort genügt.</span> Kein Risiko – nur Struktur und Stabilität.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="relative border-t border-slate-800/50 py-12 px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <p class="text-slate-400 mb-3 leading-relaxed">In Zeiten, in denen die psychische Gesundheit unter beispiellosem Druck steht, bieten wir wissenschaftliche Werkzeuge emotionaler Resilienz. Geschützt durch die deutsche Meinungsfreiheit <span class="text-cyan-400 font-semibold">(Art. 5 GG)</span>, fokussiert auf individuelles Wohlbefinden, nicht auf Politik.</p>
-                <p class="text-slate-500 text-sm">Innere Souveränität © 2024 | Datenschutz | Impressum | AGB</p>
-            </div>
-        </footer>
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 right-0 h-1 bg-slate-900 z-50">
+        <div id="scroll-progress" class="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 transition-all duration-300" style="width: 0%"></div>
     </div>
 
+    <!-- Animated Background -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"></div>
+        <div id="mouse-gradient" class="absolute inset-0 opacity-30" style="background: radial-gradient(circle at 0px 0px, rgba(6, 182, 212, 0.15) 0%, transparent 50%)"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center px-6 py-20">
+        <div class="relative max-w-6xl mx-auto text-center z-10">
+            <div class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/30 backdrop-blur-xl mb-10 hover:scale-105 transition-all duration-500">
+                <span class="text-xl animate-pulse">✨</span>
+                <span class="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                    Limitiertes Angebot — Sofortiger Zugang für die ersten 100 Teilnehmer
+                </span>
+                <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+            </div>
+
+            <h1 class="text-7xl md:text-8xl lg:text-9xl font-bold mb-10 leading-[0.95] tracking-tighter">
+                <span class="inline-block bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">INNERE</span>
+                <br>
+                <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">SOUVERÄNITÄT</span>
+            </h1>
+
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <div class="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+                <div class="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse"></div>
+                <div class="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+            </div>
+
+            <p class="text-3xl md:text-4xl text-slate-200 mb-6 font-light tracking-wide">Dein Anker in einer Welt im Umbruch</p>
+            <p class="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto leading-relaxed">Navigation durch den kulturellen Wandel ohne Verlust der eigenen Identität</p>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-16">
+                <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
+                    <div class="text-4xl mx-auto mb-3 group-hover:scale-110 transition-transform">👥</div>
+                    <div class="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">
+                        <span id="stat-users">0</span>+
+                    </div>
+                    <div class="text-sm text-slate-400">Aktive Teilnehmer</div>
+                </div>
+                <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
+                    <div class="text-4xl mx-auto mb-3 group-hover:scale-110 transition-transform">🏆</div>
+                    <div class="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">
+                        <span id="stat-satisfaction">0</span>%
+                    </div>
+                    <div class="text-sm text-slate-400">Zufriedenheit</div>
+                </div>
+                <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
+                    <div class="text-4xl mx-auto mb-3 group-hover:scale-110 transition-transform">🛡️</div>
+                    <div class="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">
+                        <span id="stat-days">0</span>
+                    </div>
+                    <div class="text-sm text-slate-400">Tage Garantie</div>
+                </div>
+            </div>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+                <a href="#pricing" class="group px-10 py-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl font-bold text-xl text-white hover:shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-500">
+                    <span class="flex items-center justify-center gap-3">
+                        Jetzt Zugang sichern
+                        <span class="group-hover:translate-x-2 transition-transform inline-block text-2xl">→</span>
+                    </span>
+                </a>
+                <a href="#curriculum" class="px-10 py-6 rounded-2xl font-bold text-xl bg-slate-900/50 backdrop-blur-xl border-2 border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-900/70 transition-all duration-500 group">
+                    <span class="flex items-center justify-center gap-3">
+                        System entdecken
+                        <span class="group-hover:scale-110 transition-transform inline-block text-2xl">👁️</span>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-6">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
+                    <span class="text-lg">🔒</span>
+                    15-Tage-Garantie
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
+                    <span class="text-lg">🛡️</span>
+                    Art. 5 GG Schutz
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
+                    <span class="text-lg">🏆</span>
+                    Zertifizierte Methodik
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem Section -->
+    <section class="relative py-40 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative h-96">
+                    <div class="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-slate-800/50 p-8">
+                        <div class="relative h-full flex flex-col justify-between">
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.3) 0%, rgba(239, 68, 68, 0.2) 100%); transform: translateX(0px) rotate(0deg); opacity: 1"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.25) 0%, rgba(239, 68, 68, 0.16) 100%); transform: translateX(8px) rotate(2deg); opacity: 0.85"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.2) 0%, rgba(239, 68, 68, 0.12) 100%); transform: translateX(16px) rotate(4deg); opacity: 0.7"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.15) 0%, rgba(239, 68, 68, 0.08) 100%); transform: translateX(24px) rotate(6deg); opacity: 0.55"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(248, 113, 113, 0.1) 0%, rgba(239, 68, 68, 0.04) 100%); transform: translateX(32px) rotate(8deg); opacity: 0.4"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-6xl text-red-400 mb-4 animate-pulse">📉</div>
+                                    <p class="text-sm text-slate-400 font-mono">INSTABILE STRUKTUR</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="backdrop-blur-xl bg-slate-900/30 rounded-3xl p-12 border border-slate-800/50">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-red-300 via-red-200 to-slate-300 bg-clip-text text-transparent">Fremd im eigenen Alltag?</h2>
+                    <div class="space-y-6 text-lg text-slate-300 leading-relaxed">
+                        <p>Die vertrauten Straßen fühlen sich anders an. Die gesellschaftliche Dynamik verschiebt sich spürbar, und die eigene Meinung scheint im öffentlichen Raum keinen Platz mehr zu finden.</p>
+                        <div class="flex items-start gap-4 p-6 rounded-xl bg-red-500/5 border border-red-500/20">
+                            <span class="text-3xl flex-shrink-0 mt-1">⚡</span>
+                            <div>
+                                <p class="font-semibold text-red-300 mb-2">Der "interne Kulturschock"</p>
+                                <p class="text-slate-400">Ein dokumentiertes psychologisches Phänomen, das zu Isolation, Bitterkeit und dem Gefühl führt, den Boden unter den Füßen zu verlieren.</p>
+                            </div>
+                        </div>
+                        <div class="relative mt-8 p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-l-4 border-cyan-500">
+                            <p class="text-2xl font-semibold text-white leading-relaxed">Du bist nicht das Problem.<br><span class="text-cyan-400">Der Mangel an einer stabilen inneren Struktur ist es.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="relative py-40 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur mb-6">
+                    <span class="text-2xl">📚</span>
+                    <span class="text-sm font-semibold text-cyan-400">DIE LÖSUNG</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Rette dein inneres Territorium</h2>
+                <div class="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                <div class="relative h-96">
+                    <div class="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-cyan-500/30 p-8">
+                        <div class="relative h-full flex flex-col-reverse gap-2">
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.4) 0%, rgba(59, 130, 246, 0.3) 100%)"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.5) 0%, rgba(59, 130, 246, 0.4) 100%)"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.6) 0%, rgba(59, 130, 246, 0.5) 100%)"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.7) 0%, rgba(59, 130, 246, 0.6) 100%)"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.8) 0%, rgba(59, 130, 246, 0.7) 100%)"></div>
+                            <div class="h-12 rounded-lg" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%)"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-7xl text-cyan-400 mb-4">🛡️</div>
+                                    <p class="text-sm text-cyan-400 font-mono font-bold">STABILE ARCHITEKTUR</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <p class="text-2xl text-slate-200 leading-relaxed">Wir bieten keine bloße Ablenkung, sondern <span class="text-white font-bold">Psychologische Souveränität</span>.</p>
+                    <p class="text-xl text-slate-300 leading-relaxed">Durch das Prinzip der <span class="text-cyan-400 font-semibold">Inneren Architektur</span> bauen Sie eine Festung aus Werten und mentaler Klarheit.</p>
+                    <div class="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50">
+                        <h3 class="text-2xl font-bold mb-6 text-slate-100">Das System arbeitet auf drei Ebenen</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
+                                    <span class="text-3xl">🧠</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Kognitiv</h4>
+                                    <p class="text-slate-400">Dekonstruktion manipulativer Narrative</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
+                                    <span class="text-3xl">❤️</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Emotional</h4>
+                                    <p class="text-slate-400">Transformation von Bitterkeit in Kraft</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
+                                    <span class="text-3xl">🎯</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Behavioral</h4>
+                                    <p class="text-slate-400">Strategische Handlungsfähigkeit im Alltag</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 Pillars -->
+    <section class="relative py-40 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Die 6 Säulen der Stabilität</h2>
+                <p class="text-xl text-slate-400 mb-8">Jede Säule repräsentiert eine tragende Struktur Ihrer mentalen Architektur</p>
+                <div class="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 p-[2px] mb-8 group-hover:scale-110 transition-transform">
+                        <div class="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center text-3xl">🛡️</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Psychologischer Schutzwall</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">Techniken gegen toxische Narrative und mentale Manipulation</p>
+                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                        <span>📈</span>
+                        <span>Säule 1 von 6</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 p-[2px] mb-8 group-hover:scale-110 transition-transform">
+                        <div class="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center text-3xl">🧠</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Kognitive Klarheit</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">Unterscheiden Sie Fakten von medialer Verzerrung</p>
+                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                        <span>📈</span>
+                        <span>Säule 2 von 6</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 p-[2px] mb-8 group-hover:scale-110 transition-transform">
+                        <div class="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center text-3xl">⚓</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Aktive Belastbarkeit</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">Unzerbrechliche innere Kraft aufbauen</p>
+                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                        <span>📈</span>
+                        <span>Säule 3 von 6</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 p-[2px] mb-8 group-hover:scale-110 transition-transform">
+                        <div class="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center text-3xl">❤️</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Authentische Identität</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">Verbindung zu sich selbst ohne Selbstzensur</p>
+                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                        <span>📈</span>
+                        <span>Säule 4 von 6</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 5 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-500 p-[2px] mb-8 group-hover:scale-110 transition-transform">
+                        <div class="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center text-3xl">💬</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Narrative Souveränität</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">Besitzen Sie Ihre eigene Geschichte</p>
+                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                        <span>📈</span>
+                        <span>Säule 5 von 6</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 6 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-cyan-500 p-[2px] mb-8 group-hover:scale-110 transition-transform">
+                        <div class="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center text-3xl">🎯</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Stoische Akzeptanz</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">Verarbeiten Sie Verluste ohne Bitterkeit</p>
+                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                        <span>📈</span>
+                        <span>Säule 6 von 6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section id="curriculum" class="relative py-40 px-6 bg-slate-900/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur mb-6">
+                    <span class="text-2xl">📚</span>
+                    <span class="text-sm font-semibold text-purple-400">DAS CURRICULUM</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-purple-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">8 Module zur mentalen Souveränität</h2>
+                <p class="text-xl text-slate-400 mb-4">Strukturiertes Material</p>
+            </div>
+
+            <button id="toggle-modules" class="w-full backdrop-blur-xl bg-slate-900/50 p-8 rounded-3xl border-2 border-slate-800/50 hover:border-purple-500/50 flex items-center justify-between transition-all duration-500 mb-12 group">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                        <span class="text-3xl">📚</span>
+                    </div>
+                    <span class="text-2xl font-bold">Module im Detail ansehen</span>
+                </div>
+                <span id="chevron" class="text-4xl text-purple-400 transition-transform duration-500">▼</span>
+            </button>
+
+            <div id="modules-content" class="relative hidden">
+                <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-blue-500 to-cyan-500"></div>
+                <div class="space-y-6">
+                    <!-- Module 1 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 01</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Die Psychologie des Umbruchs</h3>
+                                <p class="text-slate-400 leading-relaxed">Verstehen Sie die mentalen Mechanismen hinter gesellschaftlichen Veränderungen</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 02</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Fundament der Inneren Architektur</h3>
+                                <p class="text-slate-400 leading-relaxed">Bauen Sie Ihre persönliche Werte-Struktur auf solidem Grund</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 03</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Dekonstruktion von Gaslighting</h3>
+                                <p class="text-slate-400 leading-relaxed">Erkennen und neutralisieren Sie manipulative Narrative</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 04</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Souveränität in der Isolation</h3>
+                                <p class="text-slate-400 leading-relaxed">Kraft finden, auch wenn Sie sich allein fühlen</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 05</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Emotionale Alchemie</h3>
+                                <p class="text-slate-400 leading-relaxed">Transformieren Sie Bitterkeit in konstruktive Energie</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 06</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Standhaftigkeit im Chaos</h3>
+                                <p class="text-slate-400 leading-relaxed">Bewahren Sie innere Ruhe trotz äußerer Turbulenzen</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 7 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 07</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Strategische Kommunikation</h3>
+                                <p class="text-slate-400 leading-relaxed">Wissen Sie, wann sprechen und wann schweigen goldrichtig ist</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 8 -->
+                    <div class="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                        <div class="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950"></div>
+                        <div class="flex items-start justify-between gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL 08</div>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 text-slate-100">Sinnstiftung 2.0</h3>
+                                <p class="text-slate-400 leading-relaxed">Finden Sie Bedeutung jenseits der politischen Unruhen</p>
+                            </div>
+                            <span class="text-3xl text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all">→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Praxistools -->
+    <section class="relative py-40 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Praxistools für den Alltag</h2>
+                <p class="text-xl text-slate-400">Sofort einsetzbare Werkzeuge für Ihre tägliche Routine</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-3">
+                    <div class="text-6xl mb-6 group-hover:scale-110 transition-transform inline-block">🎧</div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 bg-opacity-10 mb-4">
+                        <span class="text-white text-sm">✓</span>
+                        <span class="text-sm font-semibold text-white">12 Audio-Tracks</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Fokus-Audios</h3>
+                    <p class="text-slate-400 leading-relaxed">40 minütige Meditationen zur mentalen Verankerung</p>
+                </div>
+
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-3">
+                    <div class="text-6xl mb-6 group-hover:scale-110 transition-transform inline-block">📔</div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 bg-opacity-10 mb-4">
+                        <span class="text-white text-sm">✓</span>
+                        <span class="text-sm font-semibold text-white">7 PDF + Digital</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Souveränitäts-Journal</h3>
+                    <p class="text-slate-400 leading-relaxed">Ihr privater Raum ohne Zensur – strukturierte Reflexion</p>
+                </div>
+
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-3">
+                    <div class="text-6xl mb-6 group-hover:scale-110 transition-transform inline-block">☀️</div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 bg-opacity-10 mb-4">
+                        <span class="text-white text-sm">✓</span>
+                        <span class="text-sm font-semibold text-white">Tägliche Updates</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-100">Morgen-Briefing</h3>
+                    <p class="text-slate-400 leading-relaxed">7-Minuten-Ritual für mentale Klarheit vor dem Tag</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="relative py-40 px-6 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Was Teilnehmer sagen</h2>
+                <p class="text-xl text-slate-400">Verifizierte Erfahrungen von Menschen wie Ihnen</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex gap-1">
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                        </div>
+                        <div class="flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+                            <span class="text-green-400 text-sm">✓</span>
+                            <span class="text-xs font-semibold text-green-400">Verifiziert</span>
+                        </div>
+                    </div>
+                    <p class="text-lg text-slate-300 mb-8 italic leading-relaxed">"Endlich ein System, das nicht nur über Gefühle redet, sondern konkrete Werkzeuge bietet. Die Innere Architektur hat mir geholfen, meine mentale Stabilität zurückzugewinnen."</p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-slate-800/50">
+                        <div class="relative w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-xl shadow-xl ring-2 ring-offset-2 ring-offset-slate-900 ring-cyan-500/50">
+                            <span class="relative z-10">S</span>
+                            <div class="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-100 text-lg">Stefan M.</p>
+                            <p class="text-sm text-slate-500">Ingenieur · München</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex gap-1">
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                        </div>
+                        <div class="flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+                            <span class="text-green-400 text-sm">✓</span>
+                            <span class="text-xs font-semibold text-green-400">Verifiziert</span>
+                        </div>
+                    </div>
+                    <p class="text-lg text-slate-300 mb-8 italic leading-relaxed">"Nach Jahren der Frustration habe ich durch dieses Programm einen Weg gefunden, souverän zu bleiben. Die psychologischen Techniken sind fundiert und wirksam."</p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-slate-800/50">
+                        <div class="relative w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-xl ring-2 ring-offset-2 ring-offset-slate-900 ring-cyan-500/50">
+                            <span class="relative z-10">A</span>
+                            <div class="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-100 text-lg">Andrea K.</p>
+                            <p class="text-sm text-slate-500">Projektmanagerin · Berlin</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex gap-1">
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-yellow-400">⭐</span>
+                        </div>
+                        <div class="flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+                            <span class="text-green-400 text-sm">✓</span>
+                            <span class="text-xs font-semibold text-green-400">Verifiziert</span>
+                        </div>
+                    </div>
+                    <p class="text-lg text-slate-300 mb-8 italic leading-relaxed">"Keine leeren Versprechungen – nur strukturiertes, durchdachtes Material. Die 6 Säulen geben wirklich Halt."</p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-slate-800/50">
+                        <div class="relative w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-xl ring-2 ring-offset-2 ring-offset-slate-900 ring-cyan-500/50">
+                            <span class="relative z-10">T</span>
+                            <div class="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-100 text-lg">Thomas B.</p>
+                            <p class="text-sm text-slate-500">Consultant · Hamburg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="relative py-40 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 backdrop-blur mb-8">
+                    <span class="text-2xl animate-pulse">✨</span>
+                    <span class="text-sm font-semibold text-cyan-400">INVESTITION IN IHRE MENTALE STABILITÄT</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Wähle deine Stufe der Souveränität</h2>
+                <p class="text-2xl text-slate-400">Beide Optionen mit 15-Tage-Stabilitäts-Garantie</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 mb-20">
+                <!-- Basic Plan -->
+                <div id="plan-basic" class="backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 border-slate-800/50 transition-all duration-500 cursor-pointer hover:scale-102">
+                    <h3 class="text-3xl font-bold mb-2">Basis-Zugang</h3>
+                    <p class="text-slate-400 mb-10">Für den Einstieg in die Innere Architektur</p>
+                    <div class="mb-10">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-6xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">€17</span>
+                            <span class="text-xl text-slate-400">einmalig</span>
+                        </div>
+                        <p class="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</p>
+                    </div>
+                    <ul class="space-y-4 mb-12">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Module 1-4 (Fundament)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Basis-Fokus-Audios (6 Tracks)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Souveränitäts-Journal (PDF)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Community-Zugang (lesend)</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-5 rounded-2xl font-bold text-lg bg-slate-800/50 border-2 border-slate-700 hover:bg-slate-800 transition-all">Basis wählen</button>
+                </div>
+
+                <!-- Complete Plan -->
+                <div id="plan-complete" class="relative backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 border-cyan-500/50 transition-all duration-500 cursor-pointer scale-105 shadow-2xl">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 shadow-lg whitespace-nowrap">
+                        <span class="text-white font-bold text-sm">EMPFOHLEN — 89% wählen dies</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-2 mt-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Vollständige Souveränität</h3>
+                    <p class="text-slate-300 mb-10">Das komplette System für maximale Stabilität</p>
+                    <div class="mb-10">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-6xl font-bold bg-gradient-to-br from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">€35</span>
+                            <span class="text-xl text-slate-400">einmalig</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</span>
+                            <span class="px-2 py-1 rounded bg-green-500/20 text-green-400 text-xs font-bold">BESTER WERT</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <div class="flex-1 flex items-center justify-between">
+                                <span class="text-white font-semibold">Alle 8 Module (7+ Stunden)</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Komplette Audio-Bibliothek (12 Tracks)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Morgen-Briefing-System</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Community-Zugang (voll)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <span class="text-slate-300">Souveränitäts-Journal (Digital + PDF)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                                <span class="text-cyan-400 text-sm">✓</span>
+                            </div>
+                            <div class="flex-1 flex items-center justify-between gap-2">
+                                <span class="text-white font-semibold">Bonus: Krisennavigations-Guide</span>
+                                <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 font-semibold whitespace-nowrap">Wert: €147</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="group w-full py-5 rounded-2xl font-bold text-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:shadow-2xl hover:scale-105 transition-all duration-500">
+                        <span class="flex items-center justify-center gap-3">
+                            Jetzt Zugang sichern
+                            <span class="group-hover:translate-x-2 transition-transform text-2xl">→</span>
+                        </span>
+                    </button>
+                    <div class="mt-6 text-center text-sm text-slate-400">Über 2.400 zufriedene Teilnehmer</div>
+                </div>
+            </div>
+
+            <!-- Guarantee -->
+            <div class="backdrop-blur-xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 p-10 rounded-3xl border border-cyan-500/30">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="text-3xl">🛡️</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-100">Die 15-Tage-Stabilitäts-Garantie</h3>
+                        <p class="text-lg text-slate-300 leading-relaxed">
+                            Sollten Sie keine Steigerung Ihrer mentalen Klarheit spüren, erstatten wir den Betrag sofort. 
+                            <span class="text-white font-semibold"> Ein Wort genügt.</span> Kein Risiko – nur Struktur und Stabilität.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative border-t border-slate-800/50 py-12 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-slate-400 mb-3 leading-relaxed">In Zeiten, in denen die psychische Gesundheit unter beispiellosem Druck steht, bieten wir wissenschaftliche Werkzeuge emotionaler Resilienz. Geschützt durch die deutsche Meinungsfreiheit <span class="text-cyan-400 font-semibold">(Art. 5 GG)</span>, fokussiert auf individuelles Wohlbefinden, nicht auf Politik.</p>
+            <p class="text-slate-500 text-sm">Innere Souveränität © 2024 | Datenschutz | Impressum | AGB</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
     <script>
-        // Progress Bar
-        window.addEventListener('scroll', () => {
-            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalScroll) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
+        // ===== SCROLL PROGRESS BAR =====
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateScrollProgress);
+
+        // ===== MOUSE GRADIENT EFFECT =====
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            document.getElementById('mouse-gradient').style.background = 
+                `radial-gradient(circle at ${mouseX}px ${mouseY}px, rgba(6, 182, 212, 0.15) 0%, transparent 50%)`;
         });
+
+        // ===== ANIMATED STATS COUNTER =====
+        function animateValue(id, start, end, duration) {
+            const element = document.getElementById(id);
+            const range = end - start;
+            const increment = range / (duration / 30);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 30);
+        }
+
+        // Start animation after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                animateValue('stat-users', 0, 2847, 1500);
+                animateValue('stat-satisfaction', 0, 96, 1500);
+                animateValue('stat-days', 0, 15, 1500);
+            }, 500);
+        });
+
+        // ===== TOGGLE MODULES =====
+        const toggleBtn = document.getElementById('toggle-modules');
+        const modulesContent = document.getElementById('modules-content');
+        const chevron = document.getElementById('chevron');
+
+        toggleBtn.addEventListener('click', () => {
+            const isHidden = modulesContent.classList.contains('hidden');
+
+            if (isHidden) {
+                modulesContent.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                modulesContent.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // ===== PLAN SELECTION =====
+        const planBasic = document.getElementById('plan-basic');
+        const planComplete = document.getElementById('plan-complete');
+
+        planBasic.addEventListener('click', () => {
+            // Activate basic
+            planBasic.classList.add('border-cyan-500', 'shadow-2xl', 'scale-105');
+            planBasic.classList.remove('border-slate-800/50');
+
+            // Deactivate complete
+            planComplete.classList.remove('scale-105', 'shadow-2xl');
+            planComplete.classList.add('border-cyan-500/50');
+            planComplete.classList.remove('border-cyan-500');
+        });
+
+        planComplete.addEventListener('click', () => {
+            // Activate complete
+            planComplete.classList.add('border-cyan-500', 'shadow-2xl', 'scale-105');
+            planComplete.classList.remove('border-cyan-500/50');
+
+            // Deactivate basic
+            planBasic.classList.remove('border-cyan-500', 'shadow-2xl', 'scale-105');
+            planBasic.classList.add('border-slate-800/50');
+        });
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
