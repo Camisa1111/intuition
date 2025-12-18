@@ -1,537 +1,567 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, Brain, Heart, Anchor, MessageSquare, Target, CheckCircle, Star, Lock, ChevronDown, Sparkles, ArrowRight, Users, Award, Zap, Eye, Layers, Activity, TrendingUp } from 'lucide-react';
-
-export default function EliteGermanLandingPage() {
-  const [selectedPlan, setSelectedPlan] = useState('complete');
-  const [showModules, setShowModules] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [stats, setStats] = useState({ users: 0, satisfaction: 0, days: 0 });
-
-  useEffect(() => {
-    // Google Analytics 4
-    const script1 = document.createElement('script');
-    script1.async = true;
-    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-6HDHCZG99G';
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6HDHCZG99G');
-    `;
-    document.head.appendChild(script2);
-
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress((window.scrollY / totalScroll) * 100);
-    };
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innere Souveränität - Dein Anker in einer Welt im Umbruch</title>
     
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (stats.users === 0) {
-      setTimeout(() => {
-        const interval = setInterval(() => {
-          setStats(prev => ({
-            users: Math.min(prev.users + 47, 2847),
-            satisfaction: Math.min(prev.satisfaction + 2, 96),
-            days: Math.min(prev.days + 1, 15)
-          }));
-        }, 30);
-        setTimeout(() => clearInterval(interval), 1500);
-      }, 500);
-    }
-  }, [stats.users]);
-
-  const modules = [
-    { num: '01', title: 'Die Psychologie des Umbruchs', desc: 'Verstehen Sie die mentalen Mechanismen hinter gesellschaftlichen Veränderungen' },
-    { num: '02', title: 'Fundament der Inneren Architektur', desc: 'Bauen Sie Ihre persönliche Werte-Struktur auf solidem Grund' },
-    { num: '03', title: 'Dekonstruktion von Gaslighting', desc: 'Erkennen und neutralisieren Sie manipulative Narrative' },
-    { num: '04', title: 'Souveränität in der Isolation', desc: 'Kraft finden, auch wenn Sie sich allein fühlen' },
-    { num: '05', title: 'Emotionale Alchemie', desc: 'Transformieren Sie Bitterkeit in konstruktive Energie' },
-    { num: '06', title: 'Standhaftigkeit im Chaos', desc: 'Bewahren Sie innere Ruhe trotz äußerer Turbulenzen' },
-    { num: '07', title: 'Strategische Kommunikation', desc: 'Wissen Sie, wann sprechen und wann schweigen goldrichtig ist' },
-    { num: '08', title: 'Sinnstiftung 2.0', desc: 'Finden Sie Bedeutung jenseits der politischen Unruhen' }
-  ];
-
-  const pillars = [
-    { icon: Shield, title: 'Psychologischer Schutzwall', desc: 'Techniken gegen toxische Narrative und mentale Manipulation', color: 'from-cyan-500 to-blue-500' },
-    { icon: Brain, title: 'Kognitive Klarheit', desc: 'Unterscheiden Sie Fakten von medialer Verzerrung', color: 'from-blue-500 to-indigo-500' },
-    { icon: Anchor, title: 'Aktive Belastbarkeit', desc: 'Unzerbrechliche innere Kraft aufbauen', color: 'from-indigo-500 to-purple-500' },
-    { icon: Heart, title: 'Authentische Identität', desc: 'Verbindung zu sich selbst ohne Selbstzensur', color: 'from-purple-500 to-pink-500' },
-    { icon: MessageSquare, title: 'Narrative Souveränität', desc: 'Besitzen Sie Ihre eigene Geschichte', color: 'from-pink-500 to-rose-500' },
-    { icon: Target, title: 'Stoische Akzeptanz', desc: 'Verarbeiten Sie Verluste ohne Bitterkeit', color: 'from-rose-500 to-cyan-500' }
-  ];
-
-  const testimonials = [
-    { name: 'Stefan M.', city: 'München', role: 'Ingenieur', text: 'Endlich ein System, das nicht nur über Gefühle redet, sondern konkrete Werkzeuge bietet. Die Innere Architektur hat mir geholfen, meine mentale Stabilität zurückzugewinnen.', rating: 5, image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADcANwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//Z' },
-    { name: 'Andrea K.', city: 'Berlin', role: 'Projektmanagerin', text: 'Nach Jahren der Frustration habe ich durch dieses Programm einen Weg gefunden, souverän zu bleiben. Die psychologischen Techniken sind fundiert und wirksam.', rating: 5, image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADcANwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//' },
-    { name: 'Thomas B.', city: 'Hamburg', role: 'Consultant', text: 'Keine leeren Versprechungen – nur strukturiertes, durchdachtes Material. Die 6 Säulen geben wirklich Halt.', rating: 5, image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADcANwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//' }
-  ];
-
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 overflow-hidden">
-      {/* Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-slate-900 z-50">
-        <div className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 transition-all duration-300" style={{ width: `${scrollProgress}%` }} />
-      </div>
-
-      {/* Animated Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
-        <div className="absolute inset-0 opacity-30" style={{ background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(6, 182, 212, 0.15) 0%, transparent 50%)` }} />
-      </div>
-
-      {/* Hero Section */}
-      <header className="relative min-h-screen flex items-center justify-center px-6 py-20">
-        <div className="relative max-w-6xl mx-auto text-center z-10">
-          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/30 backdrop-blur-xl mb-10 group hover:scale-105 transition-all duration-500">
-            <Sparkles className="w-5 h-5 text-cyan-400 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Limitiertes Angebot — Sofortiger Zugang für die ersten 100 Teilnehmer
-            </span>
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          </div>
-          
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-10 leading-[0.95] tracking-tighter">
-            <span className="inline-block bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">INNERE</span>
-            <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">SOUVERÄNITÄT</span>
-          </h1>
-          
-          <div className="flex items-center justify-center gap-4 mb-10">
-            <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-            <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse" />
-            <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-          </div>
-          
-          <p className="text-3xl md:text-4xl text-slate-200 mb-6 font-light tracking-wide">Dein Anker in einer Welt im Umbruch</p>
-          <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto leading-relaxed">Navigation durch den kulturellen Wandel ohne Verlust der eigenen Identität</p>
-          
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-16">
-            {[
-              { value: stats.users, suffix: '+', label: 'Aktive Teilnehmer', icon: Users },
-              { value: stats.satisfaction, suffix: '%', label: 'Zufriedenheit', icon: Award },
-              { value: stats.days, suffix: '', label: 'Tage Garantie', icon: Shield }
-            ].map((stat, i) => (
-              <div key={i} className="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
-                <stat.icon className="w-8 h-8 text-cyan-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                <div className="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">{stat.value}{stat.suffix}</div>
-                <div className="text-sm text-slate-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-          
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-            <a href="#pricing" className="group px-10 py-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl font-bold text-xl text-white hover:shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-500">
-              <span className="flex items-center justify-center gap-3">
-                Jetzt Zugang sichern
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </span>
-            </a>
-            <a href="#curriculum" className="px-10 py-6 rounded-2xl font-bold text-xl bg-slate-900/50 backdrop-blur-xl border-2 border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-900/70 transition-all duration-500 group">
-              <span className="flex items-center justify-center gap-3">
-                System entdecken
-                <Eye className="w-6 h-6 group-hover:scale-110 transition-transform" />
-              </span>
-            </a>
-          </div>
-          
-          {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {[
-              { icon: Lock, text: '15-Tage-Garantie' },
-              { icon: Shield, text: 'Art. 5 GG Schutz' },
-              { icon: Award, text: 'Zertifizierte Methodik' }
-            ].map((badge, i) => (
-              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
-                <badge.icon className="w-4 h-4 text-cyan-400" />
-                {badge.text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </header>
-
-      {/* Problem Section */}
-      <section className="relative py-40 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-96">
-              <div className="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-slate-800/50 p-8">
-                <div className="relative h-full flex flex-col justify-between">
-                  {[...Array(5)].map((_, i) => (
-                    <div key={i} className="h-12 rounded-lg transition-all duration-700" style={{ background: `linear-gradient(90deg, rgba(248, 113, 113, ${0.3 - i * 0.05}) 0%, rgba(239, 68, 68, ${0.2 - i * 0.04}) 100%)`, transform: `translateX(${i * 8}px) rotate(${i * 2}deg)`, opacity: 1 - i * 0.15 }} />
-                  ))}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <Activity className="w-16 h-16 text-red-400 mx-auto mb-4 animate-pulse" />
-                      <p className="text-sm text-slate-400 font-mono">INSTABILE STRUKTUR</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="backdrop-blur-xl bg-slate-900/30 rounded-3xl p-12 border border-slate-800/50">
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-red-300 via-red-200 to-slate-300 bg-clip-text text-transparent">Fremd im eigenen Alltag?</h2>
-              <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
-                <p>Die vertrauten Straßen fühlen sich anders an. Die gesellschaftliche Dynamik verschiebt sich spürbar, und die eigene Meinung scheint im öffentlichen Raum keinen Platz mehr zu finden.</p>
-                <div className="flex items-start gap-4 p-6 rounded-xl bg-red-500/5 border border-red-500/20">
-                  <Zap className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold text-red-300 mb-2">Der "interne Kulturschock"</p>
-                    <p className="text-slate-400">Ein dokumentiertes psychologisches Phänomen, das zu Isolation, Bitterkeit und dem Gefühl führt, den Boden unter den Füßen zu verlieren.</p>
-                  </div>
-                </div>
-                <div className="relative mt-8 p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-l-4 border-cyan-500">
-                  <p className="text-2xl font-semibold text-white leading-relaxed">Du bist nicht das Problem.<br /><span className="text-cyan-400">Der Mangel an einer stabilen inneren Struktur ist es.</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solution */}
-      <section className="relative py-40 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur mb-6">
-              <Layers className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm font-semibold text-cyan-400">DIE LÖSUNG</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Rette dein inneres Territorium</h2>
-            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full" />
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-            <div className="relative h-96">
-              <div className="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-cyan-500/30 p-8">
-                <div className="relative h-full flex flex-col-reverse gap-2">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="h-12 rounded-lg" style={{ background: `linear-gradient(90deg, rgba(6, 182, 212, ${0.4 + i * 0.1}) 0%, rgba(59, 130, 246, ${0.3 + i * 0.1}) 100%)` }} />
-                  ))}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <Shield className="w-20 h-20 text-cyan-400 mx-auto mb-4" />
-                      <p className="text-sm text-cyan-400 font-mono font-bold">STABILE ARCHITEKTUR</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <p className="text-2xl text-slate-200 leading-relaxed">Wir bieten keine bloße Ablenkung, sondern <span className="text-white font-bold">Psychologische Souveränität</span>.</p>
-              <p className="text-xl text-slate-300 leading-relaxed">Durch das Prinzip der <span className="text-cyan-400 font-semibold">Inneren Architektur</span> bauen Sie eine Festung aus Werten und mentaler Klarheit.</p>
-              <div className="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50">
-                <h3 className="text-2xl font-bold mb-6 text-slate-100">Das System arbeitet auf drei Ebenen</h3>
-                <div className="space-y-5">
-                  {[
-                    { title: 'Kognitiv', desc: 'Dekonstruktion manipulativer Narrative', icon: Brain },
-                    { title: 'Emotional', desc: 'Transformation von Bitterkeit in Kraft', icon: Heart },
-                    { title: 'Behavioral', desc: 'Strategische Handlungsfähigkeit im Alltag', icon: Target }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 group">
-                      <div className="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
-                        <item.icon className="w-7 h-7 text-cyan-400" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
-                        <p className="text-slate-400">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6 Pillars */}
-      <section className="relative py-40 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Die 6 Säulen der Stabilität</h2>
-            <p className="text-xl text-slate-400 mb-8">Jede Säule repräsentiert eine tragende Struktur Ihrer mentalen Architektur</p>
-            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full" />
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pillars.map((pillar, i) => (
-              <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${pillar.color} p-[2px] mb-8 group-hover:scale-110 transition-transform`}>
-                  <div className="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center">
-                    <pillar.icon className="w-8 h-8 text-white" />
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-100">{pillar.title}</h3>
-                <p className="text-slate-400 leading-relaxed mb-6">{pillar.desc}</p>
-                <div className="flex items-center gap-2 text-sm text-slate-500">
-                  <TrendingUp className="w-4 h-4" />
-                  <span>Säule {i + 1} von 6</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Curriculum */}
-      <section id="curriculum" className="relative py-40 px-6 bg-slate-900/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-24">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur mb-6">
-              <Layers className="w-5 h-5 text-purple-400" />
-              <span className="text-sm font-semibold text-purple-400">DAS CURRICULUM</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-purple-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">8 Module zur mentalen Souveränität</h2>
-            <p className="text-xl text-slate-400 mb-4">Strukturiertes Material</p>
-          </div>
-          
-          <button onClick={() => setShowModules(!showModules)} className="w-full backdrop-blur-xl bg-slate-900/50 p-8 rounded-3xl border-2 border-slate-800/50 hover:border-purple-500/50 flex items-center justify-between transition-all duration-500 mb-12 group">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                <Layers className="w-6 h-6 text-purple-400" />
-              </div>
-              <span className="text-2xl font-bold">Module im Detail ansehen</span>
-            </div>
-            <ChevronDown className={`w-8 h-8 text-purple-400 transition-transform duration-500 ${showModules ? 'rotate-180' : ''}`} />
-          </button>
-          
-          {showModules && (
-            <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-blue-500 to-cyan-500" />
-              <div className="space-y-6">
-                {modules.map((module, i) => (
-                  <div key={i} className="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
-                    <div className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950" />
-                    <div className="flex items-start justify-between gap-6">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-4 mb-3">
-                          <div className="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL {module.num}</div>
-                        </div>
-                        <h3 className="text-2xl font-bold mb-3 text-slate-100">{module.title}</h3>
-                        <p className="text-slate-400 leading-relaxed">{module.desc}</p>
-                      </div>
-                      <ArrowRight className="w-6 h-6 text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Praxistools */}
-      <section className="relative py-40 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Praxistools für den Alltag</h2>
-            <p className="text-xl text-slate-400">Sofort einsetzbare Werkzeuge für Ihre tägliche Routine</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { emoji: '🎧', title: 'Fokus-Audios', desc: '40 minütige Meditationen zur mentalen Verankerung', feature: '12 Audio-Tracks', color: 'from-cyan-500 to-blue-500' },
-              { emoji: '📔', title: 'Souveränitäts-Journal', desc: 'Ihr privater Raum ohne Zensur – strukturierte Reflexion', feature: '7 PDF + Digital', color: 'from-blue-500 to-purple-500' },
-              { emoji: '☀️', title: 'Morgen-Briefing', desc: '7-Minuten-Ritual für mentale Klarheit vor dem Tag', feature: 'Tägliche Updates', color: 'from-purple-500 to-pink-500' }
-            ].map((tool, i) => (
-              <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-3">
-                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform inline-block">{tool.emoji}</div>
-                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${tool.color} bg-opacity-10 mb-4`}>
-                  <CheckCircle className="w-4 h-4 text-white" />
-                  <span className="text-sm font-semibold text-white">{tool.feature}</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-100">{tool.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{tool.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="relative py-40 px-6 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Was Teilnehmer sagen</h2>
-            <p className="text-xl text-slate-400">Verifizierte Erfahrungen von Menschen wie Ihnen</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((test, i) => (
-              <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex gap-1">
-                    {[...Array(test.rating)].map((_, j) => (<Star key={j} className="w-5 h-5 fill-yellow-400 text-yellow-400" />))}
-                  </div>
-                  <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span className="text-xs font-semibold text-green-400">Verifiziert</span>
-                  </div>
-                </div>
-                <p className="text-lg text-slate-300 mb-8 italic leading-relaxed">"{test.text}"</p>
-                <div className="flex items-center gap-4 pt-6 border-t border-slate-800/50">
-                  <div className={`relative w-14 h-14 rounded-full bg-gradient-to-br ${test.gradient} flex items-center justify-center text-white font-bold text-xl shadow-xl ring-2 ring-offset-2 ring-offset-slate-900 ring-cyan-500/50`}>
-                    <span className="relative z-10">{test.name.split(' ')[0].charAt(0)}</span>
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-100 text-lg">{test.name}</p>
-                    <p className="text-sm text-slate-500">{test.role} · {test.city}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section id="pricing" className="relative py-40 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-24">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 backdrop-blur mb-8">
-              <Sparkles className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm font-semibold text-cyan-400">INVESTITION IN IHRE MENTALE STABILITÄT</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Wähle deine Stufe der Souveränität</h2>
-            <p className="text-2xl text-slate-400">Beide Optionen mit 15-Tage-Stabilitäts-Garantie</p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-10 mb-20">
-            {/* Basic */}
-            <div className={`backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 transition-all duration-500 ${selectedPlan === 'basic' ? 'border-cyan-500 shadow-2xl scale-105' : 'border-slate-800/50'}`}>
-              <h3 className="text-3xl font-bold mb-2">Basis-Zugang</h3>
-              <p className="text-slate-400 mb-10">Für den Einstieg in die Innere Architektur</p>
-              <div className="mb-10">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-6xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">€17</span>
-                  <span className="text-xl text-slate-400">einmalig</span>
-                </div>
-                <p className="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</p>
-              </div>
-              <ul className="space-y-4 mb-12">
-                {['Module 1-4 (Fundament)', 'Basis-Fokus-Audios (6 Tracks)', 'Souveränitäts-Journal (PDF)', 'Community-Zugang (lesend)'].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-4 h-4 text-cyan-400" />
-                    </div>
-                    <span className="text-slate-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button onClick={() => setSelectedPlan('basic')} className="w-full py-5 rounded-2xl font-bold text-lg bg-slate-800/50 border-2 border-slate-700 hover:bg-slate-800 transition-all">Basis wählen</button>
-            </div>
-            
-            {/* Complete */}
-            <div className={`relative backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 transition-all duration-500 ${selectedPlan === 'complete' ? 'border-cyan-500 shadow-2xl scale-105' : 'border-cyan-500/50'}`}>
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 shadow-lg">
-                <span className="text-white font-bold">EMPFOHLEN — 89% wählen dies</span>
-              </div>
-              <h3 className="text-3xl font-bold mb-2 mt-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Vollständige Souveränität</h3>
-              <p className="text-slate-300 mb-10">Das komplette System für maximale Stabilität</p>
-              <div className="mb-10">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-6xl font-bold bg-gradient-to-br from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">€35</span>
-                  <span className="text-xl text-slate-400">einmalig</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</span>
-                  <span className="px-2 py-1 rounded bg-green-500/20 text-green-400 text-xs font-bold">BESTER WERT</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-12">
-                {[
-                  { text: 'Alle 8 Module (7+ Stunden)', bold: true },
-                  { text: 'Komplette Audio-Bibliothek (12 Tracks)' },
-                  { text: 'Morgen-Briefing-System' },
-                  { text: 'Community-Zugang (voll)' },
-                  { text: 'Souveränitäts-Journal (Digital + PDF)' },
-                  { text: 'Bonus: Krisennavigations-Guide', bold: true, badge: 'Wert: €147' }
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-4 h-4 text-cyan-400" />
-                    </div>
-                    <div className="flex-1 flex items-center justify-between">
-                      <span className={item.bold ? 'text-white font-semibold' : 'text-slate-300'}>{item.text}</span>
-                      {item.badge && <span className="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 font-semibold">{item.badge}</span>}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <button onClick={() => setSelectedPlan('complete')} className="group w-full py-5 rounded-2xl font-bold text-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:shadow-2xl hover:scale-105 transition-all duration-500">
-                <span className="flex items-center justify-center gap-3">
-                  Jetzt Zugang sichern
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                </span>
-              </button>
-              <div className="mt-6 text-center text-sm text-slate-400">Über 2.400 zufriedene Teilnehmer</div>
-            </div>
-          </div>
-          
-          {/* Guarantee */}
-          <div className="backdrop-blur-xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 p-10 rounded-3xl border border-cyan-500/30">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-6 h-6 text-cyan-400" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-100">Die 15-Tage-Stabilitäts-Garantie</h3>
-                <p className="text-lg text-slate-300 leading-relaxed">
-                  Sollten Sie keine Steigerung Ihrer mentalen Klarheit spüren, erstatten wir den Betrag sofort. 
-                  <span className="text-white font-semibold"> Ein Wort genügt.</span> Kein Risiko – nur Struktur und Stabilität.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="relative border-t border-slate-800/50 py-12 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-slate-400 mb-3 leading-relaxed">In Zeiten, in denen die psychische Gesundheit unter beispiellosem Druck steht, bieten wir wissenschaftliche Werkzeuge emotionaler Resilienz. Geschützt durch die deutsche Meinungsfreiheit <span className="text-cyan-400 font-semibold">(Art. 5 GG)</span>, fokussiert auf individuelles Wohlbefinden, nicht auf Politik.</p>
-          <p className="text-slate-500 text-sm">Innere Souveränität © 2024 | Datenschutz | Impressum | AGB</p>
-        </div>
-      </footer>
-
-      <style jsx>{`
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel Standalone for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Lucide React Icons -->
+    <script src="https://unpkg.com/lucide-react@0.263.1/dist/umd/lucide-react.js"></script>
+    
+    <style>
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
         @keyframes spin {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg); }
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
         @keyframes slideIn {
-          from { transform: translateY(20px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         @keyframes slideInRight {
-          from { transform: translateX(30px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         @keyframes fadeInUp {
-          from { transform: translateY(30px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-      `}</style>
-    </div>
-  );
-}
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { Shield, Brain, Heart, Anchor, MessageSquare, Target, CheckCircle, Star, Lock, ChevronDown, Sparkles, ArrowRight, Users, Award, Zap, Eye, Layers, Activity, TrendingUp } = lucide;
+
+        function EliteGermanLandingPage() {
+            const [selectedPlan, setSelectedPlan] = useState('complete');
+            const [showModules, setShowModules] = useState(false);
+            const [scrollProgress, setScrollProgress] = useState(0);
+            const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+            const [stats, setStats] = useState({ users: 0, satisfaction: 0, days: 0 });
+
+            useEffect(() => {
+                // Google Analytics 4
+                const script1 = document.createElement('script');
+                script1.async = true;
+                script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-6HDHCZG99G';
+                document.head.appendChild(script1);
+
+                const script2 = document.createElement('script');
+                script2.innerHTML = `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-6HDHCZG99G');
+                `;
+                document.head.appendChild(script2);
+
+                const handleScroll = () => {
+                    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+                    setScrollProgress((window.scrollY / totalScroll) * 100);
+                };
+                const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+                
+                window.addEventListener('scroll', handleScroll);
+                window.addEventListener('mousemove', handleMouseMove);
+                return () => {
+                    window.removeEventListener('scroll', handleScroll);
+                    window.removeEventListener('mousemove', handleMouseMove);
+                };
+            }, []);
+
+            useEffect(() => {
+                if (stats.users === 0) {
+                    setTimeout(() => {
+                        const interval = setInterval(() => {
+                            setStats(prev => ({
+                                users: Math.min(prev.users + 47, 2847),
+                                satisfaction: Math.min(prev.satisfaction + 2, 96),
+                                days: Math.min(prev.days + 1, 15)
+                            }));
+                        }, 30);
+                        setTimeout(() => clearInterval(interval), 1500);
+                    }, 500);
+                }
+            }, [stats.users]);
+
+            const modules = [
+                { num: '01', title: 'Die Psychologie des Umbruchs', desc: 'Verstehen Sie die mentalen Mechanismen hinter gesellschaftlichen Veränderungen' },
+                { num: '02', title: 'Fundament der Inneren Architektur', desc: 'Bauen Sie Ihre persönliche Werte-Struktur auf solidem Grund' },
+                { num: '03', title: 'Dekonstruktion von Gaslighting', desc: 'Erkennen und neutralisieren Sie manipulative Narrative' },
+                { num: '04', title: 'Souveränität in der Isolation', desc: 'Kraft finden, auch wenn Sie sich allein fühlen' },
+                { num: '05', title: 'Emotionale Alchemie', desc: 'Transformieren Sie Bitterkeit in konstruktive Energie' },
+                { num: '06', title: 'Standhaftigkeit im Chaos', desc: 'Bewahren Sie innere Ruhe trotz äußerer Turbulenzen' },
+                { num: '07', title: 'Strategische Kommunikation', desc: 'Wissen Sie, wann sprechen und wann schweigen goldrichtig ist' },
+                { num: '08', title: 'Sinnstiftung 2.0', desc: 'Finden Sie Bedeutung jenseits der politischen Unruhen' }
+            ];
+
+            const pillars = [
+                { icon: Shield, title: 'Psychologischer Schutzwall', desc: 'Techniken gegen toxische Narrative und mentale Manipulation', color: 'from-cyan-500 to-blue-500' },
+                { icon: Brain, title: 'Kognitive Klarheit', desc: 'Unterscheiden Sie Fakten von medialer Verzerrung', color: 'from-blue-500 to-indigo-500' },
+                { icon: Anchor, title: 'Aktive Belastbarkeit', desc: 'Unzerbrechliche innere Kraft aufbauen', color: 'from-indigo-500 to-purple-500' },
+                { icon: Heart, title: 'Authentische Identität', desc: 'Verbindung zu sich selbst ohne Selbstzensur', color: 'from-purple-500 to-pink-500' },
+                { icon: MessageSquare, title: 'Narrative Souveränität', desc: 'Besitzen Sie Ihre eigene Geschichte', color: 'from-pink-500 to-rose-500' },
+                { icon: Target, title: 'Stoische Akzeptanz', desc: 'Verarbeiten Sie Verluste ohne Bitterkeit', color: 'from-rose-500 to-cyan-500' }
+            ];
+
+            const testimonials = [
+                { name: 'Stefan M.', city: 'München', role: 'Ingenieur', text: 'Endlich ein System, das nicht nur über Gefühle redet, sondern konkrete Werkzeuge bietet. Die Innere Architektur hat mir geholfen, meine mentale Stabilität zurückzugewinnen.', rating: 5, gradient: 'from-cyan-500 to-blue-500' },
+                { name: 'Andrea K.', city: 'Berlin', role: 'Projektmanagerin', text: 'Nach Jahren der Frustration habe ich durch dieses Programm einen Weg gefunden, souverän zu bleiben. Die psychologischen Techniken sind fundiert und wirksam.', rating: 5, gradient: 'from-purple-500 to-pink-500' },
+                { name: 'Thomas B.', city: 'Hamburg', role: 'Consultant', text: 'Keine leeren Versprechungen – nur strukturiertes, durchdachtes Material. Die 6 Säulen geben wirklich Halt.', rating: 5, gradient: 'from-blue-500 to-purple-500' }
+            ];
+
+            return (
+                <div className="min-h-screen bg-slate-950 text-slate-100 overflow-hidden">
+                    {/* Progress Bar */}
+                    <div className="fixed top-0 left-0 right-0 h-1 bg-slate-900 z-50">
+                        <div className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 transition-all duration-300" style={{ width: `${scrollProgress}%` }} />
+                    </div>
+
+                    {/* Animated Background */}
+                    <div className="fixed inset-0 pointer-events-none">
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+                        <div className="absolute inset-0 opacity-30" style={{ background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(6, 182, 212, 0.15) 0%, transparent 50%)` }} />
+                    </div>
+
+                    {/* Hero Section */}
+                    <header className="relative min-h-screen flex items-center justify-center px-6 py-20">
+                        <div className="relative max-w-6xl mx-auto text-center z-10">
+                            <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/30 backdrop-blur-xl mb-10 group hover:scale-105 transition-all duration-500">
+                                <Sparkles className="w-5 h-5 text-cyan-400 animate-pulse" />
+                                <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                                    Limitiertes Angebot — Sofortiger Zugang für die ersten 100 Teilnehmer
+                                </span>
+                                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                            </div>
+                            
+                            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-10 leading-[0.95] tracking-tighter">
+                                <span className="inline-block bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">INNERE</span>
+                                <br />
+                                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">SOUVERÄNITÄT</span>
+                            </h1>
+                            
+                            <div className="flex items-center justify-center gap-4 mb-10">
+                                <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+                                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse" />
+                                <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+                            </div>
+                            
+                            <p className="text-3xl md:text-4xl text-slate-200 mb-6 font-light tracking-wide">Dein Anker in einer Welt im Umbruch</p>
+                            <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto leading-relaxed">Navigation durch den kulturellen Wandel ohne Verlust der eigenen Identität</p>
+                            
+                            {/* Stats */}
+                            <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-16">
+                                {[
+                                    { value: stats.users, suffix: '+', label: 'Aktive Teilnehmer', icon: Users },
+                                    { value: stats.satisfaction, suffix: '%', label: 'Zufriedenheit', icon: Award },
+                                    { value: stats.days, suffix: '', label: 'Tage Garantie', icon: Shield }
+                                ].map((stat, i) => (
+                                    <div key={i} className="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-6 border border-slate-800/50 hover:border-cyan-500/50 transition-all group">
+                                        <stat.icon className="w-8 h-8 text-cyan-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                                        <div className="text-4xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent mb-2">{stat.value}{stat.suffix}</div>
+                                        <div className="text-sm text-slate-400">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            {/* CTAs */}
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+                                <a href="#pricing" className="group px-10 py-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl font-bold text-xl text-white hover:shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-500">
+                                    <span className="flex items-center justify-center gap-3">
+                                        Jetzt Zugang sichern
+                                        <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                                    </span>
+                                </a>
+                                <a href="#curriculum" className="px-10 py-6 rounded-2xl font-bold text-xl bg-slate-900/50 backdrop-blur-xl border-2 border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-900/70 transition-all duration-500 group">
+                                    <span className="flex items-center justify-center gap-3">
+                                        System entdecken
+                                        <Eye className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                    </span>
+                                </a>
+                            </div>
+                            
+                            {/* Trust Badges */}
+                            <div className="flex flex-wrap items-center justify-center gap-6">
+                                {[
+                                    { icon: Lock, text: '15-Tage-Garantie' },
+                                    { icon: Shield, text: 'Art. 5 GG Schutz' },
+                                    { icon: Award, text: 'Zertifizierte Methodik' }
+                                ].map((badge, i) => (
+                                    <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/30 backdrop-blur border border-slate-800/50 text-sm text-slate-400">
+                                        <badge.icon className="w-4 h-4 text-cyan-400" />
+                                        {badge.text}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Problem Section */}
+                    <section className="relative py-40 px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                                <div className="relative h-96">
+                                    <div className="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-slate-800/50 p-8">
+                                        <div className="relative h-full flex flex-col justify-between">
+                                            {[...Array(5)].map((_, i) => (
+                                                <div key={i} className="h-12 rounded-lg transition-all duration-700" style={{ background: `linear-gradient(90deg, rgba(248, 113, 113, ${0.3 - i * 0.05}) 0%, rgba(239, 68, 68, ${0.2 - i * 0.04}) 100%)`, transform: `translateX(${i * 8}px) rotate(${i * 2}deg)`, opacity: 1 - i * 0.15 }} />
+                                            ))}
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className="text-center">
+                                                    <Activity className="w-16 h-16 text-red-400 mx-auto mb-4 animate-pulse" />
+                                                    <p className="text-sm text-slate-400 font-mono">INSTABILE STRUKTUR</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="backdrop-blur-xl bg-slate-900/30 rounded-3xl p-12 border border-slate-800/50">
+                                    <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-red-300 via-red-200 to-slate-300 bg-clip-text text-transparent">Fremd im eigenen Alltag?</h2>
+                                    <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+                                        <p>Die vertrauten Straßen fühlen sich anders an. Die gesellschaftliche Dynamik verschiebt sich spürbar, und die eigene Meinung scheint im öffentlichen Raum keinen Platz mehr zu finden.</p>
+                                        <div className="flex items-start gap-4 p-6 rounded-xl bg-red-500/5 border border-red-500/20">
+                                            <Zap className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+                                            <div>
+                                                <p className="font-semibold text-red-300 mb-2">Der "interne Kulturschock"</p>
+                                                <p className="text-slate-400">Ein dokumentiertes psychologisches Phänomen, das zu Isolation, Bitterkeit und dem Gefühl führt, den Boden unter den Füßen zu verlieren.</p>
+                                            </div>
+                                        </div>
+                                        <div className="relative mt-8 p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-l-4 border-cyan-500">
+                                            <p className="text-2xl font-semibold text-white leading-relaxed">Du bist nicht das Problem.<br /><span className="text-cyan-400">Der Mangel an einer stabilen inneren Struktur ist es.</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Solution */}
+                    <section className="relative py-40 px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-20">
+                                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur mb-6">
+                                    <Layers className="w-5 h-5 text-cyan-400" />
+                                    <span className="text-sm font-semibold text-cyan-400">DIE LÖSUNG</span>
+                                </div>
+                                <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Rette dein inneres Territorium</h2>
+                                <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full" />
+                            </div>
+
+                            <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                                <div className="relative h-96">
+                                    <div className="absolute inset-0 backdrop-blur-xl bg-slate-900/20 rounded-3xl border border-cyan-500/30 p-8">
+                                        <div className="relative h-full flex flex-col-reverse gap-2">
+                                            {[...Array(6)].map((_, i) => (
+                                                <div key={i} className="h-12 rounded-lg" style={{ background: `linear-gradient(90deg, rgba(6, 182, 212, ${0.4 + i * 0.1}) 0%, rgba(59, 130, 246, ${0.3 + i * 0.1}) 100%)` }} />
+                                            ))}
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className="text-center">
+                                                    <Shield className="w-20 h-20 text-cyan-400 mx-auto mb-4" />
+                                                    <p className="text-sm text-cyan-400 font-mono font-bold">STABILE ARCHITEKTUR</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-8">
+                                    <p className="text-2xl text-slate-200 leading-relaxed">Wir bieten keine bloße Ablenkung, sondern <span className="text-white font-bold">Psychologische Souveränität</span>.</p>
+                                    <p className="text-xl text-slate-300 leading-relaxed">Durch das Prinzip der <span className="text-cyan-400 font-semibold">Inneren Architektur</span> bauen Sie eine Festung aus Werten und mentaler Klarheit.</p>
+                                    <div className="backdrop-blur-xl bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50">
+                                        <h3 className="text-2xl font-bold mb-6 text-slate-100">Das System arbeitet auf drei Ebenen</h3>
+                                        <div className="space-y-5">
+                                            {[
+                                                { title: 'Kognitiv', desc: 'Dekonstruktion manipulativer Narrative', icon: Brain },
+                                                { title: 'Emotional', desc: 'Transformation von Bitterkeit in Kraft', icon: Heart },
+                                                { title: 'Behavioral', desc: 'Strategische Handlungsfähigkeit im Alltag', icon: Target }
+                                            ].map((item, i) => (
+                                                <div key={i} className="flex items-start gap-4 group">
+                                                    <div className="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-all">
+                                                        <item.icon className="w-7 h-7 text-cyan-400" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
+                                                        <p className="text-slate-400">{item.desc}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* 6 Pillars */}
+                    <section className="relative py-40 px-6">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="text-center mb-24">
+                                <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Die 6 Säulen der Stabilität</h2>
+                                <p className="text-xl text-slate-400 mb-8">Jede Säule repräsentiert eine tragende Struktur Ihrer mentalen Architektur</p>
+                                <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full" />
+                            </div>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {pillars.map((pillar, i) => (
+                                    <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-2">
+                                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${pillar.color} p-[2px] mb-8 group-hover:scale-110 transition-transform`}>
+                                            <div className="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center">
+                                                <pillar.icon className="w-8 h-8 text-white" />
+                                            </div>
+                                        </div>
+                                        <h3 className="text-2xl font-bold mb-4 text-slate-100">{pillar.title}</h3>
+                                        <p className="text-slate-400 leading-relaxed mb-6">{pillar.desc}</p>
+                                        <div className="flex items-center gap-2 text-sm text-slate-500">
+                                            <TrendingUp className="w-4 h-4" />
+                                            <span>Säule {i + 1} von 6</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Curriculum */}
+                    <section id="curriculum" className="relative py-40 px-6 bg-slate-900/30">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-24">
+                                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur mb-6">
+                                    <Layers className="w-5 h-5 text-purple-400" />
+                                    <span className="text-sm font-semibold text-purple-400">DAS CURRICULUM</span>
+                                </div>
+                                <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-purple-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">8 Module zur mentalen Souveränität</h2>
+                                <p className="text-xl text-slate-400 mb-4">Strukturiertes Material</p>
+                            </div>
+                            
+                            <button onClick={() => setShowModules(!showModules)} className="w-full backdrop-blur-xl bg-slate-900/50 p-8 rounded-3xl border-2 border-slate-800/50 hover:border-purple-500/50 flex items-center justify-between transition-all duration-500 mb-12 group">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                                        <Layers className="w-6 h-6 text-purple-400" />
+                                    </div>
+                                    <span className="text-2xl font-bold">Module im Detail ansehen</span>
+                                </div>
+                                <ChevronDown className={`w-8 h-8 text-purple-400 transition-transform duration-500 ${showModules ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            {showModules && (
+                                <div className="relative">
+                                    <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-blue-500 to-cyan-500" />
+                                    <div className="space-y-6">
+                                        {modules.map((module, i) => (
+                                            <div key={i} className="relative pl-20 pr-8 py-8 backdrop-blur-xl bg-slate-900/30 rounded-2xl border border-slate-800/50 hover:border-purple-500/50 transition-all duration-500 group">
+                                                <div className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 border-4 border-slate-950" />
+                                                <div className="flex items-start justify-between gap-6">
+                                                    <div className="flex-1">
+                                                        <div className="flex items-center gap-4 mb-3">
+                                                            <div className="px-4 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-bold">MODUL {module.num}</div>
+                                                        </div>
+                                                        <h3 className="text-2xl font-bold mb-3 text-slate-100">{module.title}</h3>
+                                                        <p className="text-slate-400 leading-relaxed">{module.desc}</p>
+                                                    </div>
+                                                    <ArrowRight className="w-6 h-6 text-slate-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all" />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </section>
+
+                    {/* Praxistools */}
+                    <section className="relative py-40 px-6">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="text-center mb-24">
+                                <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Praxistools für den Alltag</h2>
+                                <p className="text-xl text-slate-400">Sofort einsetzbare Werkzeuge für Ihre tägliche Routine</p>
+                            </div>
+                            <div className="grid md:grid-cols-3 gap-8">
+                                {[
+                                    { emoji: '🎧', title: 'Fokus-Audios', desc: '40 minütige Meditationen zur mentalen Verankerung', feature: '12 Audio-Tracks', color: 'from-cyan-500 to-blue-500' },
+                                    { emoji: '📔', title: 'Souveränitäts-Journal', desc: 'Ihr privater Raum ohne Zensur – strukturierte Reflexion', feature: '7 PDF + Digital', color: 'from-blue-500 to-purple-500' },
+                                    { emoji: '☀️', title: 'Morgen-Briefing', desc: '7-Minuten-Ritual für mentale Klarheit vor dem Tag', feature: 'Tägliche Updates', color: 'from-purple-500 to-pink-500' }
+                                ].map((tool, i) => (
+                                    <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-slate-700 transition-all duration-500 hover:-translate-y-3">
+                                        <div className="text-6xl mb-6 group-hover:scale-110 transition-transform inline-block">{tool.emoji}</div>
+                                        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${tool.color} bg-opacity-10 mb-4`}>
+                                            <CheckCircle className="w-4 h-4 text-white" />
+                                            <span className="text-sm font-semibold text-white">{tool.feature}</span>
+                                        </div>
+                                        <h3 className="text-2xl font-bold mb-4 text-slate-100">{tool.title}</h3>
+                                        <p className="text-slate-400 leading-relaxed">{tool.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Testimonials */}
+                    <section className="relative py-40 px-6 bg-slate-900/30">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="text-center mb-24">
+                                <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Was Teilnehmer sagen</h2>
+                                <p className="text-xl text-slate-400">Verifizierte Erfahrungen von Menschen wie Ihnen</p>
+                            </div>
+                            <div className="grid md:grid-cols-3 gap-8">
+                                {testimonials.map((test, i) => (
+                                    <div key={i} className="group backdrop-blur-xl bg-slate-900/30 p-10 rounded-3xl border border-slate-800/50 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2">
+                                        <div className="flex items-center justify-between mb-6">
+                                            <div className="flex gap-1">
+                                                {[...Array(test.rating)].map((_, j) => (<Star key={j} className="w-5 h-5 fill-yellow-400 text-yellow-400" />))}
+                                            </div>
+                                            <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+                                                <CheckCircle className="w-4 h-4 text-green-400" />
+                                                <span className="text-xs font-semibold text-green-400">Verifiziert</span>
+                                            </div>
+                                        </div>
+                                        <p className="text-lg text-slate-300 mb-8 italic leading-relaxed">"{test.text}"</p>
+                                        <div className="flex items-center gap-4 pt-6 border-t border-slate-800/50">
+                                            <div className={`relative w-14 h-14 rounded-full bg-gradient-to-br ${test.gradient} flex items-center justify-center text-white font-bold text-xl shadow-xl ring-2 ring-offset-2 ring-offset-slate-900 ring-cyan-500/50`}>
+                                                <span className="relative z-10">{test.name.split(' ')[0].charAt(0)}</span>
+                                                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent" />
+                                            </div>
+                                            <div>
+                                                <p className="font-bold text-slate-100 text-lg">{test.name}</p>
+                                                <p className="text-sm text-slate-500">{test.role} · {test.city}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pricing */}
+                    <section id="pricing" className="relative py-40 px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-24">
+                                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 backdrop-blur mb-8">
+                                    <Sparkles className="w-5 h-5 text-cyan-400" />
+                                    <span className="text-sm font-semibold text-cyan-400">INVESTITION IN IHRE MENTALE STABILITÄT</span>
+                                </div>
+                                <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-br from-slate-100 to-slate-300 bg-clip-text text-transparent">Wähle deine Stufe der Souveränität</h2>
+                                <p className="text-2xl text-slate-400">Beide Optionen mit 15-Tage-Stabilitäts-Garantie</p>
+                            </div>
+                            
+                            <div className="grid lg:grid-cols-2 gap-10 mb-20">
+                                {/* Basic */}
+                                <div className={`backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 transition-all duration-500 ${selectedPlan === 'basic' ? 'border-cyan-500 shadow-2xl scale-105' : 'border-slate-800/50'}`}>
+                                    <h3 className="text-3xl font-bold mb-2">Basis-Zugang</h3>
+                                    <p className="text-slate-400 mb-10">Für den Einstieg in die Innere Architektur</p>
+                                    <div className="mb-10">
+                                        <div className="flex items-baseline gap-2 mb-2">
+                                            <span className="text-6xl font-bold bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">€17</span>
+                                            <span className="text-xl text-slate-400">einmalig</span>
+                                        </div>
+                                        <p className="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</p>
+                                    </div>
+                                    <ul className="space-y-4 mb-12">
+                                        {['Module 1-4 (Fundament)', 'Basis-Fokus-Audios (6 Tracks)', 'Souveränitäts-Journal (PDF)', 'Community-Zugang (lesend)'].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-3">
+                                                <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                                                    <CheckCircle className="w-4 h-4 text-cyan-400" />
+                                                </div>
+                                                <span className="text-slate-300">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <button onClick={() => setSelectedPlan('basic')} className="w-full py-5 rounded-2xl font-bold text-lg bg-slate-800/50 border-2 border-slate-700 hover:bg-slate-800 transition-all">Basis wählen</button>
+                                </div>
+                                
+                                {/* Complete */}
+                                <div className={`relative backdrop-blur-xl bg-slate-900/30 p-12 rounded-3xl border-2 transition-all duration-500 ${selectedPlan === 'complete' ? 'border-cyan-500 shadow-2xl scale-105' : 'border-cyan-500/50'}`}>
+                                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 shadow-lg">
+                                        <span className="text-white font-bold">EMPFOHLEN — 89% wählen dies</span>
+                                    </div>
+                                    <h3 className="text-3xl font-bold mb-2 mt-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Vollständige Souveränität</h3>
+                                    <p className="text-slate-300 mb-10">Das komplette System für maximale Stabilität</p>
+                                    <div className="mb-10">
+                                        <div className="flex items-baseline gap-2 mb-2">
+                                            <span className="text-6xl font-bold bg-gradient-to-br from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">€35</span>
+                                            <span className="text-xl text-slate-400">einmalig</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-sm text-slate-500">Kein Abo · Lebenslanger Zugang</span>
+                                            <span className="px-2 py-1 rounded bg-green-500/20 text-green-400 text-xs font-bold">BESTER WERT</span>
+                                        </div>
+                                    </div>
+                                    <ul className="space-y-4 mb-12">
+                                        {[
+                                            { text: 'Alle 8 Module (7+ Stunden)', bold: true },
+                                            { text: 'Komplette Audio-Bibliothek (12 Tracks)' },
+                                            { text: 'Morgen-Briefing-System' },
+                                            { text: 'Community-Zugang (voll)' },
+                                            { text: 'Souveränitäts-Journal (Digital + PDF)' },
+                                            { text: 'Bonus: Krisennavigations-Guide', bold: true, badge: 'Wert: €147' }
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-3">
+                                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center flex-shrink-0">
+                                                    <CheckCircle className="w-4 h-4 text-cyan-400" />
+                                                </div>
+                                                <div className="flex-1 flex items-center justify-between">
+                                                    <span className={item.bold ? 'text-white font-semibold' : 'text-slate-300'}>{item.text}</span>
+                                                    {item.badge && <span className="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-400 font-semibold">{item.badge}</span>}
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <button onClick={() => setSelectedPlan('complete')} className="group w-full py-5 rounded-2xl font-bold text-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:shadow-2xl hover:scale-105 transition-all duration-500">
+                                        <span className="flex items-center justify-center gap-3">
+                                            Jetzt Zugang sichern
+                                            <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                                        </span>
+                                    </button>
+                                    <div className="mt-6 text-center text-sm text-slate-400">Über 2.400 zufriedene Teilnehmer</div>
+                                </div>
+                            </div>
+                            
+                            {/* Guarantee */}
+                            <div className="backdrop-blur-xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 p-10 rounded-3xl border border-cyan-500/30">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0">
+                                        <Shield className="w-6 h-6 text-cyan-400" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-bold mb-3 text-slate-100">Die 15-Tage-Stabilitäts-Garantie</h3>
+                                        <p className="text-lg text-slate-300 leading-relaxed">
+                                            Sollten Sie keine Steigerung Ihrer mentalen Klarheit spüren, erstatten wir den Betrag sofort. 
+                                            <span className="text-white font-semibold"> Ein Wort genügt.</span> Kein Risiko – nur Struktur und Stabilität.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="relative border-t border-slate-800/50 py-12 px-6">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <p className="text-slate-400 mb-3 leading-relaxed">In Zeiten, in denen die psychische Gesundheit unter beispiellosem Druck steht, bieten wir wissenschaftliche Werkzeuge emotionaler Resilienz. Geschützt durch die deutsche Meinungsfreiheit <span className="text-cyan-400 font-semibold">(Art. 5 GG)</span>, fokussiert auf individuelles Wohlbefinden, nicht auf Politik.</p>
+                            <p className="text-slate-500 text-sm">Innere Souveränität © 2024 | Datenschutz | Impressum | AGB</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<EliteGermanLandingPage />);
+    </script>
+</body>
+</html>
