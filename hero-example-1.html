@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Exemplo 1 — Conexão Pai & Filho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        * { font-family: 'Inter', sans-serif; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0); }
+            50%       { box-shadow: 0 0 32px 8px rgba(251, 146, 60, 0.25); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        .fade-up-1 { animation: fadeInUp 0.7s ease forwards; }
+        .fade-up-2 { animation: fadeInUp 0.7s 0.15s ease both; }
+        .fade-up-3 { animation: fadeInUp 0.7s 0.30s ease both; }
+        .fade-up-4 { animation: fadeInUp 0.7s 0.45s ease both; }
+        .fade-up-5 { animation: fadeInUp 0.7s 0.60s ease both; }
+        .fade-up-6 { animation: fadeInUp 0.7s 0.75s ease both; }
+
+        .cta-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
+
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        .text-balance { text-wrap: balance; }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #172554 100%);
+        }
+
+        .accent-line {
+            background: linear-gradient(90deg, #f97316, #fb923c, #fbbf24);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(249,115,22,0.12) 0%, rgba(251,191,36,0.08) 100%);
+            border: 1px solid rgba(249,115,22,0.3);
+        }
+
+        .proof-pill {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+        }
+
+        .guarantee-badge {
+            background: linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(16,185,129,0.1) 100%);
+            border: 1px solid rgba(34,197,94,0.3);
+        }
+    </style>
+</head>
+<body class="hero-bg min-h-screen text-white overflow-x-hidden relative">
+
+    <!-- Noise texture overlay -->
+    <div class="noise-overlay absolute inset-0 pointer-events-none"></div>
+
+    <!-- Radial glow top-left -->
+    <div class="absolute top-0 left-0 w-[700px] h-[700px] rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%); transform: translate(-30%, -30%);">
+    </div>
+
+    <!-- Radial glow bottom-right -->
+    <div class="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%); transform: translate(30%, 30%);">
+    </div>
+
+    <!-- ======== HERO SECTION ======== -->
+    <header class="relative z-10 max-w-6xl mx-auto px-5 md:px-8 pt-12 pb-20 md:pt-20 md:pb-32">
+
+        <!-- Urgency pill -->
+        <div class="fade-up-1 flex justify-center md:justify-start mb-8">
+            <div class="proof-pill inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-sm font-medium">
+                <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse flex-shrink-0"></span>
+                <span class="text-slate-300">Mais de <strong class="text-white">12.400 pais</strong> já transformaram essa relação</span>
+            </div>
+        </div>
+
+        <!-- Main headline -->
+        <div class="fade-up-2 mb-6">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-balance">
+                <span class="text-white">Seu filho está crescendo —</span>
+                <br class="hidden md:block">
+                <span class="text-white"> e você sente que a</span>
+                <br>
+                <span style="background: linear-gradient(90deg, #f97316, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    janela está fechando.
+                </span>
+            </h1>
+        </div>
+
+        <!-- Sub-headline — dor específica -->
+        <div class="fade-up-3 mb-8">
+            <p class="text-lg md:text-xl lg:text-2xl text-slate-300 max-w-2xl leading-relaxed text-balance">
+                Você ama seus filhos mais do que tudo, mas na hora de conversar sobre valores, limites e vida, 
+                as palavras travam — ou eles simplesmente não ouvem. 
+                <span class="text-white font-semibold">Isso tem solução, e ela existe agora.</span>
+            </p>
+        </div>
+
+        <!-- Pain agitation box -->
+        <div class="fade-up-3 highlight-box rounded-2xl p-5 md:p-6 mb-10 max-w-2xl">
+            <p class="text-sm font-semibold text-orange-400 uppercase tracking-widest mb-3">Você se reconhece nisso?</p>
+            <ul class="space-y-2.5">
+                <li class="flex items-start gap-3 text-slate-300 text-base">
+                    <span class="text-orange-400 mt-0.5 flex-shrink-0">✗</span>
+                    Tenta conversar, mas seu filho fecha o quarto ou pega o celular
+                </li>
+                <li class="flex items-start gap-3 text-slate-300 text-base">
+                    <span class="text-orange-400 mt-0.5 flex-shrink-0">✗</span>
+                    Quer transmitir seus valores, mas não sabe como sem parecer sermão
+                </li>
+                <li class="flex items-start gap-3 text-slate-300 text-base">
+                    <span class="text-orange-400 mt-0.5 flex-shrink-0">✗</span>
+                    Sente que a escola, as redes e os amigos têm mais influência que você
+                </li>
+                <li class="flex items-start gap-3 text-slate-300 text-base">
+                    <span class="text-orange-400 mt-0.5 flex-shrink-0">✗</span>
+                    Tem medo de que ele chegue à vida adulta sem bússola, sem caráter
+                </li>
+            </ul>
+        </div>
+
+        <!-- CTA block -->
+        <div class="fade-up-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-10">
+            <a href="#oferta"
+               class="cta-glow inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl font-bold text-lg text-white transition-all duration-300 hover:scale-105 active:scale-95"
+               style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                Quero reconectar com meu filho agora
+                <span class="text-2xl">→</span>
+            </a>
+            <div class="text-sm text-slate-400 flex items-center gap-2">
+                <span class="text-green-400">🔒</span>
+                Acesso imediato · Garantia de 7 dias
+            </div>
+        </div>
+
+        <!-- Social proof numbers -->
+        <div class="fade-up-5 grid grid-cols-3 gap-4 max-w-lg">
+            <div class="text-center">
+                <div class="text-2xl md:text-3xl font-black text-white">12.400+</div>
+                <div class="text-xs text-slate-400 mt-1 leading-tight">pais que<br>transformaram</div>
+            </div>
+            <div class="text-center border-l border-r border-white/10">
+                <div class="text-2xl md:text-3xl font-black text-white">94%</div>
+                <div class="text-xs text-slate-400 mt-1 leading-tight">sentiram<br>diferença em 14 dias</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl md:text-3xl font-black text-white">7 dias</div>
+                <div class="text-xs text-slate-400 mt-1 leading-tight">garantia<br>total</div>
+            </div>
+        </div>
+
+        <!-- Testimonial snippet -->
+        <div class="fade-up-6 mt-10 max-w-lg proof-pill rounded-2xl p-5">
+            <div class="flex gap-1 mb-3">
+                <span class="text-yellow-400 text-sm">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed italic">
+                "Eu tinha perdido a conexão com meu filho de 14 anos. Em 3 semanas usando o método, ele veio até mim para conversar sobre um problema na escola. Não acontecia há 2 anos."
+            </p>
+            <div class="flex items-center gap-3 mt-4">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-sm font-bold">M</div>
+                <div>
+                    <p class="text-white text-sm font-semibold">Marcos A.</p>
+                    <p class="text-slate-500 text-xs">Pai de 2 filhos · São Paulo</p>
+                </div>
+                <div class="ml-auto flex items-center gap-1 text-xs text-green-400">
+                    <span>✓</span> Verificado
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- ======== DESIGN NOTES (for reference) ======== -->
+    <!--
+    ANATOMIA DESTA HERO (Cold Traffic para Pais):
+
+    1. URGENCY PILL     → Prova social imediata — "12.400 pais já transformaram". Legitima antes do headline.
+    2. HEADLINE         → Bate na dor visceral: a janela de oportunidade com o filho está fechando.
+                          Usa tempo presente + emoção paterna/materna.
+    3. SUB-HEADLINE     → Valida o sentimento ("você ama mais do que tudo"), então nomeia o problema
+                          específico (palavras travam, filho não ouve). Termina com esperança.
+    4. PAIN AGITATION   → Lista de situações hiper-específicas. Cada linha é uma cena real que o pai reconhece.
+                          NÃO são generalizações. Cada "✗" aumenta a dor com precisão cirúrgica.
+    5. CTA PRIMÁRIO     → Linguagem de transformação no presente ("Quero reconectar AGORA").
+                          Não vende produto — vende o resultado emocional desejado.
+    6. MICRO-GARANTIA   → Remove objeção de risco logo abaixo do botão, sem ocupar espaço.
+    7. NÚMEROS          → 3 provas sociais em formato compacto. Ancoragem de confiança rápida.
+    8. TESTIMONIAL      → Depoimento ultra-específico: filho de 14 anos, 3 semanas, evento concreto.
+                          Específico = crível. Genérico = suspeito.
+
+    PALETA: Fundo azul-escuro (autoridade/seriedade) + laranja (urgência/calor/conexão humana)
+    -->
+
+</body>
+</html>

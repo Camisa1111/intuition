@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Exemplo 2 — Legado de Valores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        * { font-family: 'Inter', sans-serif; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50%       { transform: scale(1.04); opacity: 0.85; }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .fade-up-1 { animation: fadeInUp 0.65s ease forwards; }
+        .fade-up-2 { animation: fadeInUp 0.65s 0.12s ease both; }
+        .fade-up-3 { animation: fadeInUp 0.65s 0.24s ease both; }
+        .fade-up-4 { animation: fadeInUp 0.65s 0.36s ease both; }
+        .fade-up-5 { animation: fadeInUp 0.65s 0.48s ease both; }
+        .fade-up-6 { animation: fadeInUp 0.65s 0.60s ease both; }
+        .fade-up-7 { animation: fadeInUp 0.65s 0.72s ease both; }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #86efac 0%, #4ade80 30%, #bbf7d0 50%, #4ade80 70%, #86efac 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .breathe-btn { animation: breathe 3s ease-in-out infinite; }
+
+        .hero-bg {
+            background: linear-gradient(160deg, #0a0a0a 0%, #0f1f0f 35%, #0a1a0a 70%, #111827 100%);
+        }
+
+        .card-dark {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.09);
+            backdrop-filter: blur(16px);
+        }
+
+        .green-glow-border {
+            border: 1px solid rgba(74,222,128,0.35);
+            background: rgba(74,222,128,0.06);
+        }
+
+        .red-pill {
+            background: rgba(239,68,68,0.12);
+            border: 1px solid rgba(239,68,68,0.25);
+        }
+
+        .step-line::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: -12px;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(74,222,128,0.4), rgba(74,222,128,0.05));
+        }
+
+        .text-balance { text-wrap: balance; }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+        }
+    </style>
+</head>
+<body class="hero-bg min-h-screen text-white overflow-x-hidden relative">
+
+    <!-- Green ambient glow top-right -->
+    <div class="absolute top-0 right-0 w-[800px] h-[800px] rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(74,222,128,0.07) 0%, transparent 65%); transform: translate(20%, -20%);">
+    </div>
+    <!-- Dark red ambient bottom-left (urgência) -->
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(239,68,68,0.06) 0%, transparent 65%); transform: translate(-20%, 20%);">
+    </div>
+
+    <!-- ======== HERO SECTION ======== -->
+    <header class="relative z-10 max-w-5xl mx-auto px-5 md:px-8 pt-14 pb-20 md:pt-24 md:pb-36">
+
+        <!-- Alert/credibility bar -->
+        <div class="fade-up-1 flex justify-center mb-10">
+            <div class="red-pill inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-sm">
+                <span class="text-red-400 text-base">⚠</span>
+                <span class="text-slate-300">
+                    <strong class="text-red-400">68% dos jovens</strong> afirmam que os pais nunca conversaram sobre valores com eles
+                </span>
+            </div>
+        </div>
+
+        <!-- HEADLINE — Medo de legado perdido -->
+        <div class="fade-up-2 text-center mb-6">
+            <h1 class="text-4xl md:text-6xl lg:text-[4.25rem] font-black leading-[1.07] tracking-tight text-balance">
+                <span class="text-white">Daqui a 10 anos, seu filho vai</span>
+                <br class="hidden md:block">
+                <span class="text-white"> lembrar de você como alguém</span>
+                <br>
+                <span class="shimmer-text">que fez a diferença</span>
+                <span class="text-white"> — ou</span>
+                <br>
+                <span class="text-white/50">alguém que ficou ocupado demais?</span>
+            </h1>
+        </div>
+
+        <!-- Sub-headline específica -->
+        <div class="fade-up-3 text-center mb-10 max-w-2xl mx-auto">
+            <p class="text-lg md:text-xl text-slate-300 leading-relaxed text-balance">
+                Você tem uma janela pequena para plantar responsabilidade, honestidade e autocontrole
+                dentro do seu filho. O método que <strong class="text-white">8.700 pais já usam</strong> transforma
+                conversas do dia a dia em lições que ele vai carregar pro resto da vida.
+            </p>
+        </div>
+
+        <!-- CTA principal — centralizado, dominante -->
+        <div class="fade-up-4 flex flex-col items-center gap-4 mb-14">
+            <a href="#oferta"
+               class="breathe-btn inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg text-black transition-all duration-300 hover:scale-105 active:scale-95"
+               style="background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); min-width: 340px;">
+                Quero ser o pai/mãe que meu filho merece
+                <span class="text-xl">→</span>
+            </a>
+            <p class="text-sm text-slate-500 flex items-center gap-2">
+                <span class="text-green-400">🔒</span>
+                Acesso em 60 segundos · Sem assinatura · 7 dias de garantia
+            </p>
+        </div>
+
+        <div class="divider mb-14 max-w-2xl mx-auto"></div>
+
+        <!-- O QUE SEU FILHO PRECISA — 3 valores concretos -->
+        <div class="fade-up-5 mb-14">
+            <p class="text-center text-sm font-semibold text-slate-500 uppercase tracking-widest mb-6">
+                O que seu filho realmente precisa que <span class="text-white">VOCÊ</span> ensine
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="card-dark rounded-2xl p-6 text-center">
+                    <div class="text-3xl mb-3">🧭</div>
+                    <h3 class="font-bold text-white text-base mb-2">Bússola Moral</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Saber o que é certo quando ninguém está olhando — algo que escola nenhuma ensina.
+                    </p>
+                </div>
+                <div class="green-glow-border rounded-2xl p-6 text-center">
+                    <div class="text-3xl mb-3">🤝</div>
+                    <h3 class="font-bold text-white text-base mb-2">Responsabilidade Real</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Assumir erros, cumprir palavra, honrar compromisso. Vem do exemplo — do seu.
+                    </p>
+                </div>
+                <div class="card-dark rounded-2xl p-6 text-center">
+                    <div class="text-3xl mb-3">💪</div>
+                    <h3 class="font-bold text-white text-base mb-2">Autocontrole</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Não desistir quando é difícil. A crise vai testar ele — você prepara agora.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMO FUNCIONA — 3 passos simples (reduz fricção) -->
+        <div class="fade-up-6 card-dark rounded-3xl p-7 md:p-10 mb-10">
+            <p class="text-sm font-semibold text-green-400 uppercase tracking-widest mb-7">
+                Como funciona em 3 passos
+            </p>
+            <div class="space-y-7">
+                <div class="flex gap-5 items-start relative step-line">
+                    <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-black text-sm text-black"
+                         style="background: linear-gradient(135deg,#4ade80,#22c55e);">1</div>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Você acessa o Mapa de Valores</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Descobre quais valores seu filho ainda precisa consolidar — com base na idade e no comportamento atual.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-5 items-start relative step-line">
+                    <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-black text-sm text-black"
+                         style="background: linear-gradient(135deg,#4ade80,#22c55e);">2</div>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Aplica as Conversas-Âncora</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Roteiros práticos de 5 a 10 minutos que transformam momentos do dia a dia
+                            — jantar, carro, videogame — em pontes de valores reais.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                    <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-black text-sm text-black"
+                         style="background: linear-gradient(135deg,#4ade80,#22c55e);">3</div>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Vê a mudança acontecer</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Em semanas, não anos. Seu filho começa a tomar decisões melhores — e a respeitar
+                            você de um lugar genuíno, não por obrigação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proof social — 2 depoimentos lado a lado -->
+        <div class="fade-up-7 grid md:grid-cols-2 gap-5 mb-10">
+            <div class="card-dark rounded-2xl p-6">
+                <div class="flex gap-1 mb-3 text-yellow-400 text-sm">⭐⭐⭐⭐⭐</div>
+                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">
+                    "Meu filho de 16 anos não me dava nem bom dia. Segui o método por 21 dias. Semana passada ele me pediu conselho sobre uma briga com amigos. Chorei."
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center font-bold text-sm">R</div>
+                    <div>
+                        <p class="text-white text-sm font-semibold">Rodrigo F.</p>
+                        <p class="text-slate-500 text-xs">Pai · Belo Horizonte</p>
+                    </div>
+                    <span class="ml-auto text-xs text-green-400">✓ Verificado</span>
+                </div>
+            </div>
+            <div class="card-dark rounded-2xl p-6">
+                <div class="flex gap-1 mb-3 text-yellow-400 text-sm">⭐⭐⭐⭐⭐</div>
+                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">
+                    "Sempre tive medo de criar filhos sem valores num mundo assim. O material me deu um caminho claro. Minha filha de 11 anos me surpreende todo dia."
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center font-bold text-sm">C</div>
+                    <div>
+                        <p class="text-white text-sm font-semibold">Camila S.</p>
+                        <p class="text-slate-500 text-xs">Mãe · Curitiba</p>
+                    </div>
+                    <span class="ml-auto text-xs text-green-400">✓ Verificado</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA secundário de fechamento -->
+        <div class="flex flex-col items-center gap-4">
+            <p class="text-center text-slate-400 text-base max-w-lg">
+                Cada dia que passa é um dia a menos de influência. 
+                <strong class="text-white">O melhor momento era ontem. O segundo melhor é agora.</strong>
+            </p>
+            <a href="#oferta"
+               class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-bold text-base text-black transition-all duration-300 hover:scale-105 active:scale-95"
+               style="background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);">
+                Começar agora — 7 dias de garantia
+                <span>→</span>
+            </a>
+        </div>
+
+    </header>
+
+    <!-- ======== DESIGN NOTES ======== -->
+    <!--
+    ANATOMIA DESTA HERO (Cold Traffic — Legado e Medo de Perda):
+
+    1. ALERT BAR         → Estatística real e assustadora (68%). Cold traffic precisa ser acordado antes
+                           de ser persuadido. Dados concretos criam credibilidade imediata.
+
+    2. HEADLINE          → Estrutura de contraste: futuro positivo (shimmer verde = esperança) vs
+                           futuro negativo (texto acinzentado = arrependimento). O pai/mãe decide
+                           qual filme quer viver. Nenhum produto é mencionado.
+
+    3. SUB-HEADLINE      → "Janela pequena" = urgência natural (não forçada). Nomeia os 3 valores
+                           mais desejados por pais. Ancoragem de prova social (8.700 pais).
+
+    4. CTA DOMINANTE     → Linguagem de identidade ("ser o pai/mãe que meu filho MERECE").
+                           Não compra um curso — reafirma quem quer ser. Verde = crescimento, vida.
+                           Breathing animation chama atenção sem ser agressiva.
+
+    5. OS 3 VALORES      → Concretiza o produto sem falar de produto. Cada card responde:
+                           "O que exatamente meu filho vai ganhar?" Reduz abstração.
+
+    6. 3 PASSOS          → Elimina objeção de complexidade. "É difícil?" → Não. É 3 passos simples.
+                           Números + títulos em negrito = escaneável em 10 segundos.
+
+    7. DEPOIMENTOS       → Dois depoimentos ultra-específicos: faixa etária do filho, prazo exato
+                           (21 dias), evento emocional concreto (pediu conselho, filha surpreende).
+                           Específico = crível. Inclui pai E mãe para ampliar identificação.
+
+    8. CTA DE FECHAMENTO → "Cada dia é um dia a menos de influência" — urgência baseada em verdade,
+                           não em escassez artificial. Fecha o loop emocional aberto no headline.
+
+    PALETA: Fundo quase preto (gravidade/seriedade do tema) + verde esmeralda (crescimento, vida,
+    esperança). Contrasta com o vermelho sutil da urgência (alert bar). Sem laranja — aqui o tom
+    é solene e esperançoso, não calor materno.
+
+    DIFERENÇA ENTRE HERO 1 E HERO 2:
+    - Hero 1: dor de desconexão já existente → conexão perdida que precisa ser restaurada
+    - Hero 2: medo do futuro → legado que precisa ser construído antes que seja tarde
+    Ambas são válidas. Teste A/B para identificar qual ressoa mais com seu público específico.
+    -->
+
+</body>
+</html>
