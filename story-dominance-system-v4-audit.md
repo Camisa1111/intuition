@@ -584,3 +584,322 @@ Changements structurants :
 10. Fusion et simplification des filtres de validation.
 
 Principe directeur : aucune règle ajoutée si elle n'améliore pas Hook Rate, Hold Rate, Identification, Crédibilité ou Longévité créative.
+
+================================================================================
+
+# Addendum stratégique — Passage V4.0 vers V5.0
+
+Mission : intégrer les derniers commentaires de performance sans alourdir le système et sans produire de nouveaux créatifs.
+
+## Diagnostic général
+
+Le V4 a corrigé les faiblesses structurelles du V3 :
+
+- trop de dépendance à l'argent
+- manque de contrôle/dignité
+- absence de plan anti-fatigue
+- rigidité excessive des batches
+- manque de scènes sous-exploitées
+
+Mais le V4 avait encore quatre risques opérationnels :
+
+1. Trop de temps passé dans l'émotion.
+2. Curiosité narrative insuffisamment explicite.
+3. Mécanisme rendu visible trop tard.
+4. Diversité psychologique encore trop proche de l'axe argent/salaire.
+
+Le V5 ne cherche donc pas à ajouter du volume.
+Il cherche à augmenter la performance par contraintes plus simples et plus décisives.
+
+================================================================================
+
+## Ajustement 1 — Réduire la narration émotionnelle excessive
+
+### Problème
+
+Le V4 optimisait fortement :
+
+- souvenir
+- émotion
+- pensée non dite
+- tension
+- contrôle
+
+Risque : produire des créatifs qui restent trop longtemps dans le ressenti.
+
+Meta ne récompense pas une scène qui explique longtemps comment la personne se sent.
+Meta récompense une scène qui avance.
+
+### Décision V5
+
+Remplacer la logique implicite "tension non dite" par :
+
+TENSION + MOUVEMENT
+
+Question ajoutée :
+
+"Qu'est-ce qui se passe dans cette scène ?"
+
+Règle ajoutée :
+
+Le créatif ne peut jamais rester plus de 5 secondes uniquement dans le ressenti.
+
+### Impact attendu
+
+- meilleur hold rate 3–8 secondes
+- moins de lenteur narrative
+- progression plus claire vers micro-victoire/preuve
+
+================================================================================
+
+## Ajustement 2 — Ajouter la curiosité organique
+
+### Problème
+
+Le V4 optimisait :
+
+- reconnaissance
+- identification
+- naturalité
+- crédibilité
+
+Mais la curiosité n'était pas assez structurée.
+
+Or la reconnaissance seule ne suffit pas.
+La spectatrice doit aussi vouloir voir la scène suivante.
+
+### Décision V5
+
+Nouvelle section : CURIOSITÉ ORGANIQUE.
+
+Interdiction de curiosité marketing :
+
+- secret
+- astuce
+- hack
+- méthode cachée
+- découverte incroyable
+
+Autorisation de curiosité narrative :
+
+- événement inattendu
+- message reçu
+- demande spontanée
+- situation incomplète
+- réaction surprenante
+
+Question de validation :
+
+"Pourquoi la spectatrice voudrait-elle voir la scène suivante ?"
+
+### Impact attendu
+
+- amélioration du CTR
+- amélioration du hold rate 8–15 secondes
+- meilleure transition entre identification et croyance
+
+================================================================================
+
+## Ajustement 3 — Montrer le mécanisme plus tôt
+
+### Problème
+
+Le V4 protégeait fortement contre la détection publicitaire.
+Mais cette protection pouvait cacher trop longtemps ce qui rend l'histoire possible.
+
+Risque : le créatif devient une histoire émotionnelle, puis révèle trop tard l'activité.
+
+### Décision V5
+
+Le mécanisme doit apparaître entre 5 et 10 secondes.
+
+Mais il doit apparaître visiblement, pas commercialement.
+
+Autorisé :
+
+- geste concret
+- pot rempli
+- étiquette collée
+- commande préparée
+- message reçu
+- produit manipulé
+
+Interdit :
+
+- expliquer la méthode
+- promettre un revenu
+- présenter l'offre
+- faire un calcul
+
+### Impact attendu
+
+- meilleure compréhension de l'histoire
+- moins de décrochage avant la méthode
+- meilleur équilibre entre naturalité et direct response
+
+================================================================================
+
+## Ajustement 4 — Maintenir la correction "Argent à moi"
+
+### Diagnostic
+
+Le remplacement d'Argent à moi par Contrôle retrouvé reste validé.
+
+Il n'est pas nécessaire de revenir à l'ancien mécanisme.
+
+### Décision V5
+
+Conserver Contrôle retrouvé comme mécanisme principal.
+Ajouter seulement des mécanismes complémentaires autour de :
+
+- liberté mentale
+- fierté personnelle
+- transmission
+- utilité visible
+
+### Impact attendu
+
+- moins de répétition du revenu complémentaire
+- plus de profondeur psychologique
+- meilleure longévité créative
+
+================================================================================
+
+## Ajustement 5 — Forcer des angles psychologiquement distincts
+
+### Problème
+
+Même avec sept mécanismes, le V4 pouvait encore orbiter autour de :
+
+"Mon salaire ne suffit pas."
+
+Cela crée une variété superficielle.
+Pas une variété psychologique.
+
+### Décision V5
+
+Nouvelle section : DIVERSIFICATION PSYCHOLOGIQUE.
+
+Le batch doit couvrir plusieurs moteurs :
+
+- argent
+- identité
+- fierté
+- liberté mentale
+- contrôle
+- reconnaissance sociale
+- famille
+- utilité
+- accomplissement
+- créativité
+- transmission
+
+Règle ajoutée :
+
+Le même moteur émotionnel ne peut représenter plus de 30% du batch.
+
+### Impact attendu
+
+- meilleure scalabilité
+- fatigue plus lente
+- angles plus distincts pour Meta
+- moins de cannibalisation créative
+
+================================================================================
+
+## Nouveaux mécanismes V5
+
+Le V5 conserve les mécanismes forts du V4 et ajoute seulement ceux qui augmentent réellement diversité et scalabilité.
+
+### Liberté mentale
+
+Émotion : soulagement psychologique.
+
+Rôle : sortir du calcul permanent, de l'anticipation du manque, de la charge mentale budgétaire.
+
+Pourquoi supérieur : ce mécanisme vend l'apaisement, pas l'argent.
+
+### Fierté personnelle
+
+Émotion : accomplissement.
+
+Rôle : rendre visible le sentiment "c'est moi qui l'ai fait".
+
+Pourquoi supérieur : il donne une raison émotionnelle de continuer au-delà du revenu.
+
+### Transmission
+
+Émotion : exemple pour les enfants.
+
+Rôle : montrer qu'on peut créer quelque chose, décider, construire.
+
+Pourquoi supérieur : il élargit l'angle famille sans tomber dans la culpabilité.
+
+### Utilité visible
+
+Émotion : validation sociale.
+
+Rôle : les gens demandent, reviennent, recommandent.
+
+Pourquoi supérieur : il transforme la preuve en valeur sociale.
+
+================================================================================
+
+## Modèle final V5
+
+SOUVENIR PRÉCIS
+→ RECONNAISSANCE IMMÉDIATE
+→ TENSION NON DITE
+→ DÉSIR DE CONTRÔLE
+→ MOUVEMENT NARRATIF
+→ CURIOSITÉ ORGANIQUE
+→ MICRO-VICTOIRE
+→ PREUVE ÉVÉNEMENTIELLE
+→ PROJECTION PROCHE
+→ MÉTHODE ACCESSIBLE
+→ CTA LOGIQUE
+
+Ce modèle est supérieur au V4 parce qu'il ajoute :
+
+- progression
+- curiosité
+- mécanisme visible tôt
+- diversification psychologique
+
+sans ajouter une longue couche de règles décoratives.
+
+================================================================================
+
+## Priorisation V5
+
+| Amélioration | Impact potentiel | Difficulté | Priorité |
+|---|---|---|---|
+| Ajouter curiosité organique | Très élevé | Faible | Haute |
+| Ajouter mouvement narratif | Très élevé | Faible | Haute |
+| Montrer le mécanisme entre 5 et 10 sec | Très élevé | Moyen | Haute |
+| Ajouter diversification psychologique | Très élevé | Moyen | Haute |
+| Conserver Contrôle retrouvé | Élevé | Faible | Haute |
+| Ajouter Liberté mentale | Élevé | Faible | Haute |
+| Ajouter Fierté personnelle | Moyen à élevé | Faible | Moyenne |
+| Ajouter Transmission | Moyen | Moyen | Moyenne |
+| Ajouter Utilité visible | Élevé | Faible | Haute |
+| Ajouter davantage de règles narratives | Faible | Élevée | Faible |
+
+================================================================================
+
+## Résultat du refactoring V5
+
+Appliqué dans `essence-rentable-story-dominance-system.md`.
+
+Changements structurants :
+
+1. Renommage en ESSENCE RENTABLE — STORY DOMINANCE SYSTEM V5.0.
+2. Ajout de Curiosité Organique.
+3. Ajout de Mouvement Narratif.
+4. Ajout de Mécanisme Visible Tôt.
+5. Ajout de Diversification Psychologique.
+6. Conservation de Contrôle retrouvé.
+7. Ajout de Liberté mentale, Fierté personnelle, Transmission et Utilité visible.
+8. Maintien d'un prompt de production compact et orienté performance.
+
+Principe directeur : le V5 doit produire reconnaissance, curiosité, diversité et scalabilité sans transformer le système en manuel trop lourd.
