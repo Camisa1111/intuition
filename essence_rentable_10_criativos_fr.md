@@ -12,6 +12,14 @@ Regras aplicadas em todos os criativos:
 - Números usados apenas do banco canônico: 40 €, 2 €, 20 pots, 9 €, plus de 130 €, 65 €, 4 heures, 27 €, 14 jours, Plus de 2 500 femmes.
 - Primary texts sempre com disclaimer: "Les résultats varient selon les efforts et le contexte de chaque personne."
 
+Arquitetura otimizada de números:
+- Não usar unidades de peso, formatos de embalagem ou qualquer unidade nova enquanto não estiver no banco canônico. A forma segura é "une fournée", "un pot", "20 pots" e "matière première".
+- Começar pelo menor número visual: "un pot revient à 2 €". Só depois mostrar "9 € le pot" e "20 pots".
+- Evitar número agregado grande de faturamento. O avatar deve calcular a arbitragem visualmente; o copy fecha apenas com "il reste plus de 130 €".
+- Mostrar números como etiquetas e overlays, não como promessa pesada: etiqueta "2 €", etiqueta "9 €", linha "20 pots", timer "4 heures".
+- "40 €" sempre como custo total da fournée, sem separar ingredientes de embalagem.
+- Para sensação de baixo risco: ligar "27 €" e "14 jours" aos primary texts e CTA, não ao hook.
+
 ---
 
 ## Criativo 01 - S1 Maman / pergunta de dor
@@ -19,11 +27,11 @@ Regras aplicadas em todos os criativos:
 ### 1. Script com timecodes
 
 ```
-[00:00] Tu es maman et tu en as assez
-        de voir ton salaire fondre ?
+[00:00] T'es maman, et t'en as marre
+        de voir ton salaire partir trop vite ?
 
 [00:03] Fin de mois.
-        Toujours le même calcul.
+        Toujours les mêmes calculs.
 
 [00:06] C'était pas un manque d'effort.
         C'était pas un manque de talent.
@@ -31,20 +39,21 @@ Regras aplicadas em todos os criativos:
 [00:09] Le problème, c'est la méthode.
 
 [00:12] Le calcul :
-        40 € de matière première.
+        Coût : 2 € le pot.
 
-[00:15] 20 pots. 9 € chacun.
-        Plus de 130 € de bénéfice.
+[00:15] 20 pots.
+        40 € au total.
 
-[00:18] En 4 heures.
-        Ce week-end.
+[00:18] Vendu 9 € le pot.
+        Plus de 130 €.
+        En 4 heures.
 
 [00:21] Essence Rentable te donne :
         formulation certifiée, fournisseurs en gros,
         script de vente. Avec certificat.
 
 [00:24] Plus de 2 500 femmes
-        qui en avaient aussi assez -
+        en étaient là aussi :
         Sophie vend à ses voisines sur WhatsApp.
         Marie tient un stand au marché.
         Carole n'a pas quitté son CDI.
@@ -57,7 +66,7 @@ Regras aplicadas em todos os criativos:
 
 ### 2. Note de production
 
-- Tom do hook: calmo, quase confidencial, sem entusiasmo comercial; primeira linha falada como constatacao.
+- Tom do hook: calmo, quase confidencial, sem entusiasmo comercial; primeira linha falada como constatação.
 - Pausas: 0,5s depois de "maman"; 0,5s depois de "fondre"; 0,5s entre as duas negações; 1s antes de "Le calcul".
 - Cores: hook em dourado/amarelo; custos em branco; "9 €" e "plus de 130 €" em verde; garantia em branco; CTA em verde brilhante.
 - Footage: mãos abrindo pote de vidro; sal colorido caindo em bowl; etiqueta de preço sendo colada; embalagem final em close extremo.
@@ -65,7 +74,7 @@ Regras aplicadas em todos os criativos:
 
 ### 3. Primary Text A
 
-Tu bosses, tu gères la maison, et à la fin du mois il ne reste presque rien qui soit à toi. Une fournée simple peut changer le calcul : 40 € de matière première, 20 pots, 9 € chacun, plus de 130 € de bénéfice en 4 heures. Essence Rentable te montre la formulation certifiée, les fournisseurs et le script de vente. Les résultats varient selon les efforts et le contexte de chaque personne.
+Tu bosses, tu gères la maison, et à la fin du mois il ne reste presque rien pour toi. Un pot revient à 2 €. Une fournée fait 20 pots, pour 40 € au total. Vendu 9 € le pot, il reste plus de 130 € en 4 heures. Le piège, c'est de croire que c'est une recette magique. C'est une méthode. Essence Rentable te montre la formulation certifiée, les fournisseurs et le script de vente. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
@@ -86,10 +95,10 @@ C'était pas un manque d'effort. C'était pas un manque de talent. Il manquait u
 ### 1. Script com timecodes
 
 ```
-[00:00] Dans trois semaines,
+[00:00] Bientôt,
         les enfants sont en vacances.
 
-[00:03] Et le salaire reste le même.
+[00:03] Et ton salaire, lui, ne bouge pas.
 
 [00:06] C'était pas une question de chance.
         C'était pas une question d'abonnés.
@@ -98,23 +107,24 @@ C'était pas un manque d'effort. C'était pas un manque de talent. Il manquait u
         que c'est trop compliqué.
 
 [00:12] Le calcul :
-        40 € de matière première.
+        Coût : 2 € le pot.
 
-[00:15] 20 pots. 9 € chacun.
-        Plus de 130 € de bénéfice.
+[00:15] 20 pots.
+        40 € au total.
 
-[00:18] En 4 heures.
-        Avant le week-end prochain.
+[00:18] Vendu 9 € le pot.
+        Plus de 130 €.
+        En 4 heures.
 
 [00:21] Essence Rentable te donne :
         formulation certifiée, fournisseurs en gros,
         script de vente. Avec certificat.
 
 [00:24] Plus de 2 500 femmes
-        qui en avaient aussi assez -
+        en étaient là aussi :
         Sophie vend à ses voisines sur WhatsApp.
         Marie tient un stand au marché.
-        Carole a commencé avec son CDI.
+        Carole a commencé sans quitter son CDI.
 
 [00:27] Sans caméra, sans matériel, sans expérience.
         14 jours de garantie.
@@ -125,13 +135,13 @@ C'était pas un manque d'effort. C'était pas un manque de talent. Il manquait u
 
 - Tom do hook: sério e doméstico; como quem olha o calendário da cozinha e faz a conta.
 - Pausas: 0,5s depois de "vacances"; 0,8s antes de "Et le salaire"; 0,5s entre as negações; 1s antes do cálculo.
-- Cores: "vacances" em amarelo; "salaire reste le même" em laranja; math em branco/verde; CTA em verde brilhante.
+- Cores: "vacances" em amarelo; "ton salaire ne bouge pas" em laranja; math em branco/verde; CTA em verde brilhante.
 - Footage: calendário de junho/julho desfocado ao fundo; mãos preparando sais; potes alinhados; etiqueta de preço.
 - Thumbnail: ingredientes botânicos + pequeno calendário ao fundo + pote pronto. Proibido: qualquer elemento de transferência bancária.
 
 ### 3. Primary Text A
 
-Les vacances arrivent. Les dépenses bougent. Le salaire, lui, reste le même. Une fournée : 40 € de matière première, 20 pots, 9 € chacun, plus de 130 € de bénéfice possible en 4 heures. Essence Rentable te donne la méthode concrète pour commencer. Les résultats varient selon les efforts et le contexte de chaque personne.
+Les vacances arrivent. Les dépenses montent. Ton salaire, lui, ne bouge pas. Un pot revient à 2 €. Une fournée fait 20 pots, pour 40 € au total. Vendu 9 € le pot, il reste plus de 130 € en 4 heures. Essence Rentable te donne la méthode concrète pour commencer. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
@@ -140,7 +150,7 @@ Pas besoin d'abonnés. Pas besoin de boutique. Tu peux commencer par le voisinag
 ### 5. Diagnostic stratégique
 
 - Tier do hook: S1 - Pergunta de dor com anchor JUNHO.
-- Mecanismo central: pressão temporal real + despesa famíliar previsível.
+- Mecanismo central: pressão temporal real + despesa familiar previsível.
 - Hipótese de queda: sec 06 se a audiência sem filhos receber o criativo; usar apenas segmentação maman.
 - KPIs: hold sec 3, hold sec 15, CPL por segmento maman, CPA.
 - Fase de teste: JUNHO imediato, válido até aproximadamente 5 julho.
@@ -153,23 +163,25 @@ Pas besoin d'abonnés. Pas besoin de boutique. Tu peux commencer par le voisinag
 
 ```
 [00:00] Vendredi soir,
-        130 € sont tombés sur mon compte.
+        le calcul avait changé.
 
 [00:03] Pas avec une boutique.
         Pas avec des abonnés.
 
-[00:06] Avec 20 pots faits chez moi.
+[00:06] Avec une fournée faite chez moi.
 
-[00:09] Le problème n'est pas
-        de ne pas pouvoir.
+[00:09] Le problème, c'est pas
+        que tu n'en es pas capable.
 
 [00:12] C'est de croire
         que c'est trop compliqué.
 
 [00:15] Le calcul :
-        40 €. 20 pots. 9 € chacun.
+        2 € le pot.
+        Vendu 9 €.
 
-[00:18] Plus de 130 € de bénéfice.
+[00:18] 20 pots. 40 € au total.
+        Plus de 130 €.
         En 4 heures.
 
 [00:21] Essence Rentable te donne :
@@ -177,7 +189,7 @@ Pas besoin d'abonnés. Pas besoin de boutique. Tu peux commencer par le voisinag
         script de vente. Avec certificat.
 
 [00:24] Plus de 2 500 femmes
-        ont leur vendredi comme ça maintenant -
+        ont commencé comme ça :
         Sophie vend à ses voisines.
         Marie tient un stand au marché.
         Carole n'a pas quitté son CDI.
@@ -191,23 +203,23 @@ Pas besoin d'abonnés. Pas besoin de boutique. Tu peux commencer par le voisinag
 
 - Tom do hook: baixo, factual, sem sorriso; "Vendredi soir" deve soar como memória específica.
 - Pausas: 0,7s depois de "Vendredi soir"; 0,5s entre "boutique" e "abonnés"; 1s antes de "Le calcul".
-- Cores: "130 €" em dourado; negações em branco; villain em laranja; lucro em verde brilhante.
+- Cores: "plus de 130 €" em dourado; negações em branco; villain em laranja; lucro em verde brilhante.
 - Footage: pote sendo fechado; etiqueta "9 €"; 20 potes em fila; mãos colocando em sacola kraft.
 - Thumbnail: embalagem final pronta para venda com preço visível. Proibido: print de conta, app bancário ou notificação de pagamento.
 
 ### 3. Primary Text A
 
-Vendredi soir, le calcul peut être différent. Pas avec une boutique. Pas avec des abonnés. Avec 20 pots faits chez toi, une méthode claire et un script de vente simple. Les résultats varient selon les efforts et le contexte de chaque personne.
+Vendredi soir, tu peux avoir un autre calcul devant toi. Pas avec une boutique. Pas avec des abonnés. Avec 20 pots faits chez toi, une méthode claire et un script de vente simple. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
-40 €. 20 pots. 9 € chacun. Plus de 130 € de bénéfice possible en 4 heures. Si tu pensais que c'était trop compliqué, commence par apprendre la méthode. Les résultats varient selon les efforts et le contexte de chaque personne.
+2 € à fabriquer. 9 € le pot. 20 pots par fournée. Plus de 130 € en 4 heures. Si tu pensais que c'était trop compliqué, commence par apprendre la méthode. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 5. Diagnostic stratégique
 
 - Tier do hook: S2 - Resultado seco / renda-prova.
 - Mecanismo central: peak receptivity de sexta-feira + prova numérica direta.
-- Hipótese de queda: sec 00 se "tombés sur mon compte" gerar suspeita visual; por isso zero comprovante no footage.
+- Hipótese de queda: sec 00 se "le calcul avait changé" gerar suspeita visual; por isso zero comprovante no footage.
 - KPIs: thumbstop, hold sec 15, CTR, CPA e taxa de rejeição na landing.
 - Fase de teste: Fase 1, split 50/50 contra S1.
 
@@ -227,29 +239,28 @@ Vendredi soir, le calcul peut être différent. Pas avec une boutique. Pas avec 
 [00:06] C'était pas une recette magique.
         C'était pas du hasard.
 
-[00:09] C'était la méthode.
+[00:09] C'était juste la bonne méthode.
 
 [00:12] Le calcul :
-        40 € de matière première.
+        Coût : 2 € le pot.
 
-[00:15] 20 pots par fournée.
-        9 € par pot.
+[00:15] 20 pots.
+        40 € au total.
 
-[00:18] 180 € de revenu total.
-        Moins 40 €.
-
-[00:21] Il reste plus de 130 €.
+[00:18] Vendu 9 € le pot.
+        Plus de 130 €.
         En 4 heures.
 
-[00:24] Essence Rentable te donne :
+[00:21] Essence Rentable te donne :
         formulation certifiée, fournisseurs en gros,
         script de vente. Avec certificat.
 
-[00:27] Plus de 2 500 femmes ont commencé -
+[00:24] Plus de 2 500 femmes ont commencé :
         Sophie vend à ses voisines.
-        Marie tient un stand au marché.
-        Carole n'a pas quitté son CDI.
-        Sans caméra, sans matériel, sans expérience.
+        Marie vend au marché.
+        Carole garde son CDI.
+
+[00:27] Sans caméra, sans matériel, sans expérience.
         14 jours de garantie.
         Inscris-toi maintenant.
 ```
@@ -264,11 +275,11 @@ Vendredi soir, le calcul peut être différent. Pas avec une boutique. Pas avec 
 
 ### 3. Primary Text A
 
-Ça coûte environ 2 € par pot à fabriquer. Ça se vend environ 9 €. Sur une fournée de 20 pots, le calcul devient simple. Essence Rentable te montre la formulation certifiée, les fournisseurs en gros et le script de vente. Les résultats varient selon les efforts et le contexte de chaque personne.
+Un pot revient à 2 € à fabriquer. Il peut se vendre 9 €. Sur une fournée de 20 pots, le calcul devient simple. Le piège, c'est de croire que c'est une recette magique. C'est une méthode. Essence Rentable te montre la formulation certifiée, les fournisseurs en gros et le script de vente. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
-Ce n'est pas une recette magique. Ce n'est pas du hasard. C'est une méthode : 40 € de matière première, 20 pots, 9 € chacun, plus de 130 € de bénéfice possible en 4 heures. Les résultats varient selon les efforts et le contexte de chaque personne.
+Ce n'est pas une recette magique. Ce n'est pas du hasard. C'est une méthode : 2 € à fabriquer, 9 € le pot, 20 pots par fournée, plus de 130 € en 4 heures. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 5. Diagnostic stratégique
 
@@ -286,24 +297,25 @@ Ce n'est pas une recette magique. Ce n'est pas du hasard. C'est une méthode : 4
 
 ```
 [00:00] Pharmacie : 9 €.
-        Ma cuisine : 2 €.
+        Chez moi : 2 €.
 
 [00:03] Tu vois la différence ?
 
 [00:06] C'était pas une grande marque.
         C'était pas une boutique.
 
-[00:09] C'était la formulation
+[00:09] C'était la bonne formulation,
         et les bons fournisseurs.
 
 [00:12] Le calcul :
-        40 € de matière première.
+        Coût : 2 € le pot.
 
-[00:15] 20 pots. 9 € chacun.
-        Plus de 130 € de bénéfice.
+[00:15] 20 pots.
+        40 € au total.
 
-[00:18] En 4 heures.
-        Sans quitter ton CDI.
+[00:18] Vendu 9 € le pot.
+        Plus de 130 €.
+        En 4 heures.
 
 [00:21] Essence Rentable te donne :
         formulation certifiée, fournisseurs en gros,
@@ -323,13 +335,13 @@ Ce n'est pas une recette magique. Ce n'est pas du hasard. C'est une méthode : 4
 
 - Tom do hook: neutro, quase comparativo de supermercado; sem indignação.
 - Pausas: 0,5s depois de cada preço; 0,8s antes de "Tu vois"; 1s antes do math.
-- Cores: "Pharmacie : 9 €" em vermelho; "Ma cuisine : 2 €" em verde; "différence" em amarelo; lucro em verde brilhante.
+- Cores: "Pharmacie : 9 €" em vermelho; "Chez moi : 2 €" em verde; "différence" em amarelo; lucro em verde brilhante.
 - Footage: split screen farmácia/desfoque de prateleira a esquerda e cozinha doméstica a direita; mãos misturando; pote com etiqueta.
 - Thumbnail: split screen farmácia vs cozinha, 9 € em vermelho e 2 € em verde. Proibido: comprovantes, virement ou saldo bancário.
 
 ### 3. Primary Text A
 
-En pharmacie, un pot peut coûter autour de 9 €. Chez toi, le coût peut tourner autour de 2 € par pot quand tu suis la bonne méthode. La différence, ce n'est pas la chance. C'est la formulation, les fournisseurs et le script de vente. Les résultats varient selon les efforts et le contexte de chaque personne.
+En pharmacie, un pot peut coûter autour de 9 €. Chez toi, un pot peut revenir à 2 € quand tu suis la bonne méthode. La différence, ce n'est pas la chance. C'est la formulation, les fournisseurs et le script de vente. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
@@ -352,22 +364,24 @@ Pas besoin d'une grande marque. Pas besoin d'une boutique. Commence avec une fou
 ```
 [00:00] Tu bosses, tu te donnes à fond.
 
-[00:03] Tu testes des recettes.
-        Et rien ne se vend.
+[00:03] Tu testes des recettes vues en ligne.
+        Et au final, rien ne se vend.
 
 [00:06] C'était pas toi.
         C'était pas le produit.
 
-[00:09] Les vidéos donnent une recette.
-        Pas les dosages.
+[00:09] Les vidéos gratuites te donnent une recette.
+        Pas les bons dosages.
 
 [00:12] Pas les fournisseurs.
         Pas le script de vente.
 
 [00:15] Le calcul :
-        40 €. 20 pots. 9 € chacun.
+        2 € le pot.
+        Vendu 9 €.
 
-[00:18] Plus de 130 € de bénéfice.
+[00:18] 20 pots. 40 € au total.
+        Plus de 130 €.
         En 4 heures.
 
 [00:21] Essence Rentable te donne :
@@ -375,14 +389,13 @@ Pas besoin d'une grande marque. Pas besoin d'une boutique. Commence avec une fou
         script de vente. Avec certificat.
 
 [00:24] Plus de 2 500 femmes
-        avaient essayé avant, sans résultat -
+        avaient déjà essayé sans savoir quoi changer :
         Sophie vend à ses voisines.
         Marie tient un stand au marché.
         Carole n'a pas quitté son CDI.
 
 [00:27] Sans caméra, sans matériel, sans expérience.
-        T'as déjà mis l'effort.
-        Il manquait juste la méthode.
+        14 jours de garantie.
         Inscris-toi maintenant.
 ```
 
@@ -396,11 +409,11 @@ Pas besoin d'une grande marque. Pas besoin d'une boutique. Commence avec une fou
 
 ### 3. Primary Text A
 
-Si tu as déjà testé des recettes en ligne et que le produit n'était pas assez beau pour être vendu, ce n'était pas toi. Il manquait les dosages, les fournisseurs et le script. Essence Rentable te donne la méthode complète. Les résultats varient selon les efforts et le contexte de chaque personne.
+Si tu as déjà testé des recettes en ligne et que le résultat ne faisait pas assez pro pour être vendu, ce n'était pas toi. Il manquait les dosages, les fournisseurs et le script. Essence Rentable te donne la méthode complète. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
-Les vidéos gratuites donnent une recette. Pas les fournisseurs. Pas les dosages. Pas le script de vente. Si tu as déjà mis l'effort, commence avec une méthode claire. Les résultats varient selon les efforts et le contexte de chaque personne.
+Les vidéos gratuites te donnent une recette. Pas les fournisseurs. Pas les dosages. Pas le script de vente. Si tu as déjà mis l'effort, commence avec une méthode claire. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 5. Diagnostic stratégique
 
@@ -421,21 +434,23 @@ Les vidéos gratuites donnent une recette. Pas les fournisseurs. Pas les dosages
         c'était mes voisines de palier.
 
 [00:03] Pas une boutique.
-        Pas des abonnés.
+        Pas une audience.
 
-[00:06] Juste des pots propres,
+[00:06] Juste des pots bien présentés,
         et un message clair.
 
-[00:09] Le problème n'est pas
+[00:09] Le souci, c'est pas
         de ne pas avoir d'audience.
 
-[00:12] C'est de ne pas savoir
-        quoi vendre, ni comment.
+[00:12] C'est de savoir quoi proposer,
+        et comment le dire.
 
 [00:15] Le calcul :
-        40 €. 20 pots. 9 € chacun.
+        2 € le pot.
+        Vendu 9 €.
 
-[00:18] Plus de 130 € de bénéfice.
+[00:18] 20 pots. 40 € au total.
+        Plus de 130 €.
         En 4 heures.
 
 [00:21] Essence Rentable te donne :
@@ -458,12 +473,12 @@ Les vidéos gratuites donnent une recette. Pas les fournisseurs. Pas les dosages
 - Tom do hook: história curta, simples, sem dramatização.
 - Pausas: 0,5s depois de "clientes"; 0,5s entre as negações; 1s antes de "Le calcul".
 - Cores: "voisines de palier" em amarelo; negações em branco; "audience" em laranja; lucro em verde.
-- Footage: mãos escrevendo etiqueta; 3 potes em sacola kraft; mensagem WhatsApp representada por cartão físico, não tela real com dados; stand simples em mesa.
+- Footage: mãos escrevendo etiqueta; potes em sacola kraft; mensagem WhatsApp representada por cartão físico, não tela real com dados; stand simples em mesa.
 - Thumbnail: embalagem pronta em sacola kraft, sem tela de celular mostrando pagamento.
 
 ### 3. Primary Text A
 
-Tes premières clientes n'ont pas besoin d'être des inconnues sur Instagram. Elles peuvent être tes voisines, une collègue, une personne du marché. Essence Rentable te donne le produit, les fournisseurs et le script pour commencer simplement. Les résultats varient selon les efforts et le contexte de chaque personne.
+Le problème n'est pas d'avoir des inconnues sur Instagram. C'est de savoir quoi vendre, et comment le dire. Tes premières clientes peuvent être tes voisines, une collègue, quelqu'un rencontré au marché. Essence Rentable te donne le produit, les fournisseurs et le script pour commencer simplement. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
@@ -487,31 +502,34 @@ Pas de boutique. Pas d'abonnés. Pas de caméra. Une fournée, des pots propres,
 [00:00] T'as pas de baignoire ?
         C'est pas un problème.
 
-[00:03] C'est une opportunité.
+[00:03] Justement : tu fabriques pour vendre.
 
-[00:06] C'était pas vendre à toi-même.
-        C'était pas remplir ta salle de bain.
+[00:06] Le but, c'est pas
+        de te vendre le produit à toi-même.
 
-[00:09] C'était fabriquer un produit
+[00:09] C'est fabriquer un produit
         que d'autres achètent.
 
 [00:12] Le calcul :
-        40 €. 20 pots. 9 € chacun.
+        Coût : 2 € le pot.
 
-[00:15] Plus de 130 € de bénéfice.
+[00:15] 20 pots.
+        40 € au total.
+
+[00:18] Vendu 9 € le pot.
+        Plus de 130 €.
         En 4 heures.
-
-[00:18] Avec voisinage,
-        marchés, réseaux si tu veux.
 
 [00:21] Essence Rentable te donne :
         formulation certifiée, fournisseurs en gros,
-        script de vente. Avec certificat.
+        script pour vendre autour de toi,
+        aux marchés, ou sur les réseaux si tu veux.
+        Avec certificat.
 
-[00:24] Plus de 2 500 femmes ont commencé -
+[00:24] Plus de 2 500 femmes ont commencé :
         Sophie vend à ses voisines.
-        Marie tient un stand au marché.
-        Carole n'a pas quitté son CDI.
+        Marie vend au marché.
+        Carole garde son CDI.
 
 [00:27] Sans caméra, sans matériel, sans expérience.
         14 jours de garantie.
@@ -520,9 +538,9 @@ Pas de boutique. Pas d'abonnés. Pas de caméra. Une fournée, des pots propres,
 
 ### 2. Note de production
 
-- Tom do hook: leve, mas não brincalhao; como uma objeção resolvida.
+- Tom do hook: leve, mas não brincalhão; como uma objeção resolvida.
 - Pausas: 0,7s depois da pergunta; 0,5s depois de "problème"; 1s antes do cálculo.
-- Cores: pergunta em amarelo; "pas un problème" em branco; "opportunité" em verde; lucro em verde brilhante.
+- Cores: pergunta em amarelo; "pas un problème" em branco; "tu fabriques pour vendre" em verde; lucro em verde brilhante.
 - Footage: cozinha pequena; potes sobre bancada; zero banheiro; mãos dosando ingredientes e fechando embalagem.
 - Thumbnail: bancada de cozinha pequena com ingredientes botânicos. Proibido: banheira como promessa central, dinheiro ou pagamento.
 
@@ -532,13 +550,13 @@ Tu n'as pas besoin d'avoir une baignoire pour vendre un produit bien-être. Tu a
 
 ### 4. Primary Text B
 
-Le problème n'est pas la baignoire. Le problème, c'est de croire que tu dois avoir tout le matériel avant de commencer. Une fournée simple suffit pour apprendre le calcul. Les résultats varient selon les efforts et le contexte de chaque personne.
+Le vrai sujet, ce n'est pas d'avoir une baignoire. Le problème, c'est de croire que tu dois avoir tout le matériel avant de commencer. Une fournée simple suffit pour apprendre le calcul. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 5. Diagnostic stratégique
 
 - Tier do hook: A - Barrier removal.
 - Mecanismo central: transforma limitação doméstica em oportunidade comercial.
-- Hipótese de queda: sec 03 se "opportunité" soar abstrato; reforçar imediatamente com produto vendido a terceiros.
+- Hipótese de queda: sec 03 se "tu fabriques pour vendre" soar abstrato; reforçar imediatamente com produto vendido a terceiros.
 - KPIs: hold sec 6, CTR e comentários sobre espaço/material.
 - Fase de teste: subsegmentos urbanos ou audiências com objeção de infraestrutura.
 
@@ -549,38 +567,41 @@ Le problème n'est pas la baignoire. Le problème, c'est de croire que tu dois a
 ### 1. Script com timecodes
 
 ```
-[00:00] Tu bosses 22 jours
+[00:00] Tu bosses toute la semaine
         pour ton employeur.
 
 [00:03] Et ton compte
-        reste au même niveau.
+        ne bouge presque pas.
 
 [00:06] C'était pas parce que tu fais trop peu.
         C'était pas parce que tu manques d'idée.
 
-[00:09] Le problème, c'est de repousser
-        une méthode simple.
+[00:09] Le problème, c'est qu'on repousse
+        toujours le moment de commencer.
 
 [00:12] Le calcul :
-        40 €. 20 pots. 9 € chacun.
+        Coût : 2 € le pot.
 
-[00:15] Plus de 130 € de bénéfice.
+[00:15] 20 pots.
+        40 € au total.
+
+[00:18] Vendu 9 € le pot.
+        Plus de 130 €.
         En 4 heures.
 
-[00:18] Essence Rentable te donne :
+[00:21] Essence Rentable te donne :
         formulation certifiée, fournisseurs en gros,
         script de vente. Avec certificat.
 
-[00:21] Plus de 2 500 femmes
-        qui attendaient encore il y a un mois -
+[00:24] Plus de 2 500 femmes
+        qui attendaient encore :
         Sophie vend à ses voisines.
         Marie tient un stand au marché.
         Carole n'a pas quitté son CDI.
 
-[00:24] Sans caméra, sans matériel, sans expérience.
-
-[00:27] Chaque semaine sans commencer,
-        c'est 65 € qui ne rentrent pas.
+[00:27] Chaque semaine où tu attends,
+        c'est 65 € qui restent dehors.
+        Sans caméra, sans matériel, sans expérience.
         14 jours de garantie.
         Inscris-toi maintenant.
 ```
@@ -588,18 +609,18 @@ Le problème n'est pas la baignoire. Le problème, c'est de croire que tu dois a
 ### 2. Note de production
 
 - Tom do hook: realista, de fin de journée; não culpar a mulher que trabalha.
-- Pausas: 0,5s depois de "22 jours"; 0,8s depois de "même niveau"; 1s antes do cálculo.
-- Cores: "22 jours" em branco; "même niveau" em laranja; lucro em verde; "65 €" em laranja no CTA.
+- Pausas: 0,5s depois de "toute la semaine"; 0,8s depois de "ne bouge presque pas"; 1s antes do cálculo.
+- Cores: "toute la semaine" em branco; "ne bouge presque pas" em laranja; lucro em verde; "65 €" em laranja no CTA.
 - Footage: mãos tirando avental/bolsa de trabalho sem mostrar corpo; bancada de cozinha; potes; embalagem final.
 - Thumbnail: potes em bancada com texto discreto "4 heures pour toi". Proibido: hollerith, saldo bancário, transferência.
 
 ### 3. Primary Text A
 
-Tu bosses toute la semaine et ton compte reste au même niveau. Une fournée de 4 heures peut ouvrir un autre calcul : 40 €, 20 pots, 9 € chacun, plus de 130 € de bénéfice possible. Les résultats varient selon les efforts et le contexte de chaque personne.
+Tu bosses toute la semaine et ton compte ne bouge presque pas. Un pot revient à 2 €. Une fournée fait 20 pots, pour 40 € au total. Vendu 9 € le pot, il reste plus de 130 € en 4 heures. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 4. Primary Text B
 
-Chaque semaine sans commencer, c'est environ 65 € qui ne rentrent pas. Le cours coûte 27 €. Le calcul est simple, et tu as 14 jours de garantie. Les résultats varient selon les efforts et le contexte de chaque personne.
+Chaque semaine où tu attends, c'est environ 65 € qui restent dehors. Le cours coûte 27 €. Le calcul est simple, et tu as 14 jours de garantie. Les résultats varient selon les efforts et le contexte de chaque personne.
 
 ### 5. Diagnostic stratégique
 
@@ -617,33 +638,36 @@ Chaque semaine sans commencer, c'est environ 65 € qui ne rentrent pas. Le cour
 
 ```
 [00:00] Pour la première fois,
-        j'avais de l'argent à moi.
+        j'avais enfin un peu d'argent à moi.
 
-[00:03] Sans demander à personne.
+[00:03] Sans avoir à demander à quelqu'un.
 
 [00:06] C'était pas une promesse.
         C'était pas de la chance.
 
 [00:09] C'était une fournée
-        faite avec la bonne méthode.
+        préparée avec la bonne méthode.
 
 [00:12] Le calcul :
-        40 €. 20 pots. 9 € chacun.
+        Coût : 2 € le pot.
 
-[00:15] Plus de 130 € de bénéfice.
+[00:15] 20 pots.
+        40 € au total.
+
+[00:18] Vendu 9 € le pot.
+        Plus de 130 €.
         En 4 heures.
 
-[00:18] Essence Rentable te donne :
+[00:21] Essence Rentable te donne :
         formulation certifiée, fournisseurs en gros,
-        script de vente. Avec certificat.
+        script pour vendre autour de toi,
+        aux marchés, ou sur les réseaux si tu veux.
+        Avec certificat.
 
-[00:21] Pour vendre au voisinage,
-        aux marchés, aux réseaux si tu veux.
-
-[00:24] Plus de 2 500 femmes ont commencé -
+[00:24] Plus de 2 500 femmes ont commencé :
         Sophie vend à ses voisines.
-        Marie tient un stand au marché.
-        Carole n'a pas quitté son CDI.
+        Marie vend au marché.
+        Carole garde son CDI.
 
 [00:27] Sans caméra, sans matériel, sans expérience.
         Tu n'as pas besoin de demander.
@@ -656,7 +680,7 @@ Chaque semaine sans commencer, c'est environ 65 € qui ne rentrent pas. Le cour
 - Tom do hook: íntimo, digno, sem vitimização; "à moi" deve ser baixo e firme.
 - Pausas: 0,7s depois de "première fois"; 0,8s depois de "à moi"; 1s antes do cálculo.
 - Cores: "argent à moi" em dourado; negações em branco; lucro em verde; dignidade final em amarelo.
-- Footage: mãos colocando etiqueta no pote; organizando 20 unidades; sacola kraft fechada; produto final na mesa.
+- Footage: mãos colocando etiqueta no pote; organizando 20 pots; sacola kraft fechada; produto final na mesa.
 - Thumbnail: produto finalizado, etiqueta e fita; sem pessoa, sem dinheiro e sem prova de pagamento.
 
 ### 3. Primary Text A
@@ -776,6 +800,51 @@ Depois:
 - Se 05 tiver CTR alto e CPA baixo: transformar split farmácia/cozinha em família de criativos.
 - Se comentários trouxerem "j'ai déjà essayé": subir 06.
 - Se comentários trouxerem "je n'ai pas d'abonnés": subir 07.
+
+## Dupla verificação desta rodada
+
+### Gaps que passaram despercebidos e foram corrigidos
+
+1. **Números grandes demais no math**
+   - Problema: blocos com faturamento agregado ou sequência longa faziam o cálculo parecer maior, mais promissor e menos visual.
+   - Correção: todos os math blocks passaram a abrir pelo menor número: "Coût : 2 € le pot", depois "20 pots", depois "40 € au total", depois "Vendu 9 € le pot" e só no fechamento "Plus de 130 €".
+
+2. **Unidades não canônicas**
+   - Problema: a ideia de usar peso ou formato de embalagem deixaria o copy mais concreto, mas quebraria o banco canônico.
+   - Correção: manter apenas "un pot", "une fournée", "20 pots" e "matière première" até que outra unidade seja validada.
+
+3. **Linguagem com risco de prova financeira**
+   - Problema: qualquer frase ligada a conta, saldo ou dinheiro "caindo" puxa o imaginário de print de pagamento.
+   - Correção: o resultado agora fica no produto e no cálculo, não em conta bancária.
+
+4. **Hooks e transições ainda pouco falados**
+   - Problema: expressões como "au même niveau", "c'est une opportunité" e "pas des abonnés" soavam mais traduzidas.
+   - Correção: substituídas por fórmulas mais nativas: "ne bouge presque pas", "tu fabriques pour vendre", "pas une audience", "t'en as marre", "autour de toi".
+
+5. **Blocos finais longos**
+   - Problema: alguns finais acumulavam prova social, barriers, garantia e CTA com pouca respiração.
+   - Correção: a prova social ficou mais curta em vários roteiros: Sophie/Marie/Carole com ações simples, sem valores e sem promessa temporal.
+
+6. **Garantia ausente em um roteiro**
+   - Problema: um criativo de frustration mirror terminava sem "14 jours de garantie".
+   - Correção: garantia reinserida antes de "Inscris-toi maintenant."
+
+### Regra operacional nova
+
+Sempre que surgir vontade de tornar o custo mais "concreto" com uma unidade nova, a pergunta não é "soa barato?", e sim:
+
+> "Essa unidade já está no banco canônico e o avatar entende sem recalcular?"
+
+Se a resposta for não, usar o caminho validado:
+
+```
+Coût : 2 € le pot.
+20 pots.
+40 € au total.
+Vendu 9 € le pot.
+Plus de 130 €.
+En 4 heures.
+```
 
 ## Checklist final aplicado
 
