@@ -63,6 +63,13 @@ Materiais em inputs/. Entregue persona, pattern brief, síntese e 3 roteiros
 (Hook P, Arquétipo E, Terapia v2). Salve tudo em outputs/.
 ```
 
+## Documentos de lançamento
+
+| Arquivo | Uso |
+|---------|-----|
+| `outputs/RODADA-LANCAMENTO-9-CRIATIVOS.md` | **9 criativos oficiais** para gravar e subir (L01–L09) |
+| `PROMPT-DIFERENCIACAO-DISRUPTIVA.md` | Prompt para gerar **próxima rodada** sem duplicar os 9 |
+
 ## Comandos úteis
 
 | Comando | Efeito |
