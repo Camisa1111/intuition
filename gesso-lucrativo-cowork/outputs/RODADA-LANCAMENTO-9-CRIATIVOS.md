@@ -7,21 +7,50 @@
 
 ---
 
-## Índice dos 9
+## 🔴 ALTA PRIORIDADE — 5 mais prováveis de converter
 
-| ID | Nome | DNA | Prioridade subida |
-|----|------|-----|-------------------|
-| L01 | ROI invertido | GL-04 | ⭐⭐⭐ |
-| L02 | Ceticismo primeiro | GL-04 | ⭐⭐⭐ |
-| L03 | Estoque sábado | GL-04 + velocidade | ⭐⭐ |
-| L04 | Luxo doméstico | GL-04 + reframe | ⭐⭐ |
-| L05 | Pedido WhatsApp | GL-04 + canal | ⭐⭐⭐ |
-| L06 | Casa dorme | GL-01 | ⭐⭐⭐ |
-| L07 | Relaxar → pedidos | GL-01 | ⭐⭐ |
-| L08 | Terapia paga conta | GL-01 | ⭐⭐ |
-| L09 | Híbrido estresse→ROI | GL-01 + GL-04 | ⭐⭐⭐ |
+> Gravar e subir **estes 5 primeiro**. Baseados nos mega validados GL-04 (#1) e GL-01 (#2).  
+> **Budget bid cap:** alocar **70–80%** do teste inicial só neste grupo.
 
-**Ordem de subida:** L01 + L02 + L05 + L06 + L09 (Fase 1) → L03 + L04 + L07 + L08 (Fase 2)
+| Rank | ID | Nome | DNA | Prob. conversão | Por quê |
+|------|-----|------|-----|-----------------|---------|
+| **1** | **L01** | ROI invertido | GL-04 | **Máxima** | Clone do mecanismo #1 — prova visual + matemática em 2s |
+| **2** | **L02** | Ceticismo primeiro | GL-04 | **Máxima** | Inoculação antes do pitch — retém a cética que mais compra |
+| **3** | **L05** | Pedido WhatsApp | GL-04 | **Alta** | Mesmo motor #1 + fecha objeção “será que vende?” |
+| **4** | **L06** | Casa dorme | GL-01 | **Alta** | Clone do #2 com avatar mãe — pivô terapia→renda intacto |
+| **5** | **L09** | Híbrido estresse→ROI | GL-01+04 | **Alta** | Une os 2 vencedores — diferencia sem abandonar ROI |
+
+**Ordem de gravação (12h):** L01 → L02 → L05 → L06 → L09  
+**Ordem de subida no Meta:** L01 + L02 (dia 1) → L05 + L06 (dia 2) → L09 (dia 3)
+
+---
+
+## 🟡 PRIORIDADE SECUNDÁRIA — 4 complementares
+
+> Subir **após** os 5 acima mostrarem CPA estável (48–72h). Budget restante: **20–30%**.
+
+| ID | Nome | DNA | Prob. conversão | Quando subir |
+|----|------|-----|-----------------|--------------|
+| L03 | Estoque sábado | GL-04 + velocidade | Média-alta | Se L01/L02 escalarem |
+| L04 | Luxo doméstico | GL-04 + reframe | Média-alta | Teste de hook aspiracional |
+| L07 | Relaxar → pedidos | GL-01 | Média-alta | Variante social orgânica |
+| L08 | Terapia paga conta | GL-01 | Média | Hook antecipa benefício — monitorar CTR |
+
+---
+
+## Índice completo dos 9
+
+| ID | Nome | DNA | Tier |
+|----|------|-----|------|
+| L01 | ROI invertido | GL-04 | 🔴 P1 |
+| L02 | Ceticismo primeiro | GL-04 | 🔴 P1 |
+| L03 | Estoque sábado | GL-04 + velocidade | 🟡 P2 |
+| L04 | Luxo doméstico | GL-04 + reframe | 🟡 P2 |
+| L05 | Pedido WhatsApp | GL-04 + canal | 🔴 P1 |
+| L06 | Casa dorme | GL-01 | 🔴 P1 |
+| L07 | Relaxar → pedidos | GL-01 | 🟡 P2 |
+| L08 | Terapia paga conta | GL-01 | 🟡 P2 |
+| L09 | Híbrido estresse→ROI | GL-01 + GL-04 | 🔴 P1 |
 
 ---
 
@@ -44,9 +73,9 @@ Todos os 9 carregam pelo menos 4 destes blocos validados:
 
 ---
 
-# L01 — ROI INVERTIDO
+# L01 — ROI INVERTIDO 🔴 ALTA PRIORIDADE #1
 
-**DNA:** GL-04 · **Hook tipo:** R/C · **Avatar:** cética · **Duração:** ~38s
+**DNA:** GL-04 · **Hook tipo:** R/C · **Avatar:** cética · **Duração:** ~38s · **Prob. conversão:** Máxima
 
 | Seg | Fala (verbatim) | Visual |
 |-----|-----------------|--------|
@@ -184,9 +213,9 @@ Todos os 9 carregam pelo menos 4 destes blocos validados:
 
 ---
 
-# L09 — HÍBRIDO ESTRESSE → ROI
+# L09 — HÍBRIDO ESTRESSE → ROI 🔴 ALTA PRIORIDADE #5
 
-**DNA:** GL-01 abre · GL-04 fecha · **Hook tipo:** T + R · **Avatar:** ampla · **Duração:** ~40s
+**DNA:** GL-01 abre · GL-04 fecha · **Hook tipo:** T + R · **Avatar:** ampla · **Duração:** ~40s · **Prob. conversão:** Alta
 
 | Seg | Fala (verbatim) | Visual |
 |-----|-----------------|--------|

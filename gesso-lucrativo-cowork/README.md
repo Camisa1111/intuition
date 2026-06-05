@@ -63,12 +63,18 @@ Materiais em inputs/. Entregue persona, pattern brief, síntese e 3 roteiros
 (Hook P, Arquétipo E, Terapia v2). Salve tudo em outputs/.
 ```
 
+## Download
+
+**👉 [BAIXAR-AQUI.md](./BAIXAR-AQUI.md)** — links ZIP + arquivos individuais
+
+ZIP direto: https://github.com/Camisa1111/intuition/archive/refs/heads/cursor/gesso-lucrativo-skills-4af5.zip
+
 ## Documentos de lançamento
 
 | Arquivo | Uso |
 |---------|-----|
-| `outputs/RODADA-LANCAMENTO-9-CRIATIVOS.md` | **9 criativos oficiais** para gravar e subir (L01–L09) |
-| `PROMPT-DIFERENCIACAO-DISRUPTIVA.md` | Prompt para gerar **próxima rodada** sem duplicar os 9 |
+| `outputs/RODADA-LANCAMENTO-9-CRIATIVOS.md` | **9 criativos** — 🔴 **5 alta prioridade** (L01, L02, L05, L06, L09) gravar primeiro |
+| `PROMPT-DIFERENCIACAO-DISRUPTIVA.md` | Próxima rodada (storytelling / vantagem indutiva) |
 
 ## Comandos úteis
 
