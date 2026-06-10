@@ -1,5 +1,8 @@
 # Localização de Oferta para Espanha (es-ES) — Prompt sem gaps
 
+> **Só LP?** Usa o prompt dedicado e mais completo:  
+> **`LOCALIZACAO-LP-ESPANHA-v2.md`** (arquitetura de conversão, tabela espelho PT↔ES, auditoria 3 passagens).
+
 **Uso:** Copia o **Prompt Principal** abaixo, cola no Claude / Cowork / Manus, e anexa os materiais da oferta (LP, criativos, brief, FAQ).
 
 **Objetivo:** **Transcriação** (adaptação cultural + comercial), não tradução literal. Zero calques do português brasileiro. Espanhol de **Espanha** (es-ES).
@@ -279,13 +282,14 @@ FIM
 
 ## PROMPT RÁPIDO (só LP)
 
-Se tiveres apenas a landing page:
+**Preferir:** `LOCALIZACAO-LP-ESPANHA-v2.md` (versão completa).
+
+Atalho mínimo:
 
 ```
-Localiza esta LP para Espanha (es-ES). Transcriação, não tradução literal.
-Avatar: mulher, renda extra, craft em casa. Preço €27. Tom: tú, amiga.
-Entrega: LP completa ES + glossário PT→ES + 10 calques eliminados + 3 nomes de produto.
-Auditoria anti-gap obrigatória antes de finalizar.
+Usa o protocolo LOCALIZACAO-LP-ESPANHA-v2: Partes A→G.
+LP anexa. Preço 27€. es-ES. Tom tú.
+Entrega: LP publicável + tabela espelho PT↔ES + FAQ ≥8 + auditoria 3 passagens.
 
 [COLLAR LP]
 ```
